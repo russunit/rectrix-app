@@ -1,8 +1,8 @@
 make empty components for all views(templates, for the purposes of the navigation) MALCOLM
 
-navbar component(back/home buttons on top of views)
+navbar component(back/home buttons on top of views) MALCOLM
 
-navigation for all views(all buttons to/from views are functional links)
+navigation for all views(all buttons to/from views are functional links) MALCOLM
 
 dashboard component(6-button menu view)
 
