@@ -6,18 +6,33 @@ navigation for all views(all buttons to/from views are functional links) MALCOLM
 
 dashboard component(6-button menu view)
 
-charter component(requests charters)
+menu component(long list menu view)
 
-shuttle component(reserve shuttle seats)
+charter component(form, requests charters)
+
+shuttle component(form, reserve shuttle seats)
 
 fbo component(display list of fbos)
-
-mro component(display list of mros)
-
 fbo-detail component(displays details of selected fbo)
 
+mro component(display list of mros)
 mro-detail component(displays details of selected mro)
+
+passportjet component(displays passportjet details)
+
+passportjet-join component(form)
 
 profilebar component("hello, user"/"logout" bar at bottom of views, alternatively "login"/"create account")
 
-menu component(long, list menu)
+profileview component(shows profile info+options)
+
+profile-charter-history component(shows charter history)
+profile-charter-details component(shows details of charter in history)
+
+profile-shuttle-history component(shows shuttle history)
+profile-shuttle-details component(shows details of shuttle from history)
+
+profile-edit-details component(edits profile details)
+profile-settings component(edits profile settings)
+
+
