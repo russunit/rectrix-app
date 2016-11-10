@@ -1,0 +1,12 @@
+make empty components for all views(templates, for the purposes of the navigation)
+navbar component(back/home buttons on top of views)
+navigation for all views(all buttons to/from views are functional links)
+dashboard component(6-button menu view)
+charter component(requests charters)
+shuttle component(reserve shuttle seats)
+fbo component(display list of fbos)
+mro component(display list of mros)
+fbo-detail component(displays details of selected fbo
+mro-detail component(displays details of selected mro)
+profilebar component("hello, user"/"logout" bar at bottom of views, alternatively "login"/"create account")
+menu component(long, list menu)
