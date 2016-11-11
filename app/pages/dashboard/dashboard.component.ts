@@ -1,13 +1,13 @@
 import { Component } from "@angular/core";
-import ( Router NavigationStart, NavigationEnd ) from @angular/core";
+import ( Router NavigationStart, NavigationEnd ) from "@angular/core";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
-import { routes } from "./app.routes";
+//import { routes } from "./app.routes";
 
 @Component({
   selector: "dashboard",
   template: "<Label text='Dashboard Component'></Label>"
 <StackLayout>
-<StackLayour class="nav">
+<StackLayout class="nav">
 <Button text="View profile"[nsRouterLink="['/profile']"></Button>
 <Button text="Buy Fuel"[nsRouterLink="['/fuel']"></Button>
 <Button text="MRO's"[nsRouterLink="['/MRO's']"></Button>

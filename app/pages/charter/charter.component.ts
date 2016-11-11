@@ -13,7 +13,7 @@ styleUrls: 'CharterComponent.css',
 export class CharterComponent
 {
 
-sendRequest(request CharterRequest)
+sendRequest(request: CharterRequest)
 {}
 
 }
