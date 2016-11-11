@@ -1,12 +1,17 @@
 //imports
-import { CharterRequest } from './CharterRequest';
+import { Component } from "@angular/core";
+import { CharterRequest } from './charter-request';
 
 @Component
 ({
-//moduleID
+
 selector: "charter",
-templateUrl: 'CharterComponent.html',
-styleUrls: 'CharterComponent.css',
+template: "<Label text='Charter Component'></Label>",
+
+//moduleID
+//selector: "charter",
+//templateUrl: "charter-component.html",
+//styleUrls: "charter-component.css",
 //provider
 })
 

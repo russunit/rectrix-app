@@ -1,19 +1,19 @@
 import { NgModule } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/platform";
-import { FormsModule }   from '@angular/forms';
+//import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
-import { AppRoutingModule } from './app-routing.module';
+//import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { CharterComponent } from './pages/charter/charter.component';
 import { ShuttleComponent } from './pages/shuttle/shuttle.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { FboComponent } from './pages/fbo/fbo.component';
-import { FboDetailsComponent } from './pages/fbo/fbo-details.component';
+//import { FboDetailsComponent } from './pages/fbo/fbo-details.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { MroComponent } from './pages/mro/mro.component';
-import { MroDetailsComponent } from './pages/mro/mro-details.component';
+//import { MroDetailsComponent } from './pages/mro/mro-details.component';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { PassportJetComponent } from './pages/passportjet/passportjet.component';
 import { PassportJetJoinComponent } from './pages/passportjet/passportjet-join.component';

@@ -1,16 +1,18 @@
 "use strict";
 var core_1 = require("@angular/core");
+//const String[] options = [{ 'View profile' }, { 'Buy fuel' } , { 'MRO's' }, { 'Aircraft maintenance' }, { 'Shuttle' }, {' Charter flights ' }]
 var AppComponent = (function () {
     function AppComponent() {
+        this.title = 'Rectrix';
     }
     AppComponent = __decorate([
         core_1.Component({
             selector: "my-app",
-            template: "<Label text='Hello Rectrix'></Label>"
+            template: "\n  <Label text='Hello Rectrix'></Label>\"\n   <a routerLink=\"\"></a>\n   <router-outlet></router-outlet>\n   "
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
     return AppComponent;
 }());
 exports.AppComponent = AppComponent;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXBwLmNvbXBvbmVudC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLHFCQUEwQixlQUFlLENBQUMsQ0FBQTtBQU0xQztJQUFBO0lBQTJCLENBQUM7SUFKNUI7UUFBQyxnQkFBUyxDQUFDO1lBQ1QsUUFBUSxFQUFFLFFBQVE7WUFDbEIsUUFBUSxFQUFFLHNDQUFzQztTQUNqRCxDQUFDOztvQkFBQTtJQUN5QixtQkFBQztBQUFELENBQUMsQUFBNUIsSUFBNEI7QUFBZixvQkFBWSxlQUFHLENBQUEifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXBwLmNvbXBvbmVudC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLHFCQUEwQixlQUFlLENBQUMsQ0FBQTtBQUN6QyxnSkFBZ0o7QUFTako7SUFBQTtRQUVBLFVBQUssR0FBRyxTQUFTLENBQUM7SUFDbEIsQ0FBQztJQVhEO1FBQUMsZ0JBQVMsQ0FBQztZQUNULFFBQVEsRUFBRSxRQUFRO1lBQ2xCLFFBQVEsRUFBRSxpSEFJUjtTQUNILENBQUM7O29CQUFBO0lBSUYsbUJBQUM7QUFBRCxDQUFDLEFBSEQsSUFHQztBQUhZLG9CQUFZLGVBR3hCLENBQUEifQ==
