@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import ( Router NavigationStart, NavigationEnd ) from "@angular/core";
+import { Router NavigationStart, NavigationEnd } from "@angular/core";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 //import { routes } from "./app.routes";
 
