@@ -5,8 +5,8 @@ import { CharterRequest } from './CharterRequest';
 ({
 //moduleID
 selector: "charter",
-templateUrl: 'CharterFormComponent.html',
-styleUrls: 'CharterFormComponent.css',
+templateUrl: 'CharterComponent.html',
+styleUrls: 'CharterComponent.css',
 //provider
 })
 
