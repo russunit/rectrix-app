@@ -4,13 +4,13 @@ navbar component(back/home buttons on top of views) MALCOLM
 
 navigation for all views(all buttons to/from views are functional links) MALCOLM
 
-dashboard component(6-button menu view)
+dashboard component(6-button menu view) CHRIS
 
 menu component(long list menu view)
 
-charter component(form, requests charters)
+charter component(form, requests charters) CHRIS
 
-shuttle component(form, reserve shuttle seats)
+shuttle component(form, reserve shuttle seats) CHRIS
 
 fbo component(display list of fbos)
 fbo-detail component(displays details of selected fbo)
@@ -21,7 +21,7 @@ mro-detail component(displays details of selected mro)
 passportjet component(displays passportjet details)
 passportjet-join component(form)
 
-profilebar component("hello, user"/"logout" bar at bottom of views, alternatively "login"/"create account")
+profilebar component("hello, user"/"logout" bar at bottom of views, alternatively "login"/"create account") CHRIS
 
 profileview component(shows profile info+options)
 
