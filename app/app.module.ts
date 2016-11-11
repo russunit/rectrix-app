@@ -1,5 +1,8 @@
 import { NgModule } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/platform";
+import { FormsModule }   from '@angular/forms';
+import { HttpModule }    from '@angular/http';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from "./app.component";
 
