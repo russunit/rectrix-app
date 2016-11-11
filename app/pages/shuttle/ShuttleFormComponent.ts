@@ -1,13 +1,15 @@
 //imports
 import { ShuttleRequest } from './CharterRequest';
-@Component({
+@Component
+({
 //moduleID
 //selector
-templateUrl: 'ShuttleFormComponent.html'
-styleUrls: 'ShuttleFormComponent.css'
+templateUrl: 'ShuttleFormComponent.html',
+styleUrls: 'ShuttleFormComponent.css',
 //provider
+})
 export class ShuttleFormComponent{
-sendRequest(ShuttleRequest request):boolean
+sendRequest(request:ShuttleRequest)
 {
 
 }
