@@ -1,6 +1,9 @@
+<<<<<<< HEAD:app/pages/shuttle/ShuttleRequest.ts
 <<<<<<< HEAD:app/ShuttleRequest.ts
 //import craft
 =======
+=======
+>>>>>>> origin/master:app/pages/shuttle/ShuttleRequest.ts
 import { Component } from "@angular/core";
 
 @Component({

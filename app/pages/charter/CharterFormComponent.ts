@@ -1,15 +1,13 @@
 //imports
 import { CharterRequest } from './CharterRequest';
-@Component
-({
+@Component({
 //moduleID
 //selector
-templateUrl: 'CharterFormComponent.html',
-styleUrls: 'CharterFormComponent.css',
+templateUrl: 'CharterFormComponent.html'
+styleUrls: 'CharterFormComponent.css'
 //provider
-})
 export class CharterFormComponent{
-sendRequest(request:CharterRequest)
+sendRequest(CharterRequest request): boolean
 {
 
 }
