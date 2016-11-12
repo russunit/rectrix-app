@@ -5,17 +5,10 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 @Component({
   selector: "dashboard",
-  template: `
-  <Label text='Dashboard Component'></Label>"
-<StackLayout>
-<StackLayout class="nav">
-<Button text="View profile"[nsRouterLink="['/profile']"></Button>
-<Button text="Buy Fuel"[nsRouterLink="['/fuel']"></Button>
-<Button text="MRO's"[nsRouterLink="['/MRO's']"></Button>
-<Button text="Aircraft maintenance""[nsRouterLink="['/maintenance']"></Button>
-<Button text="Shuttle"[nsRouterLink="['/shuttle']"></Button>
-<Button text="Charter Flights"[nsRouterLink="['/charter']"></Button>
-`
+  template: "<Label text='Dashboard Component'></Label>"
+  
+//moved the buttons to dashboard.component.html
+
 })
 export class DashboardComponent 
 {

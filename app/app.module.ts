@@ -1,8 +1,12 @@
 import { NgModule } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/platform";
+import { NativeScriptFormsModule } from "nativescript-angular/forms";
+import { NativeScriptHttpModule } from "nativescript-angular/http";
+import { NativeScriptRouterModule } from "nativescript-angular/router";
+
 import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
-//import { AppRoutingModule } from './app-routing.module';
+import { AppRouting } from './app.routing';
 
 import { AppComponent } from './app.component';
 import { CharterComponent } from './pages/charter/charter.component';
@@ -32,7 +36,23 @@ import { ProfileSettingsComponent } from './pages/profileview/profile-settings.c
 
 @NgModule({
   imports: [NativeScriptModule],
-  declarations: [AppComponent],
+  declarations: [
+  	AppComponent,
+  	CharterComponent,
+  	ShuttleComponent,
+  	DashboardComponent,
+  	FboComponent,
+  	FboDetailComponent,
+  	LoginComponent,
+  	MenuComponent,
+  	MroComponent,
+  	MroDetailComponent,
+  	NavbarComponent,
+  	PassportJetComponent,
+  	PassportJetJoinComponent,
+  	ProfilebarComponent,
+  	SignupComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

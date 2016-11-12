@@ -1,3 +1,6 @@
+import { NgModule }             from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
 import { AppComponent } from './app.component';
 import { CharterComponent } from './pages/charter/charter.component';
 import { ShuttleComponent } from './pages/shuttle/shuttle.component';
@@ -13,3 +16,28 @@ import { PassportJetComponent } from './pages/passportjet/passportjet.component'
 import { PassportJetJoinComponent } from './pages/passportjet/passportjet-join.component';
 import { ProfilebarComponent } from './pages/profilebar/profilebar.component';
 import { SignupComponent } from './pages/signup/signup.component';
+
+const routes: Routes = [
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: 'dashboard',  		component: DashboardComponent },
+  { path: 'charter',     		component: CharterComponent },
+  { path: 'shuttle',     		component: ShuttleComponent },
+  { path: 'fbo',          		component: FboComponent },
+  { path: 'fbo-detail/:id',     component: FboDetailComponent },
+  { path: 'mro',     			component: MroComponent },
+  { path: 'mro-detail/:id',     component: MroDetailComponent },
+  { path: 'login',     component: LoginComponent },
+  { path: 'menu',     component: MenuComponent },
+  { path: 'navbar',     component: NavbarComponent },
+  { path: 'passportjet',     component: PassportJetComponent },
+  { path: 'passportjet-join',   component: PassportJetJoinComponent },
+  { path: 'profilebar',     component: ProfilebarComponent },
+  { path: 'signup',     component: SignupComponent }
+];
+
+@NgModule({
+  imports: [ RouterModule.forRoot(routes) ],
+  exports: [ RouterModule ]
+})
+export class AppRouting {}
+

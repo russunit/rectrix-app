@@ -4,10 +4,12 @@ import { Component } from "@angular/core";
   selector: "my-app",
   template: `
   <StackLayout>
-  <Label text='Hello Rectrix'></Label>
-   <a routerLink=""></a>
-   <router-outlet></router-outlet>
-   <StackLayout>
+  	<navbar></navbar>
+  	<Label text='Hello Rectrix'></Label>
+  	//<a routerLink=""></a>
+  	<router-outlet></router-outlet>
+  	<profilebar></profilebar>
+  <StackLayout>
    `
 })
 export class AppComponent 
