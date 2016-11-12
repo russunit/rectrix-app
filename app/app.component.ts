@@ -3,9 +3,11 @@ import { Component } from "@angular/core";
 @Component({
   selector: "my-app",
   template: `
-  <Label text='Hello Rectrix'></Label>"
+  <StackLayout>
+  <Label text='Hello Rectrix'></Label>
    <a routerLink=""></a>
    <router-outlet></router-outlet>
+   <StackLayout>
    `
 })
 export class AppComponent 

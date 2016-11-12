@@ -8,11 +8,11 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: "my-app",
-            template: "\n  <Label text='Hello Rectrix'></Label>\"\n   <a routerLink=\"\"></a>\n   <router-outlet></router-outlet>\n   "
+            template: "\n  <StackLayout>\n  <Label text='Hello Rectrix'></Label>\n   <a routerLink=\"\"></a>\n   <router-outlet></router-outlet>\n   <StackLayout>\n   "
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
     return AppComponent;
 }());
 exports.AppComponent = AppComponent;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXBwLmNvbXBvbmVudC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLHFCQUEwQixlQUFlLENBQUMsQ0FBQTtBQUN6QyxnSkFBZ0o7QUFTako7SUFBQTtRQUVBLFVBQUssR0FBRyxTQUFTLENBQUM7SUFDbEIsQ0FBQztJQVhEO1FBQUMsZ0JBQVMsQ0FBQztZQUNULFFBQVEsRUFBRSxRQUFRO1lBQ2xCLFFBQVEsRUFBRSxpSEFJUjtTQUNILENBQUM7O29CQUFBO0lBSUYsbUJBQUM7QUFBRCxDQUFDLEFBSEQsSUFHQztBQUhZLG9CQUFZLGVBR3hCLENBQUEifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXBwLmNvbXBvbmVudC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLHFCQUEwQixlQUFlLENBQUMsQ0FBQTtBQUN6QyxnSkFBZ0o7QUFXako7SUFBQTtRQUVBLFVBQUssR0FBRyxTQUFTLENBQUM7SUFDbEIsQ0FBQztJQWJEO1FBQUMsZ0JBQVMsQ0FBQztZQUNULFFBQVEsRUFBRSxRQUFRO1lBQ2xCLFFBQVEsRUFBRSxrSkFNUjtTQUNILENBQUM7O29CQUFBO0lBSUYsbUJBQUM7QUFBRCxDQUFDLEFBSEQsSUFHQztBQUhZLG9CQUFZLGVBR3hCLENBQUEifQ==
