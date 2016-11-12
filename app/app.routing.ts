@@ -1,0 +1,15 @@
+import { AppComponent } from './app.component';
+import { CharterComponent } from './pages/charter/charter.component';
+import { ShuttleComponent } from './pages/shuttle/shuttle.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { FboComponent } from './pages/fbo/fbo.component';
+import { FboDetailComponent } from './pages/fbo/fbo-detail.component';
+import { LoginComponent } from './pages/login/login.component';
+import { MenuComponent } from './pages/menu/menu.component';
+import { MroComponent } from './pages/mro/mro.component';
+import { MroDetailComponent } from './pages/mro/mro-detail.component';
+import { NavbarComponent } from './pages/navbar/navbar.component';
+import { PassportJetComponent } from './pages/passportjet/passportjet.component';
+import { PassportJetJoinComponent } from './pages/passportjet/passportjet-join.component';
+import { ProfilebarComponent } from './pages/profilebar/profilebar.component';
+import { SignupComponent } from './pages/signup/signup.component';
