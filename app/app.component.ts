@@ -9,7 +9,7 @@ import { Component } from "@angular/core";
   	//<a routerLink=""></a>
   	<router-outlet></router-outlet>
   	<profilebar></profilebar>
-  <StackLayout>
+  </StackLayout>
    `
 })
 export class AppComponent 
