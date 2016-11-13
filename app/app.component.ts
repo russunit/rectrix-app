@@ -7,7 +7,7 @@ import { Component } from "@angular/core";
   	<navbar></navbar>
   	<Label text='Hello Rectrix'></Label>
   	//<a routerLink=""></a>
-  	<router-outlet></router-outlet>
+  	<page-router-outlet></page-router-outlet>
   	<profilebar></profilebar>
   </StackLayout>
    `
