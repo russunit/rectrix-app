@@ -5,9 +5,7 @@ import { Component } from "@angular/core";
   template: `
   <StackLayout>
   	<navbar></navbar>
-  	<Label text='Hello Rectrix'></Label>
-  	//<a routerLink=""></a>
-  	<page-router-outlet></page-router-outlet>
+  	<router-outlet></router-outlet>
   	<profilebar></profilebar>
   </StackLayout>
    `
