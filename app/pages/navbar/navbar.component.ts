@@ -6,11 +6,10 @@ import { Location } from '@angular/common';
 @Component({
   selector: "navbar",
   template: `
-  	<StackLayout orientation="horizontal">
-  		<button text="Back" (tap)="goBack()">Back</button>
-  		<button text="Home" (tap)="goHome()">Home</button>
-
-  	</StackLayout>
+  	<StackLayout dock = "top" orientation="horizontal" horizontalAlignment="center">
+  		<Button text="Back" (tap)="goBack()" height="40" width="190">Back</Button>
+  		<Button text="Home" (tap)="goHome()" height="40" width="190">Home</Button>
+ 	</StackLayout>
   	`
 })
 export class NavbarComponent 

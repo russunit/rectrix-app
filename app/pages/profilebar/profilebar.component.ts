@@ -5,10 +5,9 @@ import { Location } from '@angular/common';
 @Component({
   selector: "profilebar",
   template: `
-  	<StackLayout orientation="horizontal">
-  		<button text="Log In" (tap)="logIn()">Back</button>
-  		<button text="Sign Up" (tap)="signUp()">Home</button>
-
+  	<StackLayout orientation="horizontal" horizontalAlignment="center">
+  		<button text="Log In" (tap)="logIn()" height="40" width="190">Back</button>
+  		<button text="Sign Up" (tap)="signUp()" height="40" width="190">Home</button>
   	</StackLayout>
   	`
 })

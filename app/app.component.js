@@ -8,11 +8,11 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: "my-app",
-            template: "\n  <StackLayout>\n  \t<navbar></navbar>\n  \t<router-outlet></router-outlet>\n  \t<profilebar></profilebar>\n  </StackLayout>\n   "
+            template: "\n  <StackLayout orientation=\"vertical\">\n  \t<navbar></navbar>\n    <router-outlet></router-outlet>\n  \t<profilebar></profilebar>\n  </StackLayout>\n   "
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
     return AppComponent;
 }());
 exports.AppComponent = AppComponent;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXBwLmNvbXBvbmVudC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLHFCQUEwQixlQUFlLENBQUMsQ0FBQTtBQUN6QyxnSkFBZ0o7QUFXako7SUFBQTtRQUVBLFVBQUssR0FBRyxTQUFTLENBQUM7SUFDbEIsQ0FBQztJQWJEO1FBQUMsZ0JBQVMsQ0FBQztZQUNULFFBQVEsRUFBRSxRQUFRO1lBQ2xCLFFBQVEsRUFBRSxxSUFNUjtTQUNILENBQUM7O29CQUFBO0lBSUYsbUJBQUM7QUFBRCxDQUFDLEFBSEQsSUFHQztBQUhZLG9CQUFZLGVBR3hCLENBQUEifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXBwLmNvbXBvbmVudC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLHFCQUEwQixlQUFlLENBQUMsQ0FBQTtBQUN6QyxnSkFBZ0o7QUFXako7SUFBQTtRQUVBLFVBQUssR0FBRyxTQUFTLENBQUM7SUFDbEIsQ0FBQztJQWJEO1FBQUMsZ0JBQVMsQ0FBQztZQUNULFFBQVEsRUFBRSxRQUFRO1lBQ2xCLFFBQVEsRUFBRSw4SkFNUjtTQUNILENBQUM7O29CQUFBO0lBSUYsbUJBQUM7QUFBRCxDQUFDLEFBSEQsSUFHQztBQUhZLG9CQUFZLGVBR3hCLENBQUEifQ==
