@@ -8,7 +8,7 @@ import { Location } from '@angular/common';
 @Component({
   selector: "dashboard",
   template: `
-  	<GridLayout rows="auto, auto, auto" columns="auto, auto" horizontalAlignment="center" verticalAlignment="center">
+  	<GridLayout rows="auto, auto, auto" columns="100, 100" horizontalAlignment="center" verticalAlignment="center">
    		<button text="Shuttle" row="0" col="0" 		(tap)="goShuttle()"></button>
    		<button text="Charter" row="0" col="1" 		(tap)="goCharter()"></button>
    		<button text="FBOs" row="1" col="0" 		(tap)="goFbo()"></button>

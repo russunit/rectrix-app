@@ -45,6 +45,6 @@ export class MenuComponent
 	{ this.router.navigate(["/passportjet"]); }
 
 	viewProfile()
-	{ this.router.navigate(["/profile-view"]); }
+	{ this.router.navigate(["/profileview"]); }
 
 }
