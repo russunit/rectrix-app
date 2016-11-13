@@ -1,12 +1,12 @@
 make empty components for all views(templates, for the purposes of the navigation) MALCOLM FINISHED
 
-navbar component(back/home buttons on top of views) MALCOLM
+navbar component(back/home buttons on top of views) MALCOLM FINISHED
 
-navigation for all views(all buttons to/from views are functional links) MALCOLM
+navigation for all views(all buttons to/from views are functional links) MALCOLM FINISHED
 
-dashboard component(6-button menu view) CHRIS
+dashboard component(6-button menu view) CHRIS, MALCOLM FINISHED
 
-menu component(long list menu view)
+menu component(long list menu view) MALCOLM FINISHED
 
 charter component(form, requests charters) CHRIS
 
@@ -21,7 +21,7 @@ mro-detail component(displays details of selected mro)
 passportjet component(displays passportjet details)
 passportjet-join component(form)
 
-profilebar component("hello, user"/"logout" bar at bottom of views, alternatively "login"/"create account") CHRIS
+profilebar component("hello, user"/"logout" bar at bottom of views, alternatively "login"/"create account") CHRIS, MALCOLM
 
 profileview component(shows profile info+options)
 
