@@ -12,8 +12,8 @@ charter component(form, requests charters) CHRIS
 
 shuttle component(form, reserve shuttle seats) CHRIS
 
-fbo component(display list of fbos)
-fbo-detail component(displays details of selected fbo)
+fbo component(display list of fbos) ANTHONY
+fbo-detail component(displays details of selected fbo) ANTHONY
 
 mro component(display list of mros)
 mro-detail component(displays details of selected mro)
@@ -23,7 +23,7 @@ passportjet-join component(form)
 
 profilebar component("hello, user"/"logout" bar at bottom of views, alternatively "login"/"create account") CHRIS, MALCOLM
 
-profileview component(shows profile info+options)
+profileview component(shows profile info+options) 
 
 profile-charter-history component(shows charter history)
 profile-charter-details component(shows details of charter in history)
