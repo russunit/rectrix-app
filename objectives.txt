@@ -34,4 +34,6 @@ profile-shuttle-details component(shows details of shuttle from history)
 profile-edit-details component(edits profile details)
 profile-settings component(edits profile settings)
 
+styles for all components (this objective should be fragmented into parts)
+
 
