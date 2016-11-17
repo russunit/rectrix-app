@@ -14,6 +14,6 @@ arriveDate: String;
 arriveTime: String;
 
 numAdults: number;
-numChild: number;
+numChildren: number;
 numInfants: number;
 }

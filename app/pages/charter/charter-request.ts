@@ -13,5 +13,5 @@ arriveDate: String;
 arriveTime: String;
 
 requirements: String;
-prefferedCraft: String;
+preferredCraft: String;
 }
