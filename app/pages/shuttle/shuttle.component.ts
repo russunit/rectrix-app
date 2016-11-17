@@ -62,6 +62,7 @@ export class ShuttleComponent {
 	
 	sendRequest(request:ShuttleRequest)
 	{
+			alert("Shuttle Requested.");
 
 	}
 }

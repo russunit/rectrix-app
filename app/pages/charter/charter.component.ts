@@ -70,6 +70,8 @@ export class CharterComponent
 {
 
 sendRequest(request: CharterRequest)
-{}
+{
+	alert("Charter Requested.");
+}
 
 }
