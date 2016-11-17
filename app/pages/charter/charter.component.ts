@@ -84,6 +84,8 @@ export class CharterComponent
 
 	sendRequest(request: CharterRequest)
 	{
+		//this alert will be an auto-generated email or other type of message, sent to Rectrix.
+		
 		alert("Charter Requested:\nName: "+this.charterRequest.firstName+" "+this.charterRequest.lastName +
 			"\nPhone: "+this.charterRequest.phoneNumber +
 			"\nTrip Type: "+this.charterRequest.tripType +
