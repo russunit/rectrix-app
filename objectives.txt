@@ -8,9 +8,9 @@ dashboard component(6-button menu view) CHRIS, MALCOLM FINISHED
 
 menu component(long list menu view) MALCOLM FINISHED
 
-charter component(form, requests charters) CHRIS
+charter component(form, requests charters) CHRIS, MALCOLM
 
-shuttle component(form, reserve shuttle seats) CHRIS
+shuttle component(form, reserve shuttle seats) CHRIS, MALCOLM
 
 fbo component(display list of fbos) ANTHONY
 fbo-detail component(displays details of selected fbo) ANTHONY
