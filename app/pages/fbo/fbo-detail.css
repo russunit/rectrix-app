@@ -1,0 +1,39 @@
+﻿*{
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.name{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.desc{
+    margin-bottom: 10px;
+}
+
+.amenities, .services{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    text-decoration: underline;
+}
+
+.amenitieslist, .serviceslist{
+   font-size: 14px;
+}
+
+.contact{
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.medium-spacing {
+  margin: 5;
+
+}
