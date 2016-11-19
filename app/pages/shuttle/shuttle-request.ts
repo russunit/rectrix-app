@@ -12,8 +12,10 @@ departTime: String;
 arriveLocation: String;
 arriveDate: String;
 arriveTime: String;
-
+requirements: String;
+prefferedCraft: String;
 numAdults: number;
-numChildren: number;
+numChild: number;
 numInfants: number;
+
 }

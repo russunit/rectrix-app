@@ -25,7 +25,9 @@ import { PassportJetComponent } from './pages/passportjet/passportjet.component'
 import { PassportJetJoinComponent } from './pages/passportjet/passportjet-join.component';
 import { ProfilebarComponent } from './pages/profilebar/profilebar.component';
 import { SignupComponent } from './pages/signup/signup.component';
-
+ 
+import { User } from './pages/User/User';
+ 
 
 
 import { ProfileViewComponent } from './pages/profileview/profileview.component';

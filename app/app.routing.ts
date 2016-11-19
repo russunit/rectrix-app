@@ -14,6 +14,9 @@ import { PassportJetJoinComponent } from './pages/passportjet/passportjet-join.c
 import { ProfilebarComponent } from './pages/profilebar/profilebar.component';
 import { ProfileViewComponent } from './pages/profileview/profileview.component';
 import { SignupComponent } from './pages/signup/signup.component';
+ 
+import { User } from './pages/User/User';
+ 
 
 export const routes = [
   { path: '', 					component: DashboardComponent },
