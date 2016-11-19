@@ -26,7 +26,7 @@ import { PassportJetJoinComponent } from './pages/passportjet/passportjet-join.c
 import { ProfilebarComponent } from './pages/profilebar/profilebar.component';
 import { SignupComponent } from './pages/signup/signup.component';
  
-import { User } from './pages/User/User';
+import { User } from './shared/user/user';
  
 
 
