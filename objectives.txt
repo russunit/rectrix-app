@@ -37,3 +37,4 @@ profile-settings component(edits profile settings)
 styles for all components (this objective should be fragmented into parts)
 
 
+User Sevice CHRIS
