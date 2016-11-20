@@ -15,8 +15,8 @@ shuttle component(form, reserve shuttle seats) CHRIS, MALCOLM
 fbo component(display list of fbos) ANTHONY
 fbo-detail component(displays details of selected fbo) ANTHONY
 
-mro component(display list of mros)
-mro-detail component(displays details of selected mro)
+mro component(display list of mros) ANTHONY
+mro-detail component(displays details of selected mro) ANTHONY
 
 passportjet component(displays passportjet details)
 passportjet-join component(form)
