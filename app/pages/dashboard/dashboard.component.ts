@@ -13,7 +13,7 @@ import { Location } from '@angular/common';
    		<button text="Charter" row="0" col="1" 		(tap)="goCharter()" height="80"></button>
    		<button text="FBO" row="1" col="0" 		(tap)="goFbo()" height="80"></button>
    		<button text="MRO" row="1" col="1" 		(tap)="goMro()" height="80"></button>
-   		<button text="Passenger Jet" row="2" col="0" (tap)="goPassJet()" height="80"></button>
+   		<button text="Passport Jet" row="2" col="0" (tap)="goPassJet()" height="80"></button>
    		<button text="Menu" row="2" col="1" 		(tap)="goMenu()" height="80"></button> 
 	</GridLayout>
   `
