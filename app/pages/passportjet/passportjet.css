@@ -1,0 +1,47 @@
+*{
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.title1{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.title2{
+	margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.para1{
+	font-size: 16px;
+    margin-bottom: 50px;
+}
+
+.para2{
+
+    font-size: 12px;
+    margin-bottom: 50px;
+}
+
+.join{
+	width: 200px;
+	margin-bottom: 20px;
+	margin-top:20px;
+}
+
+.matrixgrid{
+	margin-bottom: 20px;
+	margin-top:20px;
+}
+
+.matrix1{
+	margin-bottom: 10px;
+
+}

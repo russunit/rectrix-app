@@ -18,7 +18,7 @@ fbo-detail component(displays details of selected fbo) ANTHONY
 mro component(display list of mros) ANTHONY
 mro-detail component(displays details of selected mro) ANTHONY
 
-passportjet component(displays passportjet details) MALCOLM
+passportjet component(displays passportjet details) MALCOLM FINISHED
 passportjet-join component(form) MALCOLM
 
 profilebar component("hello, user"/"logout" bar at bottom of views, alternatively "login"/"create account") CHRIS, MALCOLM
