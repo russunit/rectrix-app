@@ -1,7 +1,12 @@
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "passportjet",
-  template: "<Label text='Passport Jet Component'></Label>"
+  template: `
+   <StackLayout>
+  	<label text="Passport Jet Membership" class="heading"></label>
+   </StackLayout>
+  	`
 })
 export class PassportJetComponent {}
