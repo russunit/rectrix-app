@@ -12,11 +12,11 @@ charter component(form, requests charters) CHRIS, MALCOLM
 
 shuttle component(form, reserve shuttle seats) CHRIS, MALCOLM
 
-fbo component(display list of fbos) ANTHONY
-fbo-detail component(displays details of selected fbo) ANTHONY
+fbo component(display list of fbos) ANTHONY FINISHED
+fbo-detail component(displays details of selected fbo) ANTHONY FINISHED
 
-mro component(display list of mros) ANTHONY
-mro-detail component(displays details of selected mro) ANTHONY
+mro component(display list of mros) ANTHONY FINISHED
+mro-detail component(displays details of selected mro) ANTHONY FINISHED
 
 passportjet component(displays passportjet details) MALCOLM FINISHED
 passportjet-join component(form) MALCOLM

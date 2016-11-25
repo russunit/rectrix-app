@@ -31,12 +31,11 @@ import repeaterModule = require("ui/repeater");
                 </Repeater>
 
                 <label text="Contact" class="contact"></label>
-                <label text="{{fbo.street}}"></label>
-                <label text="{{fbo.city}}"></label>
-                <label text="Email: {{fbo.email}}"></label>
-                <label text="Phone: {{fbo.phone}}"></label>
-                <label text="Fax: {{fbo.fax}}"></label>
-                <label text="ASRI: {{fbo.asri}}"></label>
+                <Repeater [items]="contact" class="amenitieslist">
+                    <template let-item="item">
+                      <label textwrap = "true" [text]="item" class="medium-spacing"></label>
+                    </template>
+                </Repeater>
                 <label></label>
                 </StackLayout>
             </ScrollView>
@@ -50,6 +49,7 @@ export class FboDetailComponent implements OnInit{
     private sub: any;
     amenities: string[];
     services: string[];
+    contact: string[];
 
   constructor(
     private fboService: FboService,
@@ -62,8 +62,9 @@ export class FboDetailComponent implements OnInit{
       this.sub = this.route.params.subscribe(params => {
           this.id = +params['id']; 
           this.fbo = this.fboService.getFbo(this.id);
-          this.amenities = this.fbo.amenities;
-          this.services = this.fbo.services;
+          this.amenities = this.fboService.getAmenities(this.id);
+          this.services = this.fboService.getServices(this.id);
+          this.contact = this.fboService.getContactInfo(this.id);
       });
 
 

@@ -1,9 +1,9 @@
-export class fbo {
+export class mro {
     id: number;
     name: string;
     description: string;
     subdescription: string;
-    amenities: string[];
     services: string[];
+    servicesDescription: string;
     contact: string[];
 }
