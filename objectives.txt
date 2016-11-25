@@ -34,7 +34,7 @@ profile-shuttle-details component(shows details of shuttle from history)
 profile-edit-details component(edits profile details)
 profile-settings component(edits profile settings)
 
-styles for all components (this objective should be fragmented into parts)
+styles for all components (this objective should be fragmented into parts) ANTHONY - I'll start with the dashboard, fbo, and mro pages
 
 
 User Sevice CHRIS
