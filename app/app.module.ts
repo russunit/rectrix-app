@@ -7,7 +7,6 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { NativeScriptHttpModule } from "nativescript-angular/http";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 
-
 import { routes, navigatableComponents } from "./app.routing";
 
 import { AppComponent } from './app.component';
@@ -25,8 +24,6 @@ import { PassportJetComponent } from './pages/passportjet/passportjet.component'
 import { PassportJetJoinComponent } from './pages/passportjet/passportjet-join.component';
 import { ProfilebarComponent } from './pages/profilebar/profilebar.component';
 import { SignupComponent } from './pages/signup/signup.component';
-
-
 
 import { ProfileViewComponent } from './pages/profileview/profileview.component';
 import { ProfileShuttleHistoryComponent } from './pages/profileview/profile-shuttle-history.component';
