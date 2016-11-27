@@ -11,14 +11,14 @@ export class FboService {
             description: '\t\tThe Rectrix Aerodrome Center in Bedford/Boston is our flagship FBO, located just 15 miles northwest of Boston at Hanscom Field. Rectrix customers can relax in the FBO lounge, which includes multiple widescreen televisions and a roaring fireplace, or conduct meetings in one of our executive conference rooms. Our crew lounge has flight planning and weather briefing areas, along with a "snooze room" for rest between flights. Our Bedford FBO has a complimentary coffee bar, refreshments, snack center, and is available 24/7. Rectrix is proud to be the CAA Preferred FBO at Hanscom Field.',
             subdescription: 'L.G.Hanscom Field (KBED)',
             amenities: [
-                '60,000 square feet of heated hanger space',
-                '20,000 square feet of office and FBO space',
-                'Executive meeting and conference rooms',
-                'Crew lounge and snooze room',
-                'Flight planning room and weather briefing area',
-                '24 hour security',
-                'Complimentary Wifi throughout the FBO',
-                'Complimentary coffee bar and snacks'
+                '- 60,000 square feet of heated hanger space',
+                '- 20,000 square feet of office and FBO space',
+                '- Executive meeting and conference rooms',
+                '- Crew lounge and snooze room',
+                '- Flight planning room and weather briefing area',
+                '- 24 hour security',
+                '- Complimentary Wifi throughout the FBO',
+                '- Complimentary coffee bar and snacks'
             ],
             services: [
                 '- Domestic and international handling',
@@ -45,14 +45,14 @@ export class FboService {
             description: '\t\tRectrix Aerodrome Centers opened its first FBO facility at Barnstable Municipal Airport (KHYA) in September 2005. The Hyannis facility features more than 22,000 square feet of heated hangar space designed to accommodate any type of aircraft. Encompassing 45,000 square feet, the combination of ample hangar space, well-appointed conference facilities, lavish passenger lounges, and comfortable crew quarters makes our Hyannis facility a favorite among international and domestic travelers. Serving the resort area of Cape Cod, its location offers ideal proximity to the metropolitan areas of the Northeastern United States.',
             subdescription: 'Cape Cod',
             amenities: [
-                '22,000 square feet of heated hangar space',
-                'Ability to service all aircraft needs, both transient and based',
-                'Executive meeting and conference rooms',
-                'Passenger and crew lounge',
-                'Flight planning room',
-                'Crew snooze room',
-                'Complimentary coffee bar and snacks',
-                'Complimentary Wifi throughout the FBO'
+                '- 22,000 square feet of heated hangar space',
+                '- Ability to service all aircraft needs, both transient and based',
+                '- Executive meeting and conference rooms',
+                '- Passenger and crew lounge',
+                '- Flight planning room',
+                '- Crew snooze room',
+                '- Complimentary coffee bar and snacks',
+                '- Complimentary Wifi throughout the FBO'
             ],
             services: [
                 '- NATA trained and pre-screened line service personnel',
@@ -74,13 +74,13 @@ export class FboService {
             description: '\t\tThe Rectrix Aerodrome Centers opened its luxurious Sarasota facility in December 2008. With a stunning design and luxurious, world-class accommodations, our Sarasota facility is situated on nearly 20 acres of airport property developed to accommodate more than 180,000 square feet of aircraft hangars and passenger service facilities. The Rectrix private terminal was created to exceed the expectations of the discerning air traveler. Located between Tampa and Naples, Sarasota is known the world over as a premier southwest Florida destination.',
             subdescription: 'Florida’s Gulf Coast',
             amenities: [
-                '180,000 square feet of aircraft hangars and passenger facilities',
-                'Private passenger terminal',
-                'Elegant passenger and crew lounge',
-                'Executive meeting and conference rooms',
-                'Crew lounge and snooze room',
-                'Flight planning room and weather briefing area',
-                'Complimentary Wifi throughout the FBO'
+                '- 180,000 square feet of aircraft hangars and passenger facilities',
+                '- Private passenger terminal',
+                '- Elegant passenger and crew lounge',
+                '- Executive meeting and conference rooms',
+                '- Crew lounge and snooze room',
+                '- Flight planning room and weather briefing area',
+                '- Complimentary Wifi throughout the FBO'
             ],
             services: [
                 '- Domestic and international handling',
@@ -104,13 +104,13 @@ export class FboService {
             description: '\t\tAs the region\'s premier FBO and service provider, Rectrix Aerodrome Center at KBAF is well equipped to competently and properly handle all aspects of your flight. Corporate aircraft operators cite our facility as the finest FBO in the region with the amenities and operations rivaling many of the larger chain FBO\'s but with a refreshingly affordable price.',
             subdescription: 'Western Massachusetts',
             amenities: [
-                '56,000 square feet of hangar space',
-                'NATA trained and pre-screened line service personnel',
-                'Closed circuit video surveillance system',
-                'Crew lounge and quiet rooms',
-                'Executive conference center and business suites',
-                'Outdoor observation deck',
-                'Complimentary Wifi throughout the FBO'
+                '- 56,000 square feet of hangar space',
+                '- NATA trained and pre-screened line service personnel',
+                '- Closed circuit video surveillance system',
+                '- Crew lounge and quiet rooms',
+                '- Executive conference center and business suites',
+                '- Outdoor observation deck',
+                '- Complimentary Wifi throughout the FBO'
             ],
             services: [
                 '- Jet-A and Avgas fuel',
@@ -131,13 +131,13 @@ export class FboService {
             description: '\t\tThe Rectrix Aerodrome Center at Worcester Regional Airport opened its brand new facility in November 2015. With 20,000 square feet of new heated hangar space, this facility is outfitted with the latest features including concierge services, a flight planning room, and pilots\' lounge. Our Worcester FBO mimics the sleek and spacious designs of our other locations.',
             subdescription: 'Boston Metro',
             amenities: [
-                'Over 40,000 square feet of hangar space',
-                'Private passenger terminal',
-                'Elegant passenger and crew lounge',
-                'Executive meeting and conference rooms',
-                'Crew lounge and snooze room',
-                'Flight planning room and weather briefing area',
-                'Complimentary Wifi throughout the FBO'
+                '- Over 40,000 square feet of hangar space',
+                '- Private passenger terminal',
+                '- Elegant passenger and crew lounge',
+                '- Executive meeting and conference rooms',
+                '- Crew lounge and snooze room',
+                '- Flight planning room and weather briefing area',
+                '- Complimentary Wifi throughout the FBO'
             ],
             services: [
                 '- Jet-A and Avgas fuel',

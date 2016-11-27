@@ -1,15 +1,17 @@
 ﻿*{
     margin-left: 5px;
     margin-right: 5px;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .name{
     margin-top: 10px;
     margin-bottom: 5px;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 700;
     text-align: center;
+    color: #d33432;
+    opacity: .9;
 }
 
 .desc{
@@ -19,8 +21,11 @@
 .services{
     margin-top: 10px;
     margin-bottom: 5px;
-    font-size: 18px;
+    font-size: 22px;
     text-decoration: underline;
+    color: #324264;
+    font-weight: 700;
+    opacity: .8;
 }
 
 .servicesdesc{
@@ -28,13 +33,28 @@
 }
 
 .serviceslist{
-   font-size: 14px;
+   font-size: 17;
 }
 
 .contact{
-    margin-top: 15px;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 700;
+    margin-top: 5;
+    margin-bottom: 5;
+}
+
+.contactlist{
+    font-size: 14px;
+}
+
+.contactbox{
+    background-color: #d33432;
+    color: white;
+    margin-bottom: 10;
+    margin-left: 0;
+    margin-right: 0;
+    opacity: .8;
+    border-radius: 10;
 }
 
 .medium-spacing {

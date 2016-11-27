@@ -6,14 +6,20 @@ import { Location } from '@angular/common';
 @Component({
   selector: "navbar",
   template: `
-  	<StackLayout dock = "top" orientation="horizontal" horizontalAlignment="center">
-  		<Button text="Back" (tap)="goBack()" height="40" width="190">Back</Button>
-  		<Button text="Home" (tap)="goHome()" height="40" width="190">Home</Button>
+  	<StackLayout orientation="horizontal" horizontalAlignment="center">
+  		<Button dock="left" text="Back" (tap)="goBack()" height="40" width={{buttonW}}></Button>
+  		<Button dock="right" text="Home" (tap)="goHome()" height="40" width={{buttonW}}></Button>
  	</StackLayout>
-  	`
+  	`,
+  styleUrls: ["pages/navbar/navbar-common.css"]
 })
 export class NavbarComponent 
 {
+    platform = require("platform");
+    screen = this.platform.screen;
+    width: number = this.screen.mainScreen.widthDIPs;
+    buttonW: number = this.width * .45;
+
 	constructor(private router: Router, private location: Location)
 	{}
 

@@ -10,6 +10,7 @@ import repeaterModule = require("ui/repeater");
 @Component({
     selector: "mro-detail",
     template: `
+        <StackLayout height={{height-140}}>
             <ScrollView>
               <StackLayout>
                 <label text={{mro.name}} class="name"></label>
@@ -23,16 +24,21 @@ import repeaterModule = require("ui/repeater");
                       <label textwrap = "true" [text]="item" class="medium-spacing"></label>
                     </template>
                 </Repeater>
-
-                <label text="Contact" class="contact"></label>
-                <Repeater [items]="contact">
-                    <template let-item="item">
-                      <label textwrap = "true" [text]="item"></label>
-                    </template>
-                </Repeater>
                 <label></label>
+
+                <StackLayout class="contactbox">
+                    <label text="Contact" class="contact"></label>
+                    <Repeater [items]="contact" class="contactlist">
+                        <template let-item="item">
+                          <label textwrap = "true" [text]="item"></label>
+                        </template>
+                    </Repeater>
+                    <label></label>
                 </StackLayout>
+
+              </StackLayout>
             </ScrollView>
+        </StackLayout>
             `,
     styleUrls: ['pages/mro/mro-detail.css'],
     providers: [MroService]
@@ -43,6 +49,10 @@ export class MroDetailComponent implements OnInit {
     private sub: any;
     services: string[];
     contact: string[];
+
+    platform = require("platform");
+    screen = this.platform.screen;
+    height: number = this.screen.mainScreen.heightDIPs;
 
     constructor(
         private mroService: MroService,

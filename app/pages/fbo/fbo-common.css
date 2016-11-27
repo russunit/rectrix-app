@@ -1,15 +1,22 @@
 .header{
-    font-size: 24px;
+    font-size: 30px;
     text-align: center;
     font-weight: 700;
-    text-decoration: underline;
+    margin-top: 10;
+    color: #324264;
+    opacity: .8;
 }
 
-.small-spacing{
-    font-size: 20px;
-    margin: 5;
+.list{
+    font-size: 24px;
+    margin: 15;
+    text-align: center;
 }
 
-.medium-spacing {
-  margin: 10;
+.lines {
+  margin: 15;
+  color: white;
+  background-color: #d33432;
+  opacity: .9;
+  border-radius: 15;
 }

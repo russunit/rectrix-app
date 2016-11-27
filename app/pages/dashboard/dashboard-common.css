@@ -1,0 +1,26 @@
+.layout{
+    background-image: url("~/images/background2.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.logo{
+    margin-top: 20;
+    margin-bottom: 10;
+}
+
+button{
+    opacity: .93;
+    background-color: #d33432;
+    color: white;
+    font-size: 18;
+    font-weight: 600;
+    border-radius: 15;
+    border-width: 1;
+    border-color: white;
+    margin-bottom: 10;
+    margin-top: 10;
+    margin-left: 10;
+    margin-right: 10;
+}

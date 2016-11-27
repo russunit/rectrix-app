@@ -7,18 +7,23 @@ import { FboService } from './fbo-service';
 @Component({
   selector: 'fbo',
   template: `
-    <Label text="FBOs" class="header"></Label>
-	<ListView [items]="fboList" (itemTap)="onItemTap($event)" class="small-spacing">
-    <template let-item="item">
-      <label [text]="item.name" class="medium-spacing"></label>
-    </template>
-  </ListView>
+    <StackLayout height={{height-140}}>
+        <Label text="FBO Locations" class="header"></Label>
+	    <ListView [items]="fboList" (itemTap)="onItemTap($event)" class="list">
+            <template let-item="item">
+              <label [text]="item.name" class="lines"></label>
+            </template>
+      </ListView>
+    </StackLayout>
   `,
   styleUrls: ["pages/fbo/fbo-common.css"],
   providers: [FboService]
 })
 export class FboComponent implements OnInit {
     fboList: fbo[];
+    platform = require("platform");
+    screen = this.platform.screen;
+    height: number = this.screen.mainScreen.heightDIPs;
 	
     constructor(private router: Router, private location: Location, private fboService: FboService)
 	{}
