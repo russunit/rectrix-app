@@ -34,7 +34,7 @@ import { TextField } from "ui/text-field";
 
 <label text='Password'></label>
 <TextField secure = "true" [(ngModel)]="user.password"></TextField>
-<Button [text]="Submit"(tap)="signup(this.user)"></Button>
+<Button text="Submit"(tap)="signup(this.user)"></Button>
 
  </StackLayout>
  </ScrollView>
