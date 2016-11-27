@@ -22,6 +22,9 @@ passportjet component(displays passportjet details) MALCOLM FINISHED
 passportjet-join component(form) MALCOLM
 
 profilebar component("hello, user"/"logout" bar at bottom of views, alternatively "login"/"create account") CHRIS, MALCOLM
+profilebar start: logs in to most recent profile if last session ended logged in. MALCOLM
+profile updating: any time a shuttle/charter request is made or profile edited, edit currentUser and push those changes to master user list.
+
 
 profileview component(shows profile info+options) CHRIS
 
@@ -36,7 +39,11 @@ profile-settings component(edits profile settings)
 
 styles for all components (this objective should be fragmented into parts) ANTHONY DASHBOARD,FBO,MRO
 
-
+signup component CHRIS
+signup adds new user to master user list.
+signup logs in as the new user when creating.
 User Sevice CHRIS
 
 login component MALCOLM
+
+popup suggestions: when starting up, display most recent charter request as recommendation when signed in.
