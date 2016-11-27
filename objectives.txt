@@ -23,7 +23,7 @@ passportjet-join component(form) MALCOLM
 
 profilebar component("hello, user"/"logout" bar at bottom of views, alternatively "login"/"create account") CHRIS, MALCOLM
 
-profileview component(shows profile info+options) 
+profileview component(shows profile info+options) CHRIS
 
 profile-charter-history component(shows charter history)
 profile-charter-details component(shows details of charter in history)
@@ -31,7 +31,7 @@ profile-charter-details component(shows details of charter in history)
 profile-shuttle-history component(shows shuttle history)
 profile-shuttle-details component(shows details of shuttle from history)
 
-profile-edit-details component(edits profile details)
+profile-edit-details component(edits profile details) CHRIS 
 profile-settings component(edits profile settings)
 
 styles for all components (this objective should be fragmented into parts) ANTHONY - I'll start with the dashboard, fbo, and mro pages

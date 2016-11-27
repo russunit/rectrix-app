@@ -1,14 +1,14 @@
 //import { CharterHistory } from "./CharterHistory";
 //import { ShuttleHistory } from "./ShuttleHistory";
 export class User {
-firstName: String;
-lastName: String;
-aaddress: String;
-city: String;
-country: String;
-zip: String;
-username: String;
-password: String;
+firstName: string;
+lastName: string;
+address: string;
+city: string;
+country: string;
+zip: string;
+username: string;
+password: string;
 //history1: CharterHistory;
 //history2: ShuttleHistory;
 }
