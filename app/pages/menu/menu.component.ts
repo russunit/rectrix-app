@@ -13,6 +13,7 @@ import { Location } from '@angular/common';
   		<button text="Passport Jet" (tap)="goPassJet()"></button>
   		<button text="Log in" (tap)="logIn()"></button>
   		<button text="Sign up" (tap)="signUp()"></button>
+  		<button text="Log out" (tap)="logOut()"></button>
   		<button text="View Profile" (tap)="viewProfile()"></button>
   	</StackLayout>
   	`
@@ -46,5 +47,8 @@ export class MenuComponent
 
 	viewProfile()
 	{ this.router.navigate(["/profileview"]); }
+
+	logOut()
+	{ }
 
 }
