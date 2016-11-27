@@ -12,6 +12,13 @@ charter component(form, requests charters) CHRIS, MALCOLM
 
 shuttle component(form, reserve shuttle seats) CHRIS, MALCOLM
 
+change textfields to appropriate forms. change:
+-trip type to dropdown with options MALCOLM
+-depart/arrive location in shuttle to dropdown with options MALCOLM
+-depart/arrive time to time-specific entry field (clock)
+-depart/arrive date to date-specific entry field (calendar)
+
+
 fbo component(display list of fbos) ANTHONY FINISHED
 fbo-detail component(displays details of selected fbo) ANTHONY FINISHED
 
