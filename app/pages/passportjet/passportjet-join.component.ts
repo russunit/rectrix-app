@@ -11,8 +11,6 @@ import { PassJetApplication } from './passjet-application';
    <ScrollView>
  	<StackLayout>
 
-	<label text='Charter Component' horizontalAlignment='center'></label>
-
 	<label text='First Name'></label>
 	<TextField  autocapitalizationType="none" [(ngModel)]="passJetApplication.firstName"></TextField>
 
