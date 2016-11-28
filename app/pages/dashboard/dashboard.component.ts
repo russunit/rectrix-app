@@ -4,8 +4,6 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 //import { routes } from "./app.routes";
 import { Router } from "@angular/router";
 import { Location } from '@angular/common';
-//import platform = require("platform");
-//import { screen } from "platform";
 import { Page } from "ui/page";
 
 @Component({

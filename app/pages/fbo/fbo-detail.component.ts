@@ -10,7 +10,6 @@ import repeaterModule = require("ui/repeater");
 @Component({
     selector: "fbo-detail",
     template: `
-        <StackLayout height={{height-140}}>
             <ScrollView>
               <StackLayout>
                 <label text={{fbo.name}} class="name"></label>
@@ -43,7 +42,6 @@ import repeaterModule = require("ui/repeater");
 
               </StackLayout>
             </ScrollView>
-        </StackLayout>
             `,
     styleUrls: ['pages/fbo/fbo-detail.css'],
     providers: [FboService]
@@ -55,10 +53,6 @@ export class FboDetailComponent implements OnInit{
     amenities: string[];
     services: string[];
     contact: string[];
-
-    platform = require("platform");
-    screen = this.platform.screen;
-    height: number = this.screen.mainScreen.heightDIPs;
 
   constructor(
     private fboService: FboService,

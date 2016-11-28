@@ -7,14 +7,12 @@ import { FboService } from './fbo-service';
 @Component({
   selector: 'fbo',
   template: `
-    <StackLayout height={{height-140}}>
         <Label text="FBO Locations" class="header"></Label>
 	    <ListView [items]="fboList" (itemTap)="onItemTap($event)" class="list">
             <template let-item="item">
               <label [text]="item.name" class="lines"></label>
             </template>
       </ListView>
-    </StackLayout>
   `,
   styleUrls: ["pages/fbo/fbo-common.css"],
   providers: [FboService]

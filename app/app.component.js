@@ -4,6 +4,9 @@ const core_1 = require("@angular/core");
 let AppComponent = class AppComponent {
     constructor() {
         this.title = 'Rectrix';
+        this.platform = require("platform");
+        this.screen = this.platform.screen;
+        this.height = this.screen.mainScreen.heightDIPs;
     }
 };
 AppComponent = __decorate([
@@ -12,7 +15,9 @@ AppComponent = __decorate([
         template: `
   <StackLayout orientation="vertical">
   	<navbar></navbar>
-    <router-outlet></router-outlet>
+    <StackLayout height={{height-140}}>
+        <router-outlet></router-outlet>
+    </StackLayout>
   	<profilebar></profilebar>
   </StackLayout>
    `
@@ -20,4 +25,4 @@ AppComponent = __decorate([
     __metadata('design:paramtypes', [])
 ], AppComponent);
 exports.AppComponent = AppComponent;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXBwLmNvbXBvbmVudC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLHVCQUEwQixlQUFlLENBQUMsQ0FBQTtBQUN6QyxnSkFBZ0o7QUFXako7SUFBQTtRQUVBLFVBQUssR0FBRyxTQUFTLENBQUM7SUFDbEIsQ0FBQztBQUFELENBQUM7QUFiRDtJQUFDLGdCQUFTLENBQUM7UUFDVCxRQUFRLEVBQUUsUUFBUTtRQUNsQixRQUFRLEVBQUU7Ozs7OztJQU1SO0tBQ0gsQ0FBQzs7Z0JBQUE7QUFDVyxvQkFBWSxlQUd4QixDQUFBIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXBwLmNvbXBvbmVudC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLHVCQUEwQixlQUFlLENBQUMsQ0FBQTtBQUN6QyxnSkFBZ0o7QUFhako7SUFBQTtRQUVJLFVBQUssR0FBRyxTQUFTLENBQUM7UUFDbEIsYUFBUSxHQUFHLE9BQU8sQ0FBQyxVQUFVLENBQUMsQ0FBQztRQUMvQixXQUFNLEdBQUcsSUFBSSxDQUFDLFFBQVEsQ0FBQyxNQUFNLENBQUM7UUFDOUIsV0FBTSxHQUFXLElBQUksQ0FBQyxNQUFNLENBQUMsVUFBVSxDQUFDLFVBQVUsQ0FBQztJQUN2RCxDQUFDO0FBQUQsQ0FBQztBQWxCRDtJQUFDLGdCQUFTLENBQUM7UUFDVCxRQUFRLEVBQUUsUUFBUTtRQUNsQixRQUFRLEVBQUU7Ozs7Ozs7O0lBUVI7S0FDSCxDQUFDOztnQkFBQTtBQUNXLG9CQUFZLGVBTXhCLENBQUEifQ==

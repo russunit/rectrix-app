@@ -5,12 +5,17 @@ import { Component } from "@angular/core";
   template: `
   <StackLayout orientation="vertical">
   	<navbar></navbar>
-    <router-outlet></router-outlet>
+    <StackLayout height={{height-140}}>
+        <router-outlet></router-outlet>
+    </StackLayout>
   	<profilebar></profilebar>
   </StackLayout>
    `
 })
 export class AppComponent 
 {
-title = 'Rectrix';
+    title = 'Rectrix';
+    platform = require("platform");
+    screen = this.platform.screen;
+    height: number = this.screen.mainScreen.heightDIPs;
 }
