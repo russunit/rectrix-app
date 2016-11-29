@@ -1,5 +1,5 @@
-//import { CharterHistory } from "./CharterHistory";
-//import { ShuttleHistory } from "./ShuttleHistory";
+//import { CharterHistory } from "../charterhistory/charter-history";
+//import { ShuttleHistory } from "../shuttlehistroy/shuttle-history";
 export class User {
 firstName: string;
 lastName: string;

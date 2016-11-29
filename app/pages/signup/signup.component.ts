@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { User } from './user';
+import { User } from '../../shared/user/user';
 import { Router } from "@angular/router";
 import { TextField } from "ui/text-field";
 
