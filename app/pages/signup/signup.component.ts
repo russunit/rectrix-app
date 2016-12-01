@@ -1,7 +1,9 @@
-import { Component } from "@angular/core";
-import { User } from '../../shared/user/user';
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { TextField } from "ui/text-field";
+
+import { User } from "../../shared/user/user";
+import { UserService } from "../../shared/user/user.service";
 
 @Component({
   selector: "signup",
@@ -34,25 +36,44 @@ import { TextField } from "ui/text-field";
 
 <label text='Password'></label>
 <TextField secure = "true" [(ngModel)]="user.password"></TextField>
-<Button text="Submit"(tap)="signup(this.user)"></Button>
+<Button text="Submit"(tap)="signUp(this.user)"></Button>
 
  </StackLayout>
  </ScrollView>
  </StackLayout>
 `,
+	providers: [UserService],
 })
+
 export class SignupComponent 
 {
-user : User;
+	user : User;
 
-constructor(private router: Router)
-{
-       this.user = new User();
-}
+	constructor(private router: Router, private userService: UserService) 
+	{
+    	this.user = new User(); 
+		this.user.firstName= "";
+		this.user.lastName= "";
+		this.user.address= "";
+		this.user.city= "";
+		this.user.country= "";
+		this.user.zip= "";
+		this.user.username= "";
+		this.user.password= "";
+		this.user.email= "";
+		this.user.charterHistory= null;
+		this.user.shuttleHistory= null;
+	}
 
-signup(user:User)
-{
- alert("New user created");
-}
-
+	signUp() 
+	{
+    	this.userService.register(this.user)
+      	.subscribe(
+        	() => {
+          		alert("Your account was successfully created.");
+          		this.router.navigate(["/dashboard"]); 
+        	},
+        	() => alert("Unfortunately we were unable to create your account.")
+      );
+  	}
 }

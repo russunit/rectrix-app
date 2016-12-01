@@ -43,7 +43,10 @@ export class LoginComponent
 	login() {
     this.userService.login(this.user)
       .subscribe(
-        () => alert("Signed in as "+this.user.username+"!"),
+        () => {
+        	alert("Signed in as "+this.user.username+"!");
+        	this.router.navigate(["/dashboard"]); 
+        	}, 
         (error) => alert("Unfortunately we could not find your account.")
       );
   }
