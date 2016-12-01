@@ -3,7 +3,7 @@ import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { TextField } from "ui/text-field";
 
-import { CharterRequest } from './charter-request';
+import { CharterRequest } from '../../shared/charter-request/charter-request';
 
 @Component
 ({

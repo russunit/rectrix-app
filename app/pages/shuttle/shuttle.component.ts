@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { TextField } from "ui/text-field";
 
-import { ShuttleRequest } from './shuttle-request';
+import { ShuttleRequest } from '../../shared/shuttle-request/shuttle-request';
 
 @Component({
   selector: "shuttle",

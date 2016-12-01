@@ -1,6 +1,8 @@
-//import { CharterHistory } from "../charterhistory/charter-history";
-//import { ShuttleHistory } from "../shuttlehistroy/shuttle-history";
-export class User {
+import { CharterRequest } from "../charter-request/charter-request";
+import { ShuttleRequest } from "../shuttle-request/shuttle-request";
+
+export class User 
+{
 firstName: string;
 lastName: string;
 address: string;
@@ -10,6 +12,6 @@ zip: string;
 username: string;
 password: string;
 email: string;
-//history1: CharterHistory;
-//history2: ShuttleHistory;
+charterHistory: CharterRequest[];
+shuttleHistory: ShuttleRequest[];
 }

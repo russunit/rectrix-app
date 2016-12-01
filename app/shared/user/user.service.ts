@@ -19,9 +19,15 @@ export class UserService {
     return this.http.post(
       Config.apiUrl + "Users",
       JSON.stringify({
-        Username: user.email,
+        Username: user.username,
         Email: user.email,
-        Password: user.password
+        Password: user.password,
+        FirstName: user.firstName,
+        LastName: user.lastName,
+        Address: user.address,
+        City: user.city,
+        Country: user.country,
+        zip: user.zip
       }),
       { headers: headers }
     )
@@ -53,34 +59,20 @@ export class UserService {
     return Observable.throw(error);
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//empty user placeholder
+nullUser: User = {
+	firstName: "",
+	lastName: "",
+	address: "",
+	city: "",
+	country: "",
+	zip: "",
+	username: "",
+	password: "",
+	email: "",
+	charterHistory: null,
+	shuttleHistory: null,
+}
 
 
 
@@ -95,7 +87,12 @@ country: "United States",
 zip: "01056",
 username: "cevans",
 password: "sfd4567t",
-email: "cevans999@gmail.com", }, 
+email: "cevans999@gmail.com", 
+charterHistory: null,
+shuttleHistory: null,
+
+}, 
+
 {
 firstName: "Malcolm",
 lastName: "Chisholm",
@@ -105,7 +102,11 @@ country: "England",
 zip: "34354",
 username: "mchisholm",
 password: "rgr56ds",
-email: "russunit@gmail.com", }, 
+email: "russunit@gmail.com", 
+charterHistory: null,
+shuttleHistory: null,
+}, 
+
 {
 firstName: "Anthony",
 lastName: "Kapotsis",
@@ -115,7 +116,11 @@ country: "Wales",
 zip: "05947",
 username: "akapotsis",
 password: "gdfgerges",
-email: "akapotsis999@gmail.com", },
+email: "akapotsis999@gmail.com", 
+charterHistory: null,
+shuttleHistory: null,
+
+},
 ];
 getUserList(): User[] {
  return this.USERS;
