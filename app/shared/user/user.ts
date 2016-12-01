@@ -9,6 +9,7 @@ country: string;
 zip: string;
 username: string;
 password: string;
+email: string;
 //history1: CharterHistory;
 //history2: ShuttleHistory;
 }
