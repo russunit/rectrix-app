@@ -1,0 +1,15 @@
+p.leftie
+{
+   float: left;
+}
+rightie {
+  float: right; 
+}
+div 
+{
+ clear:both;
+}
+h1 
+{
+text-align: center;
+}
