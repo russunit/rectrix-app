@@ -3,6 +3,8 @@ import { Router } from "@angular/router";
 import { TextField } from "ui/text-field";
 
 import { ShuttleRequest } from '../../shared/shuttle-request/shuttle-request';
+import { User } from "../../shared/user/user";
+import { UserService } from "../../shared/user/user.service";
 
 @Component({
   selector: "shuttle",
@@ -62,13 +64,15 @@ import { ShuttleRequest } from '../../shared/shuttle-request/shuttle-request';
 
 
 	`,
+ providers: [UserService],
   //templateUrl: 'shuttle-component.html'
 })
+
 export class ShuttleComponent 
 {
 	shuttleRequest: ShuttleRequest;
 
-	constructor(private router: Router)
+	constructor(private router: Router, private userService: UserService)
 	{
 		this.shuttleRequest = new ShuttleRequest();
 	}

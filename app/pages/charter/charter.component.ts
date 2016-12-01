@@ -4,6 +4,8 @@ import { Router } from "@angular/router";
 import { TextField } from "ui/text-field";
 
 import { CharterRequest } from '../../shared/charter-request/charter-request';
+import { User } from "../../shared/user/user";
+import { UserService } from "../../shared/user/user.service";
 
 @Component
 ({
@@ -63,6 +65,7 @@ template: `
 
 
 	`,
+providers: [UserService],
 
 //moduleID
 //selector: "charter",
@@ -76,7 +79,7 @@ export class CharterComponent
 {
 	charterRequest: CharterRequest;
 
-	constructor(private router: Router)
+	constructor(private router: Router, private userService: UserService)
 	{
 		this.charterRequest = new CharterRequest();
 	}
