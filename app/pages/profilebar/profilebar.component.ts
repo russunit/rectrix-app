@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router"; 
 import { Location } from '@angular/common';
 import { User } from "../../shared/user/user";
@@ -22,7 +22,7 @@ import { CurrentUserService } from "../../shared/current-user/current-user.servi
   providers: [UserService, CurrentUserService],
 
 })
-export class ProfilebarComponent 
+export class ProfilebarComponent implements OnInit
 {
     platform = require("platform");
     screen = this.platform.screen;
@@ -41,6 +41,15 @@ export class ProfilebarComponent
     this.loggedIn = false;
     this.button1 = "Log In";
     this.button2 = "Sign Up";
+
+    this.getCurrentUser();
+    console.log("test");
+  }
+
+  ngOnInit()
+  {
+    this.getCurrentUser();
+    console.log("test");
   }
 
 	logIn()
@@ -89,7 +98,7 @@ export class ProfilebarComponent
 
   getCurrentUser()
   {
-    this.currentUserService.loggedIn.subscribe(value => {this.loggedIn = !value;});
+    this.currentUserService.loggedIn.subscribe(value => {this.loggedIn = value;});
     this.currentUserService.currentUser.subscribe(user => {this.currentUser = user;});
 
   }
