@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { Location } from '@angular/common';
 import { User } from "../../shared/user/user";
 import { UserService } from "../../shared/user/user.service";
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: "profilebar",
@@ -31,6 +32,9 @@ export class ProfilebarComponent
 
     button1: string;
     button2: string;
+
+    public currentUserEmitter: EventEmitter<User> = new EventEmitter<User>();
+    public loggedInEmitter:   EventEmitter<boolean> = new EventEmitter<boolean>();
 
 	constructor(private router: Router, private location: Location)
 	{
