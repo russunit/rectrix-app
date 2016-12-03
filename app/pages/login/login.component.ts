@@ -4,6 +4,8 @@ import { Router } from "@angular/router";
 
 import { User } from "../../shared/user/user";
 import { UserService } from "../../shared/user/user.service";
+import { CurrentUserService } from "../../shared/current-user/current-user.service"
+
 
 @Component({
   selector: "login",
@@ -18,13 +20,13 @@ import { UserService } from "../../shared/user/user.service";
 
 	<Button text="Sign in" (tap)="login()" horizontalAlignment='center'></Button>
 	`,
-	providers: [UserService],
+	providers: [UserService, CurrentUserService],
 })
 export class LoginComponent
 {
 	user: User;
 
-	constructor(private router: Router, private userService: UserService) 
+	constructor(private router: Router, private userService: UserService, private currentUserService: CurrentUserService) 
 	{
     	this.user = new User(); 
 		this.user.firstName= "";
@@ -40,16 +42,22 @@ export class LoginComponent
 		this.user.shuttleHistory= null;
 	}
 
-	login() {
-    this.userService.login(this.user)
-      .subscribe(
-        () => {
-        	alert("Signed in as "+this.user.username+"!");
-        	this.router.navigate(["/dashboard"]); 
-        	}, 
-        (error) => alert("Unfortunately we could not find your account.")
-      );
-  }
+	login() 
+	{
+    	this.userService.login(this.user)
+      	.subscribe(
+        	() => {
+        		alert("Signed in as "+this.user.username+"!");
+
+        		this.currentUserService.loggedIn.next(true);
+    			this.currentUserService.currentUser.next(this.user);
+    			
+        		this.router.navigate(["/dashboard"]); 
+
+        		}, 
+        	(error) => alert("Unfortunately we could not find your account.")
+      	);
+  	}
 
 
   	

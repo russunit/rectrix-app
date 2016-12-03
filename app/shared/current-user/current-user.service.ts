@@ -4,6 +4,6 @@ import { EventEmitter } from '@angular/core';
 
 export class CurrentUserService
 {
-	  public currentUserEmitter: EventEmitter<User> = new EventEmitter<User>();
-	  public loggedInEmitter:   EventEmitter<boolean> = new EventEmitter<boolean>();
+	  public currentUser: EventEmitter<User> = new EventEmitter<User>();
+	  public loggedIn:   EventEmitter<boolean> = new EventEmitter<boolean>();
 }

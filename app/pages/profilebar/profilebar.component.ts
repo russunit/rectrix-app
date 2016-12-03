@@ -3,7 +3,7 @@ import { Router } from "@angular/router";
 import { Location } from '@angular/common';
 import { User } from "../../shared/user/user";
 import { UserService } from "../../shared/user/user.service";
-import { EventEmitter } from '@angular/core';
+import { CurrentUserService } from "../../shared/current-user/current-user.service"
 
 @Component({
   selector: "profilebar",
@@ -18,7 +18,9 @@ import { EventEmitter } from '@angular/core';
 
   	</StackLayout>
   	`,
-  styleUrls: ["pages/profilebar/profilebar-common.css"]
+  styleUrls: ["pages/profilebar/profilebar-common.css"],
+  providers: [UserService, CurrentUserService],
+
 })
 export class ProfilebarComponent 
 {
@@ -33,10 +35,7 @@ export class ProfilebarComponent
     button1: string;
     button2: string;
 
-    public currentUserEmitter: EventEmitter<User> = new EventEmitter<User>();
-    public loggedInEmitter:   EventEmitter<boolean> = new EventEmitter<boolean>();
-
-	constructor(private router: Router, private location: Location)
+	constructor(private router: Router, private location: Location, private currentUserService: CurrentUserService)
 	{
     this.currentUser = null;
     this.loggedIn = false;
@@ -68,6 +67,8 @@ export class ProfilebarComponent
 
     this.button1 = "Hello, "+user.username;
     this.button2 = "Sign Up";
+
+    this.setCurrentUser();
   }
 
   signOut()
@@ -77,6 +78,20 @@ export class ProfilebarComponent
 
     this.button1 = "Log In";
     this.button2 = "Sign Up";
+    this.setCurrentUser();
+  }
+
+  setCurrentUser()
+  {
+    this.currentUserService.loggedIn.next(this.loggedIn);
+    this.currentUserService.currentUser.next(this.currentUser);
+  }
+
+  getCurrentUser()
+  {
+    this.currentUserService.loggedIn.subscribe(value => {this.loggedIn = !value;});
+    this.currentUserService.currentUser.subscribe(user => {this.currentUser = user;});
+
   }
 
 
