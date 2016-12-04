@@ -28,24 +28,14 @@ export class LoginComponent
 
 	constructor(private router: Router, private userService: UserService, private currentUserService: CurrentUserService) 
 	{
-    	this.user = new User(); 
-		this.user.firstName= "";
-		this.user.lastName= "";
-		this.user.address= "";
-		this.user.city= "";
-		this.user.country= "";
-		this.user.zip= "";
-		this.user.username= "";
-		this.user.password= "";
-		this.user.email= "";
-		this.user.charterHistory= null;
-		this.user.shuttleHistory= null;
+		this.user = new User();
 	}
 
 	login() 
 	{
     	this.userService.login(this.user)
       	.subscribe(
+
         	() => {
         		
 
