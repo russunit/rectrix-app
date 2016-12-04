@@ -54,3 +54,8 @@ User Sevice CHRIS, MALCOLM
 login component MALCOLM
 
 popup suggestions: when starting up, display most recent charter request as recommendation when signed in.
+
+establish/implement a maximum length for username.
+
+
+
