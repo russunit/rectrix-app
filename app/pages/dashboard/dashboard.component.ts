@@ -22,8 +22,8 @@ import {Subscription} from 'rxjs/Subscription';
    		<button text="MRO" row="1" col="1" 		(tap)="goMro()" height="{{buttonH}}" width="{{buttonW}}"></button>
    		<button text="Passport Jet" row="2" col="0" (tap)="goPassJet()" height="{{buttonH}}" width="{{buttonW}}"></button>
    		<button text="Menu" row="2" col="1" 		(tap)="goMenu()" height="{{buttonH}}" width="{{buttonW}}"></button> 
-      <button text={{button1}} row="3" col="0" (tap)="logIn()" height="40" width={{navW}} class="profilebutton"></button>
-      <button text={{button2}} row="3" col="1" (tap)="signUp()" height="40" width={{navW}} class="profilebutton"></button>
+      <button text={{button1}} row="3" col="0" (tap)="logIn()" height="40" width={{navLeft}} class="profilebutton"></button>
+      <button text={{button2}} row="3" col="1" (tap)="signUp()" height="40" width={{navRight}} class="profilebutton"></button>
        
 
 	</GridLayout>
@@ -43,7 +43,12 @@ export class DashboardComponent implements OnInit
     width: number = this.screen.mainScreen.widthDIPs;
     buttonH: number = this.height * .12;
     buttonW: number = this.width * .40;
-    navW: number = this.buttonW *1.2;
+    navLeft: number = this.buttonW;
+    navRight: number = this.buttonW;
+
+
+    navLeftSignedIn: number = this.buttonW *1.3;
+    navRightSignedIn: number = this.buttonW;
 
 
     button1: string;
@@ -82,13 +87,11 @@ export class DashboardComponent implements OnInit
 
         if(this.loggedIn)
         {
-          this.button1 = "Hi, "+this.currentUser.username;
-          this.button2 = "Sign Out";
+          this.signInFormat();
         }
         else
         {
-          this.button1 = "Log In";
-          this.button2 = "Sign Up";
+          this.signOutFormat();
         }
 
 
@@ -144,11 +147,26 @@ signUp()
     {
       this.currentUserService.changeUser(null);
       this.currentUserService.toggleLoggedIn(false);
-      this.button1 = "Log In";
-      this.button2 = "Sign Up";
+      this.signOutFormat();
       alert("Signed out.");
     }
 
+}
+
+signOutFormat()
+{
+  this.button1 = "Log In";
+  this.button2 = "Sign Up";
+  this.navLeft = this.buttonW;
+  this.navRight = this.buttonW;
+}
+
+signInFormat()
+{
+  this.button1 = "Hi, "+this.currentUser.username;
+  this.button2 = "Sign Out";
+  this.navLeft = this.navLeftSignedIn;
+  this.navRight = this.navRightSignedIn;
 }
 
 }
