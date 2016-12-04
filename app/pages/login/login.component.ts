@@ -6,6 +6,8 @@ import { User } from "../../shared/user/user";
 import { UserService } from "../../shared/user/user.service";
 import { CurrentUserService } from "../../shared/current-user/current-user.service"
 
+import { ProfilebarComponent } from "../profilebar/profilebar.component"
+
 
 @Component({
   selector: "login",
@@ -51,7 +53,11 @@ export class LoginComponent
 
         		this.currentUserService.loggedIn.next(true);
     			this.currentUserService.currentUser.next(this.user);
-    			
+
+
+
+
+
         		this.router.navigate(["/dashboard"]); 
 
         		}, 

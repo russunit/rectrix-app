@@ -43,6 +43,8 @@ export class DashboardComponent implements OnInit
     ngOnInit() {
         this.page.actionBarHidden = true;
         this.page.backgroundImage = "../../images/background.png";
+
+        console.log("dashboard test");
     }
 
 goShuttle()

@@ -5,6 +5,8 @@ import { User } from "../../shared/user/user";
 import { UserService } from "../../shared/user/user.service";
 import { CurrentUserService } from "../../shared/current-user/current-user.service"
 
+import { EventEmitter } from '@angular/core';
+
 @Component({
   selector: "profilebar",
   template: ` 
@@ -35,6 +37,12 @@ export class ProfilebarComponent implements OnInit
     button1: string;
     button2: string;
 
+    public _currentUser: EventEmitter<User> = new EventEmitter<User>();
+    public _loggedIn:   EventEmitter<boolean> = new EventEmitter<boolean>();
+    public _button1: EventEmitter<string> = new EventEmitter<string>();
+    public _button2: EventEmitter<string> = new EventEmitter<string>();
+
+
 	constructor(private router: Router, private location: Location, private currentUserService: CurrentUserService)
 	{
     this.currentUser = null;
@@ -48,8 +56,7 @@ export class ProfilebarComponent implements OnInit
 
   ngOnInit()
   {
-    this.getCurrentUser();
-    console.log("test");
+
   }
 
 	logIn()
@@ -92,14 +99,12 @@ export class ProfilebarComponent implements OnInit
 
   setCurrentUser()
   {
-    this.currentUserService.loggedIn.next(this.loggedIn);
-    this.currentUserService.currentUser.next(this.currentUser);
+
   }
 
   getCurrentUser()
   {
-    this.currentUserService.loggedIn.subscribe(value => {this.loggedIn = value;});
-    this.currentUserService.currentUser.subscribe(user => {this.currentUser = user;});
+
 
   }
 
