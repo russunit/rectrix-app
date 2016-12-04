@@ -6,11 +6,11 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 @Injectable()
 export class CurrentUserService
 {
-	  public currentUserSource = new BehaviorSubject<User>(null);
+	  private currentUserSource = new BehaviorSubject<User>(null);
 	  currentUser$ = this.currentUserSource.asObservable();
 
 
-	  public loggedInSource = new BehaviorSubject<boolean>(false);
+	  private loggedInSource = new BehaviorSubject<boolean>(false);
 	  loggedIn$ = this.loggedInSource.asObservable();
 
 	  changeUser(user: User)

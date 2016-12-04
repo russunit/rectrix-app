@@ -50,7 +50,8 @@ export class DashboardComponent implements OnInit
     currentUser: User;
     loggedIn: boolean;
 
-    subscription:Subscription;
+    subscription1:Subscription;
+    subscription2:Subscription;
 
     constructor(private router: Router, private location: Location, private page: Page, private currentUserService: CurrentUserService)
     {
@@ -67,8 +68,8 @@ export class DashboardComponent implements OnInit
         this.page.backgroundImage = "../../images/background.png";
 
         //gets the current user
-        this.subscription = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn);
-        this.subscription = this.currentUserService.currentUser$.subscribe(currentUser => this.currentUser = currentUser);
+        this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn )
+        this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.currentUser = currentUser )
         
 
         if(this.loggedIn)
@@ -88,7 +89,9 @@ export class DashboardComponent implements OnInit
     ngOnDestroy() 
     {
     // prevent memory leak when component is destroyed
-    this.subscription.unsubscribe();
+    this.subscription1.unsubscribe();
+    this.subscription2.unsubscribe();
+
     }
 
 goShuttle()
