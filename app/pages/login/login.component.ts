@@ -6,8 +6,6 @@ import { User } from "../../shared/user/user";
 import { UserService } from "../../shared/user/user.service";
 import { CurrentUserService } from "../../shared/current-user/current-user.service"
 
-import { ProfilebarComponent } from "../profilebar/profilebar.component"
-
 
 @Component({
   selector: "login",
@@ -49,17 +47,15 @@ export class LoginComponent
     	this.userService.login(this.user)
       	.subscribe(
         	() => {
-        		alert("Signed in as "+this.user.username+"!");
+        		
 
+        		//sets the current user
         		this.currentUserService.loggedIn.next(true);
     			this.currentUserService.currentUser.next(this.user);
 
-
-
-
+    			alert("Signed in as "+this.user.username+"!");
 
         		this.router.navigate(["/dashboard"]); 
-
         		}, 
         	(error) => alert("Unfortunately we could not find your account.")
       	);

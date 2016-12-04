@@ -24,3 +24,17 @@ button{
     margin-left: 10;
     margin-right: 10;
 }
+
+.profilebutton{
+    opacity: .8;
+    background-color: #324264;
+    color: white;
+    border-radius: 15;
+    margin-top: 10;
+    margin-bottom: 10;
+    margin-left: 5;
+    margin-right: 5;
+    font-size: 15;
+    margin-top: 10;
+    margin-bottom: 10;
+}

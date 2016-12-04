@@ -8,7 +8,7 @@ import { Component } from "@angular/core";
     <StackLayout height={{height-140}}>
         <router-outlet></router-outlet>
     </StackLayout>
-  	<profilebar></profilebar>
+  	
   </StackLayout>
    `
 })

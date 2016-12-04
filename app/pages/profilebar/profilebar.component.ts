@@ -51,7 +51,7 @@ export class ProfilebarComponent implements OnInit
     this.button2 = "Sign Up";
 
     this.getCurrentUser();
-    console.log("test");
+    //console.log("test");
   }
 
   ngOnInit()
