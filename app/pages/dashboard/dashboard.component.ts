@@ -22,8 +22,8 @@ import {Subscription} from 'rxjs/Subscription';
    		<button text="MRO" row="1" col="1" 		(tap)="goMro()" height="{{buttonH}}" width="{{buttonW}}"></button>
    		<button text="Passport Jet" row="2" col="0" (tap)="goPassJet()" height="{{buttonH}}" width="{{buttonW}}"></button>
    		<button text="Menu" row="2" col="1" 		(tap)="goMenu()" height="{{buttonH}}" width="{{buttonW}}"></button> 
-      <button text={{button1}} row="3" col="0" (tap)="logIn()" height="40" width={{buttonW}} class="profilebutton"></button>
-      <button text={{button2}} row="3" col="1" (tap)="signUp()" height="40" width={{buttonW}} class="profilebutton"></button>
+      <button text={{button1}} row="3" col="0" (tap)="logIn()" height="40" width={{navW}} class="profilebutton"></button>
+      <button text={{button2}} row="3" col="1" (tap)="signUp()" height="40" width={{navW}} class="profilebutton"></button>
        
 
 	</GridLayout>
@@ -43,6 +43,8 @@ export class DashboardComponent implements OnInit
     width: number = this.screen.mainScreen.widthDIPs;
     buttonH: number = this.height * .12;
     buttonW: number = this.width * .40;
+    navW: number = this.buttonW *1.2;
+
 
     button1: string;
     button2: string;
@@ -80,7 +82,7 @@ export class DashboardComponent implements OnInit
 
         if(this.loggedIn)
         {
-          this.button1 = "Hello, "+this.currentUser.username;
+          this.button1 = "Hi, "+this.currentUser.username;
           this.button2 = "Sign Out";
         }
         else
