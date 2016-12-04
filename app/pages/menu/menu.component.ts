@@ -1,8 +1,9 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Location } from '@angular/common';
 import { User } from "../../shared/user/user";
 import { CurrentUserService } from "../../shared/current-user/current-user.service";
+import {Subscription} from 'rxjs/Subscription';
 
 
 @Component({
@@ -22,10 +23,24 @@ import { CurrentUserService } from "../../shared/current-user/current-user.servi
   	`
 
 })
-export class MenuComponent 
+export class MenuComponent implements OnInit
 {
+
+	user: User;
+    loggedIn: boolean;
+
+    subscription1:Subscription;
+    subscription2:Subscription;
+
 	constructor(private router: Router, private location: Location, private currentUserService: CurrentUserService)
 	{}
+
+	ngOnInit()
+	{
+		//gets the current user from service
+        this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
+        this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.user = currentUser );
+	}
 
 	logIn()
 	{ this.router.navigate(["/login"]); }

@@ -6,6 +6,8 @@ import { Observable, BehaviorSubject } from 'rxjs/Rx';
 @Injectable()
 export class CurrentUserService
 {
+	  tempUser: User;
+
 	  private currentUserSource = new BehaviorSubject<User>(null);
 	  currentUser$ = this.currentUserSource.asObservable();
 
@@ -31,4 +33,6 @@ export class CurrentUserService
 	  {
 	  	return this.loggedInSource.asObservable();
 	  }
+
+	  
 }

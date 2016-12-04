@@ -1,10 +1,12 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { TextField } from "ui/text-field";
 
 import { ShuttleRequest } from '../../shared/shuttle-request/shuttle-request';
 import { User } from "../../shared/user/user";
 import { UserService } from "../../shared/user/user.service";
+import { CurrentUserService } from "../../shared/current-user/current-user.service";
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: "shuttle",
@@ -68,13 +70,27 @@ import { UserService } from "../../shared/user/user.service";
   //templateUrl: 'shuttle-component.html'
 })
 
-export class ShuttleComponent 
+export class ShuttleComponent implements OnInit
 {
+
+	user: User;
+    loggedIn: boolean;
+
+    subscription1:Subscription;
+    subscription2:Subscription;
+
 	shuttleRequest: ShuttleRequest;
 
-	constructor(private router: Router, private userService: UserService)
+	constructor(private router: Router, private userService: UserService, private currentUserService: CurrentUserService)
 	{
 		this.shuttleRequest = new ShuttleRequest();
+	}
+
+	ngOnInit()
+	{
+		//gets the current user from service
+        this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
+        this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.user = currentUser );
 	}
 	
 	sendRequest(request:ShuttleRequest)

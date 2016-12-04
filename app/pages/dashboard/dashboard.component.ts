@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit
         this.page.actionBarHidden = true;
         this.page.backgroundImage = "../../images/background.png";
 
-        //gets the current user
+        //gets the current user from service
         this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
         this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.currentUser = currentUser );
         

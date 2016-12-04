@@ -1,11 +1,13 @@
 //imports
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { TextField } from "ui/text-field";
 
 import { CharterRequest } from '../../shared/charter-request/charter-request';
 import { User } from "../../shared/user/user";
 import { UserService } from "../../shared/user/user.service";
+import { CurrentUserService } from "../../shared/current-user/current-user.service";
+import {Subscription} from 'rxjs/Subscription';
 
 @Component
 ({
@@ -75,13 +77,26 @@ providers: [UserService],
 
 })
 
-export class CharterComponent
+export class CharterComponent implements OnInit
 {
+	user: User;
+    loggedIn: boolean;
+
+    subscription1:Subscription;
+    subscription2:Subscription;
+
 	charterRequest: CharterRequest;
 
-	constructor(private router: Router, private userService: UserService)
+	constructor(private router: Router, private userService: UserService, private currentUserService: CurrentUserService)
 	{
 		this.charterRequest = new CharterRequest();
+	}
+
+	ngOnInit()
+	{
+		//gets the current user from service
+        this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
+        this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.user = currentUser );
 	}
 
 
