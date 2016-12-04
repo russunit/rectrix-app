@@ -31,7 +31,6 @@ import {Subscription} from 'rxjs/Subscription';
     </StackLayout>
   `,
   styleUrls: ["pages/dashboard/dashboard-common.css"],
-  providers: [CurrentUserService]
   
  
 })
@@ -53,15 +52,7 @@ export class DashboardComponent implements OnInit
     subscription1:Subscription;
     subscription2:Subscription;
 
-    constructor(private router: Router, private location: Location, private page: Page, private currentUserService: CurrentUserService)
-    {
-        //console.log("dashboard test Constructor");
-        //this.currentUser = null;
-        //this.loggedIn = false;
-        //this.button1 = "Log In";
-        //this.button2 = "Sign Up";
-
-    }
+    constructor(private router: Router, private location: Location, private page: Page, private currentUserService: CurrentUserService) {}
 
     ngOnInit() {
         this.page.actionBarHidden = true;
@@ -71,6 +62,19 @@ export class DashboardComponent implements OnInit
         this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
         this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.currentUser = currentUser );
         
+        //test
+        console.log("DASHBOARD:");
+        console.log("loggedIn:");
+        if(this.loggedIn)
+        {
+          console.log("TRUE");
+          console.log("currentUser:")
+          console.log(this.currentUser.username);
+        }
+        if(!this.loggedIn)
+          console.log("FALSE");
+
+
 
         if(this.loggedIn)
         {
@@ -82,6 +86,8 @@ export class DashboardComponent implements OnInit
           this.button1 = "Log In";
           this.button2 = "Sign Up";
         }
+
+
 
         //console.log("dashboard test OnInit");
     }

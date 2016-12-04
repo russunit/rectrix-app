@@ -24,6 +24,7 @@ import { PassportJetComponent } from './pages/passportjet/passportjet.component'
 import { PassportJetJoinComponent } from './pages/passportjet/passportjet-join.component';
 import { ProfilebarComponent } from './pages/profilebar/profilebar.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { CurrentUserService } from './shared/current-user/current-user.service';
 
 import { ProfileViewComponent } from './pages/profileview/profileview.component';
 import { ProfileShuttleHistoryComponent } from './pages/profileview/profile-shuttle-history.component';
@@ -45,6 +46,7 @@ import { ProfileSettingsComponent } from './pages/profileview/profile-settings.c
   	AppComponent,
   	...navigatableComponents,
   ],
+  providers: [CurrentUserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

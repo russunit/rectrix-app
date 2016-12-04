@@ -20,7 +20,7 @@ import { CurrentUserService } from "../../shared/current-user/current-user.servi
 
 	<Button text="Sign in" (tap)="login()" horizontalAlignment='center'></Button>
 	`,
-	providers: [UserService, CurrentUserService],
+	providers: [UserService],
 })
 export class LoginComponent
 {
