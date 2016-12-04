@@ -50,8 +50,8 @@ export class LoginComponent
         		
 
         		//sets the current user
-        		this.currentUserService.loggedIn.next(true);
-    			this.currentUserService.currentUser.next(this.user);
+        		this.currentUserService.changeUser(this.user);
+    			this.currentUserService.toggleLoggedIn(true);
 
     			alert("Signed in as "+this.user.username+"!");
 

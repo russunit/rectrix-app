@@ -7,6 +7,7 @@ import { Location } from '@angular/common';
 import { Page } from "ui/page";
 import { User } from "../../shared/user/user";
 import { CurrentUserService } from "../../shared/current-user/current-user.service";
+import {Subscription} from 'rxjs/Subscription';
 
 
 @Component({
@@ -49,11 +50,13 @@ export class DashboardComponent implements OnInit
     currentUser: User;
     loggedIn: boolean;
 
+    subscription:Subscription;
+
     constructor(private router: Router, private location: Location, private page: Page, private currentUserService: CurrentUserService)
     {
         //console.log("dashboard test Constructor");
-        this.currentUser = null;
-        this.loggedIn = false;
+        //this.currentUser = null;
+        //this.loggedIn = false;
         //this.button1 = "Log In";
         //this.button2 = "Sign Up";
 
@@ -64,11 +67,9 @@ export class DashboardComponent implements OnInit
         this.page.backgroundImage = "../../images/background.png";
 
         //gets the current user
-        this.currentUserService.currentUser.subscribe(value => {this.currentUser;})
-        this.currentUserService.loggedIn.subscribe(value => {this.loggedIn;})
-
-        //this.currentUser = this.currentUserService.currentUser.emit(null);
-        //this.loggedIn = this.currentUserService.loggedIn.emit(null);
+        this.subscription = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn);
+        this.subscription = this.currentUserService.currentUser$.subscribe(currentUser => this.currentUser = currentUser);
+        
 
         if(this.loggedIn)
         {
@@ -82,6 +83,12 @@ export class DashboardComponent implements OnInit
         }
 
         //console.log("dashboard test OnInit");
+    }
+
+    ngOnDestroy() 
+    {
+    // prevent memory leak when component is destroyed
+    this.subscription.unsubscribe();
     }
 
 goShuttle()
@@ -102,8 +109,8 @@ goPassJet()
 goMenu()
 { this.router.navigate(["/menu"]); }
 
-  logIn()
-  {
+logIn()
+{
     if(!this.loggedIn)
     {
       this.router.navigate(["/login"]);
@@ -112,10 +119,10 @@ goMenu()
     {
       //TODO go to profile view
     }
-  }
+}
 
-  signUp()
-  {
+signUp()
+{
     if(!this.loggedIn)
     {
       this.router.navigate(["/signup"]);
@@ -125,6 +132,6 @@ goMenu()
       //TODO Sign out
     }
 
-  }
+}
 
 }
