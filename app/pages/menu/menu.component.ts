@@ -1,6 +1,9 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { Location } from '@angular/common';
+import { User } from "../../shared/user/user";
+import { CurrentUserService } from "../../shared/current-user/current-user.service";
+
 
 @Component({
   selector: "menu",
@@ -21,7 +24,7 @@ import { Location } from '@angular/common';
 })
 export class MenuComponent 
 {
-	constructor(private router: Router, private location: Location)
+	constructor(private router: Router, private location: Location, private currentUserService: CurrentUserService)
 	{}
 
 	logIn()
@@ -49,6 +52,11 @@ export class MenuComponent
 	{ this.router.navigate(["/profileview"]); }
 
 	logOut()
-	{ }
+	{
+	  this.currentUserService.changeUser(null);
+      this.currentUserService.toggleLoggedIn(false);
+      this.router.navigate(["/dashboard"]); 
+      alert("Signed out.");
+	}
 
 }

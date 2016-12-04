@@ -63,6 +63,7 @@ export class DashboardComponent implements OnInit
         this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.currentUser = currentUser );
         
         //test
+        /*
         console.log("DASHBOARD:");
         console.log("loggedIn:");
         if(this.loggedIn)
@@ -73,6 +74,7 @@ export class DashboardComponent implements OnInit
         }
         if(!this.loggedIn)
           console.log("FALSE");
+          */
 
 
 
@@ -138,7 +140,11 @@ signUp()
     }
     else
     {
-      //TODO Sign out
+      this.currentUserService.changeUser(null);
+      this.currentUserService.toggleLoggedIn(false);
+      this.button1 = "Log In";
+      this.button2 = "Sign Up";
+      alert("Signed out.");
     }
 
 }
