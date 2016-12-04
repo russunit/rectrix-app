@@ -4,6 +4,8 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 //import { routes } from "./app.routes";
 import { Router } from "@angular/router";
 import { Page } from "ui/page";
+import { UserService } from "../../shared/user/user.service";
+import { CurrentUserService } from "../../shared/current-user/current-user.service"
 @Component({
   selector: "profile-edit-details",
   template: `
@@ -19,23 +21,26 @@ import { Page } from "ui/page";
 "<Label text='City'></Label>"
 "<Label text='Country'></Label>"
 "<Label text='Zip'></Label>"
-<Button text="Save Changes" row="0" col="0" 		(tap)="changeUser()" height="{{buttonH}}" width="{{buttonW}}"></Button>
+<Button text="Save Changes" row="0" col="0" 		(tap)="changeUser()" height="{{buttonH}}" width="{{buttonW}}" horizontalAlignment='center'></Button>
 </ScrollView>
 `,
+providers: [UserService],
 })
 export class ProfileEditDetailsComponent {
+user: User;
     platform = require("platform");
 screen = this.platform.screen;
     height: number = this.screen.mainScreen.heightDIPs;
     width: number = this.screen.mainScreen.widthDIPs;
     buttonH: number = this.height * .15;
     buttonW: number = this.width * .40;
-constructor(private router:Router)
+constructor(private router: Router, private userService: UserService, private currentUserService: CurrentUserService)
 {
-
+       this.user = new User();
 }
-changeUser()
+change()
 {
-   
+   this.currentUserService.changeUser(this.user);
+    alert("Changes saved");
 }
 }
