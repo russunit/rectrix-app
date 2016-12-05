@@ -10,12 +10,12 @@ import { CurrentUserService } from "../../shared/current-user/current-user.servi
   selector: "profile-edit-details",
   template: `
 <ScrollView>
-<TextField hint="First name" keyboardType="email" autocorrect="false" autocapitalizationType="words" />
-<TextField hint="Last name" keyboardType="email" autocorrect="false" autocapitalizationType="words" />
-<TextField hint="Street Address" keyboardType="email" autocorrect="false" autocapitalizationType="words" />
-<TextField hint="City" keyboardType="email" autocorrect="false" autocapitalizationType="words" />
-<TextField hint="Country" keyboardType="email" autocorrect="false" autocapitalizationType="words" />
-<TextField hint="Zip" keyboardType="number" autocorrect="false" autocapitalizationType="none" />
+<TextField hint="First name" keyboardType="email" autocorrect="false" autocapitalizationType="words"></TextField>
+<TextField hint="Last name" keyboardType="email" autocorrect="false" autocapitalizationType="words"></TextField>
+<TextField hint="Street Address" keyboardType="email" autocorrect="false" autocapitalizationType="words"></TextField>
+<TextField hint="City" keyboardType="email" autocorrect="false" autocapitalizationType="words"></TextField>
+<TextField hint="Country" keyboardType="email" autocorrect="false" autocapitalizationType="words"></TextField>
+<TextField hint="Zip" keyboardType="number" autocorrect="false" autocapitalizationType="none"></TextField>
 "<Label text='Name'></Label>"
 "<Label text='Street Address'></Label>"
 "<Label text='City'></Label>"
