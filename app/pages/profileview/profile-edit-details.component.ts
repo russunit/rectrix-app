@@ -7,7 +7,7 @@ import { Page } from "ui/page";
 import { UserService } from "../../shared/user/user.service";
 import { CurrentUserService } from "../../shared/current-user/current-user.service"
 @Component({
-  selector: "profile-edit-details",
+  selector: "edit",
   template: `
 <ScrollView>
 <TextField hint="First name" keyboardType="email" autocorrect="false" autocapitalizationType="words"></TextField>
@@ -21,7 +21,7 @@ import { CurrentUserService } from "../../shared/current-user/current-user.servi
 "<Label text='City'></Label>"
 "<Label text='Country'></Label>"
 "<Label text='Zip'></Label>"
-<Button text="Save Changes" row="0" col="0" 		(tap)="changeUser()" height="{{buttonH}}" width="{{buttonW}}" horizontalAlignment='center'></Button>
+<Button text="Save Changes" row="0" col="0" 		(tap)="change()" height="{{buttonH}}" width="{{buttonW}}" horizontalAlignment='center'></Button>
 </ScrollView>
 `,
 providers: [UserService],
