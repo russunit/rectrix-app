@@ -5,10 +5,9 @@ import { Component } from "@angular/core";
   template: `
   <StackLayout orientation="vertical">
   	<navbar></navbar>
-    <StackLayout height={{height-140}}>
+    <StackLayout height={{height-70}}>
         <router-outlet></router-outlet>
     </StackLayout>
-  	
   </StackLayout>
    `
 })

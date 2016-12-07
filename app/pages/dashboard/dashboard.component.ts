@@ -14,21 +14,23 @@ import {Subscription} from 'rxjs/Subscription';
   selector: "dashboard",
   template: `
     <StackLayout class="layout" height={{height-140}}>
-    <Image src="~/images/logo.png" height={{buttonH}} width={{buttonW}} class="logo"></Image>
-  	<GridLayout rows="auto, auto, auto, auto" columns="auto, auto" horizontalAlignment="center" verticalAlignment="center">
-   		<button text="Shuttle" row="0" col="0" 		(tap)="goShuttle()" height="{{buttonH}}" width="{{buttonW}}"></button>
-   		<button text="Charter" row="0" col="1" 		(tap)="goCharter()" height="{{buttonH}}" width="{{buttonW}}"></button>
-   		<button text="FBO" row="1" col="0" 		(tap)="goFbo()" height="{{buttonH}}" width="{{buttonW}}"></button>
-   		<button text="MRO" row="1" col="1" 		(tap)="goMro()" height="{{buttonH}}" width="{{buttonW}}"></button>
-   		<button text="Passport Jet" row="2" col="0" (tap)="goPassJet()" height="{{buttonH}}" width="{{buttonW}}"></button>
-   		<button text="Menu" row="2" col="1" 		(tap)="goMenu()" height="{{buttonH}}" width="{{buttonW}}"></button> 
-      <button text={{button1}} row="3" col="0" (tap)="logIn()" height="40" width={{navLeft}} class="profilebutton"></button>
-      <button text={{button2}} row="3" col="1" (tap)="signUp()" height="40" width={{navRight}} class="profilebutton"></button>
-       
-
-	</GridLayout>
-  
+        <Image src="~/images/logo.png" height={{buttonH}} width={{buttonW}} class="logo"></Image>
+  	    <GridLayout rows="auto, auto, auto, auto" columns="auto, auto" horizontalAlignment="center" verticalAlignment="center">
+   		    <button text="Shuttle" row="0" col="0" 		(tap)="goShuttle()" height="{{buttonH}}" width="{{buttonW}}"></button>
+   		    <button text="Charter" row="0" col="1" 		(tap)="goCharter()" height="{{buttonH}}" width="{{buttonW}}"></button>
+   		    <button text="FBO" row="1" col="0" 		(tap)="goFbo()" height="{{buttonH}}" width="{{buttonW}}"></button>
+   		    <button text="MRO" row="1" col="1" 		(tap)="goMro()" height="{{buttonH}}" width="{{buttonW}}"></button>
+   		    <button text="Passport Jet" row="2" col="0" (tap)="goPassJet()" height="{{buttonH}}" width="{{buttonW}}"></button>
+   		    <button text="Menu" row="2" col="1" 		(tap)="goMenu()" height="{{buttonH}}" width="{{buttonW}}"></button> 
+	    </GridLayout>
     </StackLayout>
+    <StackLayout height="70">
+        <GridLayout rows="auto, auto, auto, auto" columns="auto, auto" horizontalAlignment="center" verticalAlignment="center">
+             <button text={{button1}} row="3" col="0" (tap)="logIn()" height="40" width={{navLeft}} class="profilebutton"></button>
+             <button text={{button2}} row="3" col="1" (tap)="signUp()" height="40" width={{navRight}} class="profilebutton"></button>
+        </GridLayout>
+    </StackLayout>
+       
   `,
   styleUrls: ["pages/dashboard/dashboard-common.css"],
   
@@ -43,8 +45,8 @@ export class DashboardComponent implements OnInit
     width: number = this.screen.mainScreen.widthDIPs;
     buttonH: number = this.height * .12;
     buttonW: number = this.width * .40;
-    navLeft: number = this.buttonW;
-    navRight: number = this.buttonW;
+    navLeft: number = this.width * .45;
+    navRight: number = this.width * .45;
 
 
     navLeftSignedIn: number = this.buttonW *1.3;
@@ -157,8 +159,8 @@ signOutFormat()
 {
   this.button1 = "Log In";
   this.button2 = "Sign Up";
-  this.navLeft = this.buttonW;
-  this.navRight = this.buttonW;
+  //this.navLeft = this.buttonW * 1.15;
+  //this.navRight = this.buttonW * 1.15;
 }
 
 signInFormat()
