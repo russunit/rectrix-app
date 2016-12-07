@@ -159,8 +159,8 @@ signOutFormat()
 {
   this.button1 = "Log In";
   this.button2 = "Sign Up";
-  //this.navLeft = this.buttonW * 1.15;
-  //this.navRight = this.buttonW * 1.15;
+  this.navLeft = this.buttonW * 1.15;
+  this.navRight = this.buttonW * 1.15;
 }
 
 signInFormat()
