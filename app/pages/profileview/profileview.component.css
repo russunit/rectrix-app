@@ -1,15 +1,10 @@
-p.leftie
+leftie
 {
    float: left;
 }
 rightie {
   float: right; 
 }
-div 
-{
- clear:both;
-}
-h1 
-{
-text-align: center;
+header {
+   font-size: 40px;
 }

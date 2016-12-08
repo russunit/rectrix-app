@@ -6,8 +6,20 @@ import { Router } from "@angular/router";
 import {Subscription} from 'rxjs/Subscription';
 @Component({
   selector: "profile-shuttle-history",
-  template: "<Label text='Profile View Component'></Label>"
+  template: `
+<ScrollView>
+<label text ='{{currentUser.username}}' class='header' horizontalAlignment='center'></label> 
+<Button text="Edit Profile" row="0" col="0" 		(tap)="makeChanges()" height="{{buttonH}}" width="{{buttonW}}" horizontalAlignment='center'></Button>
+<label text ='Name' class = 'leftie'></label>
+<label text Address class = 'leftie'></label>
+<label text = '{{currentUser.firstName + " " + currentUser.lastName}}' class = 'rightie'></label>
+<label text = '{{currentUser.address + " " + currentUser.city + " " + currentUser.country + " " + currentUser.zip }}' class = 'rightie'>></label>
+</ScrollView>
+`,
+ styleUrls: ["pages/profileview/profileview.component.css"],
+providers: [UserService],
 })
+
 export class ProfileViewComponent implements OnInit {
 currentUser: User;
  
@@ -18,7 +30,8 @@ screen = this.platform.screen;
     width: number = this.screen.mainScreen.widthDIPs;
     buttonH: number = this.height * .15;
     buttonW: number = this.width * .40;
-  
+ 
+
 constructor(private router: Router, private userService: UserService, private currentUserService: CurrentUserService){}
 ngOnInit() {
         

@@ -10,6 +10,7 @@ import { CurrentUserService } from "../../shared/current-user/current-user.servi
   selector: "edit",
   template: `
 <ScrollView>
+<label text ='{{user.username}}' class='header'></label> 
 <TextField hint="First name" keyboardType="email" autocorrect="false" autocapitalizationType="words"></TextField>
 <TextField hint="Last name" keyboardType="email" autocorrect="false" autocapitalizationType="words"></TextField>
 <TextField hint="Street Address" keyboardType="email" autocorrect="false" autocapitalizationType="words"></TextField>
@@ -24,6 +25,7 @@ import { CurrentUserService } from "../../shared/current-user/current-user.servi
 <Button text="Save Changes" row="0" col="0" 		(tap)="change()" height="{{buttonH}}" width="{{buttonW}}" horizontalAlignment='center'></Button>
 </ScrollView>
 `,
+ styleUrls: ["pages/profileview/profile-edit-details.component.css"],
 providers: [UserService],
 })
 export class ProfileEditDetailsComponent {
@@ -34,6 +36,8 @@ screen = this.platform.screen;
     width: number = this.screen.mainScreen.widthDIPs;
     buttonH: number = this.height * .15;
     buttonW: number = this.width * .40;
+ 
+
 constructor(private router: Router, private userService: UserService, private currentUserService: CurrentUserService)
 {
        this.user = new User();
