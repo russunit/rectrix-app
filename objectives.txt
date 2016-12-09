@@ -53,9 +53,15 @@ User Sevice CHRIS, MALCOLM
 
 login component MALCOLM
 
+add loading screen when logging in
+
 popup suggestions: when starting up, display most recent charter request as recommendation when signed in.
 
 establish/implement a maximum length for username.
 
+access rectrix servers in shuttle component
 
+access rectrix servers in charter component
+
+create server for user profiles (for rectrix servers to run)
 
