@@ -65,7 +65,7 @@ export class DashboardComponent implements OnInit
 
     ngOnInit() {
         this.page.actionBarHidden = true;
-        this.page.backgroundImage = "../../images/background.png";
+        //this.page.backgroundImage = "../../images/background.png";
 
         //gets the current user from service
         this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
@@ -159,8 +159,8 @@ signOutFormat()
 {
   this.button1 = "Log In";
   this.button2 = "Sign Up";
-  this.navLeft = this.buttonW * 1.15;
-  this.navRight = this.buttonW * 1.15;
+  this.navLeft = this.buttonW * 1.1;
+  this.navRight = this.buttonW * 1.1;
 }
 
 signInFormat()

@@ -13,65 +13,75 @@ import {Subscription} from 'rxjs/Subscription';
   template: `
  <StackLayout>
  <ScrollView>
- <StackLayout>
-	<label text='Shuttle Component' horizontalAlignment='center'></label>
+ <StackLayout class="layout">
+	<label text='Shuttle Request' class="title" strokeColor="white"></label>
 
-	<label text='First Name'></label>
-	<TextField  autocapitalizationType="none" [(ngModel)]="shuttleRequest.firstName"></TextField>
+    <StackLayout class="form">
+        <label text='Personal Information' class="detail-label"></label>
 
-	<label text='Last Name'></label>
-	<TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.lastName"></TextField>
+	    <TextField  autocapitalizationType="none" [(ngModel)]="shuttleRequest.firstName"></TextField>
+        <label text='First Name' class='field-label'></label>
 
-	<label text='Phone Number'></label>
-	<TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.phoneNumber"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.lastName"></TextField>
+        <label text='Last Name' class='field-label'></label>
 
-	<label text='Trip Type'></label>
-	<TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.tripType"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.phoneNumber"></TextField>
+        <label text='Phone Number' class='field-label'></label>
 
-	<label text='Depart Location'></label>
-	<TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.departLocation"></TextField>
+        <label height="1" class="divider"></label>
+        <label text='Trip Details' class="detail-label"></label>
+	
+	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.tripType"></TextField>
+        <label text='Trip Type' class='field-label'></label>
+	
+	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.departLocation"></TextField>
+        <label text='Depart Location' class='field-label'></label>
+	
+	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.departDate"></TextField>
+        <label text='Depart Date' class='field-label'></label>
+	
+	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.departTime"></TextField>
+        <label text='Depart Time' class='field-label'></label>
+	
+	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.arriveLocation"></TextField>
+        <label text='Arrive Location' class='field-label'></label>
+	
+	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.arriveDate"></TextField>
+        <label text='Arrive Date' class='field-label'></label>
+	
+	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.arriveTime"></TextField>
+        <label text='Arrive Time' class='field-label'></label>
+	
+	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.numAdults"></TextField>
+        <label text='Number of Adults' class='field-label'></label>
+	
+	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.numChildren"></TextField>
+        <label text='Number of Children' class='field-label'></label>
+	
+	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.numInfants"></TextField>
+        <label text='Number of Infants' class='field-label'></label>
+    </StackLayout>	
 
-	<label text='Depart Date'></label>
-	<TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.departDate"></TextField>
-
-	<label text='Depart Time'></label>
-	<TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.departTime"></TextField>
-
-	<label text='Arrive Location'></label>
-	<TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.arriveLocation"></TextField>
-
-	<label text='Arrive Date'></label>
-	<TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.arriveDate"></TextField>
-
-	<label text='Arrive Time'></label>
-	<TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.arriveTime"></TextField>
-
-	<label text='Number of Adults'></label>
-	<TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.numAdults"></TextField>
-
-	<label text='Number of Children'></label>
-	<TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.numChildren"></TextField>
-
-	<label text='Number of Infants'></label>
-	<TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.numInfants"></TextField>
-
-	<Button text="Request Shuttle" (tap)="sendRequest(this.shuttleRequest)" horizontalAlignment='center'></Button>
+	<Button text="Request" width={{buttonW}} height="50" (tap)="sendRequest(this.shuttleRequest)" horizontalAlignment='center'></Button>
 
 
  </StackLayout>
  </ScrollView>
  </StackLayout>
-
-
-
-
 	`,
- providers: [UserService],
+  providers: [UserService],
+  styleUrls: ["pages/shuttle/shuttle.component.css"]
   //templateUrl: 'shuttle-component.html'
 })
 
 export class ShuttleComponent implements OnInit
 {
+    platform = require("platform");
+    screen = this.platform.screen;
+    height: number = this.screen.mainScreen.heightDIPs;
+    width: number = this.screen.mainScreen.widthDIPs;
+    buttonW: number = this.width * .6;
+
 
 	user: User;
     loggedIn: boolean;

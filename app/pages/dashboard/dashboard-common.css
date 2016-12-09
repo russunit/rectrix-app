@@ -1,12 +1,12 @@
 .layout{
-    background-image: url("~/images/background2.png");
+    background-image: url("~/images/background.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 }
 
 .logo{
-    margin-top: 20;
+    margin-top: 25;
     margin-bottom: 10;
 }
 
@@ -19,8 +19,8 @@ button{
     border-radius: 15;
     border-width: 1;
     border-color: white;
-    margin-bottom: 10;
-    margin-top: 10;
+    margin-bottom: 15;
+    margin-top: 15;
     margin-left: 10;
     margin-right: 10;
 }
