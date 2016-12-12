@@ -12,20 +12,13 @@ import {
   selector: "my-app",
   template: `
 
-  
-
   <StackLayout orientation="vertical">
-
-  <div class="loading-overlay" *ngIf="loading">
-    <label text="Please Wait..."></label>
-    <md-progress-bar mode="indeterminate"></md-progress-bar>
-  </div>
-
-  	<navbar></navbar>
+    <navbar></navbar>
     <StackLayout height={{height-70}}>
         <router-outlet></router-outlet>
     </StackLayout>
   </StackLayout>
+  
    `
 })
 export class AppComponent 

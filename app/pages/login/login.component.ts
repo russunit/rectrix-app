@@ -10,21 +10,35 @@ import { CurrentUserService } from "../../shared/current-user/current-user.servi
 @Component({
   selector: "login",
   template: `
+
+  <StackLayout *ngIf="!loading">
+  <ScrollView>
+  <StackLayout>
   	<label text='Sign in to Rectrix' horizontalAlignment='center'></label>
 
-	<label text='user name'></label>
-	<TextField  autocapitalizationType="none" [(ngModel)]="user.username"></TextField>
+	   <label text='user name'></label>
+	   <TextField  autocapitalizationType="none" [(ngModel)]="user.username"></TextField>
 
-	<label text='password'></label>
-	<TextField autocapitalizationType="none" secure="true" [(ngModel)]="user.password"></TextField>
+	   <label text='password'></label>
+	   <TextField autocapitalizationType="none" secure="true" [(ngModel)]="user.password"></TextField>
 
-	<Button text="Sign in" (tap)="login()" horizontalAlignment='center'></Button>
+	   <Button text="Sign in" (tap)="login()" horizontalAlignment='center'></Button>
+  </StackLayout>
+  </ScrollView>
+  </StackLayout>
+
+  <div class="loading-overlay" *ngIf="loading">
+    <label text="Please Wait..."></label>
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
+  </div>
+
 	`,
 	providers: [UserService],
 })
 export class LoginComponent
 {
 	user: User;
+  loading: boolean = false;
 
 	constructor(private router: Router, private userService: UserService, private currentUserService: CurrentUserService) 
 	{
@@ -33,6 +47,8 @@ export class LoginComponent
 
 	login() 
 	{
+      this.loading = true;
+
     	this.userService.login(this.user)
       	.subscribe(
 
@@ -47,8 +63,13 @@ export class LoginComponent
 
         		this.router.navigate(["/dashboard"]); 
         		}, 
-        	(error) => alert("Unfortunately we could not find your account.")
+        	(error) => {
+            alert("Unfortunately we could not find your account.");
+            this.loading = false;
+            }
       	);
+
+        
   	}
 
 

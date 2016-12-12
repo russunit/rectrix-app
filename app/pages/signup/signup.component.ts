@@ -8,7 +8,7 @@ import { UserService } from "../../shared/user/user.service";
 @Component({
   selector: "signup",
   template: `
-<StackLayout>
+<StackLayout *ngIf="!loading">
 <ScrollView>
 <StackLayout>
 <label text='Signup Component'></label>
@@ -41,6 +41,15 @@ import { UserService } from "../../shared/user/user.service";
  </StackLayout>
  </ScrollView>
  </StackLayout>
+
+ <div class="loading-overlay" *ngIf="loading">
+    <label text="Please Wait..."></label>
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
+ </div>
+
+
+
+
 `,
 	providers: [UserService],
 })
@@ -48,6 +57,7 @@ import { UserService } from "../../shared/user/user.service";
 export class SignupComponent 
 {
 	user : User;
+	loading: boolean = false;
 
 	constructor(private router: Router, private userService: UserService) 
 	{
@@ -67,13 +77,20 @@ export class SignupComponent
 
 	signUp() 
 	{
+		this.loading = true;
+
     	this.userService.register(this.user)
       	.subscribe(
         	() => {
           		alert("Your account was successfully created.");
           		this.router.navigate(["/dashboard"]); 
         	},
-        	() => alert("Unfortunately we were unable to create your account.")
+        	() => {
+        		alert("Unfortunately we were unable to create your account.");
+        		this.loading = false;
+        	}
       );
+
+
   	}
 }
