@@ -17,7 +17,7 @@ button{
     font-size: 18;
     font-weight: 600;
     border-radius: 15;
-    border-width: 1;
+    border-width: 0;
     border-color: white;
     margin-bottom: 15;
     margin-top: 15;
@@ -26,7 +26,7 @@ button{
 }
 
 .profilebutton{
-    opacity: .8;
+    opacity: 1;
     background-color: #324264;
     color: white;
     border-radius: 15;

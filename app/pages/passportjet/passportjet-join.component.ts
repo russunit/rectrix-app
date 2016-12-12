@@ -46,7 +46,7 @@ export class PassportJetJoinComponent
 
 	sendJoinRequest(application: PassJetApplication)
 	{
-		alert("TODO");
+		alert("Coming Soon.\nTo join, call 1-800-RECTRIX");
 	}
 	
 }
