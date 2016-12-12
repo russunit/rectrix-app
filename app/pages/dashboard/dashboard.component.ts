@@ -70,20 +70,6 @@ export class DashboardComponent implements OnInit
         //gets the current user from service
         this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
         this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.currentUser = currentUser );
-        
-        //test
-        /*
-        console.log("DASHBOARD:");
-        console.log("loggedIn:");
-        if(this.loggedIn)
-        {
-          console.log("TRUE");
-          console.log("currentUser:")
-          console.log(this.currentUser.username);
-        }
-        if(!this.loggedIn)
-          console.log("FALSE");
-          */
 
 
 
@@ -96,9 +82,6 @@ export class DashboardComponent implements OnInit
           this.signOutFormat();
         }
 
-
-
-        //console.log("dashboard test OnInit");
     }
 
     ngOnDestroy() 
@@ -135,7 +118,7 @@ logIn()
     }
     else
     {
-      //TODO go to profile view
+      this.router.navigate(["/profileview"]);
     }
 }
 
