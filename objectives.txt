@@ -53,7 +53,9 @@ User Sevice CHRIS, MALCOLM
 
 login component MALCOLM
 
-add loading screen when logging in
+add loading screen when logging in MALCOLM FINISHED
+
+style loading screen
 
 popup suggestions: when starting up, display most recent charter request as recommendation when signed in.
 
