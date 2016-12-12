@@ -105,7 +105,16 @@ export class ShuttleComponent implements OnInit
 	
 	sendRequest(request:ShuttleRequest)
 	{
+		if(this.loggedIn)
+		{
+			this.user.shuttleHistory.push(this.shuttleRequest);
+			this.currentUserService.changeUser(this.user);
+			//now that currentUser has been updated to having this shuttleRequest in its history,
+			//we will need to save the state of the user to the server through userService. (TODO)
+		}
 			alert("Shuttle Requested.");
+
+			this.router.navigate(["/dashboard"]);
 
 	}
 }

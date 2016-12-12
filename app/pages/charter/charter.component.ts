@@ -102,8 +102,16 @@ export class CharterComponent implements OnInit
 
 	sendRequest(request: CharterRequest)
 	{
-		//this alert will be an auto-generated email or other type of message, sent to Rectrix.
+		if(this.loggedIn)
+		{
+			this.user.charterHistory.push(this.charterRequest);
+			this.currentUserService.changeUser(this.user);
+			//now that currentUser has been updated to having this charterRequest in its history,
+			//we will need to save the state of the user to the server through userService. (TODO)
+		}
 		
+
+		//this alert will be an auto-generated email or other type of message, sent to Rectrix.
 		alert("Charter Requested:\nName: "+this.charterRequest.firstName+" "+this.charterRequest.lastName +
 			"\nPhone: "+this.charterRequest.phoneNumber +
 			"\nTrip Type: "+this.charterRequest.tripType +
@@ -113,6 +121,8 @@ export class CharterComponent implements OnInit
 			"\n at: "+this.charterRequest.arriveTime + ", " + this.charterRequest.arriveDate +
 			"\n\nRequirements: " + this.charterRequest.requirements + 
 			"\nCraft Preference: " + this.charterRequest.preferredCraft);
+
+		this.router.navigate(["/dashboard"]);
 	}
 
 }
