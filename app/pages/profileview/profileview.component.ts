@@ -9,11 +9,13 @@ import {Subscription} from 'rxjs/Subscription';
   template: `
 <ScrollView>
 <label text ='{{currentUser.username}}' class='header' horizontalAlignment='center'></label> 
-<Button text="Edit Profile" row="0" col="0" 		(tap)="makeChanges()" height="{{buttonH}}" width="{{buttonW}}" horizontalAlignment='center'></Button>
+ 
 <label text ='Name' class = 'leftie'></label>
-<label text Address class = 'leftie'></label>
+<label text = 'Address' class = 'leftie'></label>
 <label text = '{{currentUser.firstName + " " + currentUser.lastName}}' class = 'rightie'></label>
-<label text = '{{currentUser.address + " " + currentUser.city + " " + currentUser.country + " " + currentUser.zip }}' class = 'rightie'>></label>
+<label text = '{{currentUser.address + " " + currentUser.city + " " + currentUser.country + " " + currentUser.zip }}' class = 'rightie'></label>
+<Button text="Edit Profile" row="0" col="0" 		(tap)="makeChanges()" height="{{buttonH}}" width="{{buttonW}}" horizontalAlignment='center'></Button>
+
 </ScrollView>
 `,
  styleUrls: ["pages/profileview/profileview.component.css"],

@@ -48,7 +48,7 @@ styles for all components (this objective should be fragmented into parts) ANTHO
 
 signup component CHRIS FINISHED
 signup adds new user to master user list.
-signup logs in as the new user when creating.
+signup logs in as the new user when creating. CHRIS
 User Sevice CHRIS, MALCOLM
 
 login component MALCOLM
@@ -59,7 +59,7 @@ style loading screen
 
 popup suggestions: when starting up, display most recent charter request as recommendation when signed in.
 
-establish/implement a maximum length for username.
+establish/implement a maximum length for username. CHRIS
 
 access rectrix servers in shuttle component
 
