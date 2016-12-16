@@ -28,9 +28,9 @@ mro-detail component(displays details of selected mro) ANTHONY FINISHED
 passportjet component(displays passportjet details) MALCOLM FINISHED
 passportjet-join component(form) MALCOLM
 
-profilebar component("hello, user"/"logout" bar at bottom of views, alternatively "login"/"create account")   MALCOLM
+profilebar component("hello, user"/"logout" bar at bottom of views, alternatively "login"/"create account")   MALCOLM FINISHED
 profilebar start: logs in to most recent profile if last session ended logged in. MALCOLM
-profile updating: any time a shuttle/charter request is made or profile edited, edit currentUser and push those changes to master user list.
+profile updating: any time a shuttle/charter request is made or profile edited, edit currentUser and push those changes to master user list. MALCOLM FINISHED
 
 
 profileview component(shows profile info+options) CHRIS
@@ -56,6 +56,8 @@ login component MALCOLM
 add loading screen when logging in MALCOLM FINISHED
 
 style loading screen
+
+block logout or profileview options when logged out. MALCOLM
 
 popup suggestions: when starting up, display most recent charter request as recommendation when signed in.
 
