@@ -17,8 +17,8 @@ import {Subscription} from 'rxjs/Subscription';
   		<button text="Passport Jet" (tap)="goPassJet()"></button>
   		<button text="Sign up" (tap)="signUp()"></button>
   		<button text="Sign in" (tap)="logIn()"></button>
-  		<button text="View Profile" (tap)="viewProfile()"></button>
-  		<button text="Sign out" (tap)="logOut()"></button>
+  		<button text="View Profile" (tap)="viewProfile()" *ngIf="loggedIn"></button>
+  		<button text="Sign out" (tap)="logOut()" *ngIf="loggedIn"></button>
   	</StackLayout>
   	`
 
