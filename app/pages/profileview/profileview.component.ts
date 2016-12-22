@@ -8,14 +8,20 @@ import {Subscription} from 'rxjs/Subscription';
   selector: "profile-shuttle-history",
   template: `
 <ScrollView>
-<label text ='{{currentUser.username}}' class='header' horizontalAlignment='center'></label> 
- 
-<label text ='Name' class = 'leftie'></label>
-<label text = 'Address' class = 'leftie'></label>
-<label text = '{{currentUser.firstName + " " + currentUser.lastName}}' class = 'rightie'></label>
-<label text = '{{currentUser.address + " " + currentUser.city + " " + currentUser.country + " " + currentUser.zip }}' class = 'rightie'></label>
-<Button text="Edit Profile" row="0" col="0" 		(tap)="makeChanges()" height="{{buttonH}}" width="{{buttonW}}" horizontalAlignment='center'></Button>
+<StackLayout>
+<Label text ="{{currentUser.username}}" class="header" horizontalAlignment="center"></Label> 
+</StackLayout>
+<GridLayout rows="auto,auto" columns="auto,auto">
 
+ 
+<Label text ="Name" row="0" col="0" ></Label>
+<Label text = "Address" row="1" col="0"></Label>
+<Label text = "{{currentUser.firstName + ' ' + currentUser.lastName}}" row="0" col="1"></Label>
+<Label text = "{{currentUser.address + ' ' + currentUser.city + ' ' + currentUser.country + ' ' + currentUser.zip }}" row="1" col="1"></Label>
+</GridLayout>
+<StackLayout>
+<Button text="Edit Profile" (tap)="makeChanges()" height="{{buttonH}}" width="{{buttonW}}" horizontalAlignment='center'></Button>
+</StackLayout>
 </ScrollView>
 `,
  styleUrls: ["pages/profileview/profileview.component.css"],
