@@ -1,0 +1,61 @@
+.layout{
+    background-image: url("~/images/charter.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.form{
+    margin-top: 10;
+    margin-left: 15;
+    margin-right: 15;
+    background-color: #535f78;
+    border-radius: 20;
+}
+
+.field-label{
+    margin-bottom: 20;
+    margin-left: 15;
+    font-size: 16;
+    color: white;
+}
+
+TextField{
+    margin-left: 15;
+    margin-right: 15;
+    background-color: white;
+}
+
+.detail-label{
+    margin-top: 20;
+    margin-bottom: 15;
+    font-size: 22;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+}
+
+.title{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 34px;
+    font-weight: 700;
+    text-align: center;
+    color: #d33432;
+    opacity: .9;
+}
+
+button{
+    margin-top: 20;
+    margin-bottom: 20;
+    background-color: #d33432;
+    color: white;
+    opacity: .8;
+    border-radius: 20;
+    font-size: 18;
+}
+
+.divider{
+    border-width: 2;
+    border-color: white; 
+}

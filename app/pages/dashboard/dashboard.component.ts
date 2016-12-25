@@ -48,10 +48,8 @@ export class DashboardComponent implements OnInit
     navLeft: number = this.width * .45;
     navRight: number = this.width * .45;
 
-
     navLeftSignedIn: number = this.buttonW *1.3;
     navRightSignedIn: number = this.buttonW;
-
 
     button1: string;
     button2: string;
@@ -70,8 +68,6 @@ export class DashboardComponent implements OnInit
         //gets the current user from service
         this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
         this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.currentUser = currentUser );
-
-
 
         if(this.loggedIn)
         {

@@ -35,7 +35,7 @@ export class FboService {
                 '- Gourmet in-flight catering service',
                 '- Onsite Rental Car Services',
                 '- Concierge Services',
-                ' -Tesla charging station on premises'
+                '- Tesla charging station on premises'
             ],
             contact: ['777 Virginia Road', 'Concord, MA 01742', 'Email: bedmail@rectrix.aero', 'Phone: 978.341.8400', 'Fax: 978.341.8410', 'ASRI: 131.40']
         },

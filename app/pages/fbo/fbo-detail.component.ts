@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute, Params } from '@angular/router'
 import 'rxjs/add/operator/switchMap';
 import repeaterModule = require("ui/repeater");
+import wrapLayoutModule = require("ui/layouts/wrap-layout");
 
 @Component({
     selector: "fbo-detail",
@@ -14,18 +15,18 @@ import repeaterModule = require("ui/repeater");
               <StackLayout>
                 <label text={{fbo.name}} class="name"></label>
                 <label textwrap="true" text={{fbo.description}} class="desc"></label>
-
+                
                 <label text="Amenities" class="amenities"></label>
                 <Repeater [items]="amenities" class="amenitieslist">
                     <template let-item="item">
-                      <label textwrap = "true" [text]="item" class="medium-spacing"></label>
+                      <label textwrap="true" [text]="item" class="medium-spacing"></label>
                     </template>
                 </Repeater>
                 
                 <label text="Services" class="services"></label>
                 <Repeater [items]="services" class="serviceslist">
                     <template let-item="item">
-                      <label textwrap = "true" [text]="item" class="medium-spacing"></label>
+                      <label textwrap="true" [text]="item" class="medium-spacing"></label>
                     </template>
                 </Repeater>
                 <label></label>
@@ -34,7 +35,7 @@ import repeaterModule = require("ui/repeater");
                     <label text="Contact" class="contact"></label>
                     <Repeater [items]="contact" class="contactlist">
                         <template let-item="item">
-                          <label textwrap = "true" [text]="item" class="medium-spacing"></label>
+                          <label textwrap="true" [text]="item" class="medium-spacing"></label>
                         </template>
                     </Repeater>
                     <label></label>
@@ -54,14 +55,23 @@ export class FboDetailComponent implements OnInit{
     services: string[];
     contact: string[];
 
+    platform = require("platform");
+    screen = this.platform.screen;
+    height: number = this.screen.mainScreen.heightDIPs;
+    width: number = this.screen.mainScreen.widthDIPs;
+
+    
+
   constructor(
     private fboService: FboService,
     private route: ActivatedRoute,
     private location: Location
   ) 
-   {}
+   {
+}
 
   ngOnInit() {
+
       this.sub = this.route.params.subscribe(params => {
           this.id = +params['id']; 
           this.fbo = this.fboService.getFbo(this.id);
@@ -69,7 +79,6 @@ export class FboDetailComponent implements OnInit{
           this.services = this.fboService.getServices(this.id);
           this.contact = this.fboService.getContactInfo(this.id);
       });
-
 
   }
 }

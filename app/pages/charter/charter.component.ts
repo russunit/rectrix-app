@@ -14,61 +14,61 @@ import {Subscription} from 'rxjs/Subscription';
 
 selector: "charter",
 template: `
- <StackLayout>
- <ScrollView>
- <StackLayout>
+ 
+ <ScrollView orientation="vertical">
+ <StackLayout class="layout">
+	<label text='Charter Request' class="title"></label>
 
-	<label text='Charter Component' horizontalAlignment='center'></label>
+    <StackLayout class="form">
+        <label text='Personal Information' class="detail-label"></label>
 
-	<label text='First Name'></label>
-	<TextField  autocapitalizationType="none" [(ngModel)]="charterRequest.firstName"></TextField>
+	    <TextField  autocapitalizationType="none" [(ngModel)]="charterRequest.firstName"></TextField>
+        <label text='First Name' class='field-label'></label>
 
-	<label text='Last Name'></label>
-	<TextField autocapitalizationType="none" [(ngModel)]="charterRequest.lastName"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.lastName"></TextField>
+        <label text='Last Name' class='field-label'></label>
+	    
+	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.phoneNumber"></TextField>
+        <label text='Phone Number' class='field-label'></label>
 
-	<label text='Phone Number'></label>
-	<TextField autocapitalizationType="none" [(ngModel)]="charterRequest.phoneNumber"></TextField>
+        <label height="1" class="divider"></label>
+        <label text='Trip Details' class="detail-label"></label>
 
-	<label text='Trip Type'></label>
-	<TextField autocapitalizationType="none" [(ngModel)]="charterRequest.tripType"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.tripType"></TextField>
+        <label text='Trip Type' class='field-label'></label>
+	    
+	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.departLocation"></TextField>
+        <label text='Depart Location' class='field-label'></label>
+	    
+	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.departDate"></TextField>
+        <label text='Depart Date' class='field-label'></label>
+	    
+	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.departTime"></TextField>
+        <label text='Depart Time' class='field-label'></label>
+	    
+	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.arriveLocation"></TextField>
+        <label text='Arrive Location' class='field-label'></label>
+	    
+	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.arriveDate"></TextField>
+        <label text='Arrive Date' class='field-label'></label>
+	    
+	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.arriveTime"></TextField>
+        <label text='Arrive Time' class='field-label'></label>
+	    
+	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.requirements"></TextField>
+        <label text='Requirements' class='field-label'></label>
+	    
+	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.preferredCraft"></TextField>
+        <label text='Preferred Craft' class='field-label'></label>
+    </StackLayout>	
 
-	<label text='Depart Location'></label>
-	<TextField autocapitalizationType="none" [(ngModel)]="charterRequest.departLocation"></TextField>
-
-	<label text='Depart Date'></label>
-	<TextField autocapitalizationType="none" [(ngModel)]="charterRequest.departDate"></TextField>
-
-	<label text='Depart Time'></label>
-	<TextField autocapitalizationType="none" [(ngModel)]="charterRequest.departTime"></TextField>
-
-	<label text='Arrive Location'></label>
-	<TextField autocapitalizationType="none" [(ngModel)]="charterRequest.arriveLocation"></TextField>
-
-	<label text='Arrive Date'></label>
-	<TextField autocapitalizationType="none" [(ngModel)]="charterRequest.arriveDate"></TextField>
-
-	<label text='Arrive Time'></label>
-	<TextField autocapitalizationType="none" [(ngModel)]="charterRequest.arriveTime"></TextField>
-
-	<label text='Requirements'></label>
-	<TextField autocapitalizationType="none" [(ngModel)]="charterRequest.requirements"></TextField>
-
-	<label text='Preferred Craft'></label>
-	<TextField autocapitalizationType="none" [(ngModel)]="charterRequest.preferredCraft"></TextField>
-
-	<Button text="Request Charter" (tap)="sendRequest(this.charterRequest)" horizontalAlignment='center'></Button>
-
+	<Button text="Request Charter" width={{buttonW}} height="50" (tap)="sendRequest(this.charterRequest)" horizontalAlignment='center'></Button>
 
  </StackLayout>
  </ScrollView>
- </StackLayout>
-
-
-
-
 	`,
 providers: [UserService],
-
+styleUrls: ["pages/charter/charter.component.css"]
 //moduleID
 //selector: "charter",
 //templateUrl: "charter-component.html",
@@ -79,6 +79,12 @@ providers: [UserService],
 
 export class CharterComponent implements OnInit
 {
+    platform = require("platform");
+    screen = this.platform.screen;
+    height: number = this.screen.mainScreen.heightDIPs;
+    width: number = this.screen.mainScreen.widthDIPs;
+    buttonW: number = this.width * .6;
+
 	user: User;
     loggedIn: boolean;
 
