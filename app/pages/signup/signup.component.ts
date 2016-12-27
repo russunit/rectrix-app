@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { TextField } from "ui/text-field";
+import { CurrentUserService } from "../../shared/current-user/current-user.service";
 
 import { User } from "../../shared/user/user";
 import { UserService } from "../../shared/user/user.service";
@@ -59,7 +60,7 @@ export class SignupComponent
 	user : User;
 	loading: boolean = false;
 
-	constructor(private router: Router, private userService: UserService) 
+	constructor(private router: Router, private userService: UserService , private currentUserService: CurrentUserService) 
 	{
     	this.user = new User(); 
 		this.user.firstName= "";
@@ -82,7 +83,10 @@ export class SignupComponent
     	this.userService.register(this.user)
       	.subscribe(
         	() => {
-          		alert("Your account was successfully created.");
+          		alert("Your account was successfully created."); 
+this.currentUserService.changeUser(this.user);
+     			this.currentUserService.toggleLoggedIn(true);
+
           		this.router.navigate(["/dashboard"]); 
         	},
         	() => {
