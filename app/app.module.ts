@@ -31,7 +31,6 @@ import { ProfileShuttleHistoryComponent } from './pages/profileview/profile-shut
 import { ProfileShuttleDetailsComponent } from './pages/profileview/profile-shuttle-details.component';
 import { ProfileCharterHistoryComponent } from './pages/profileview/profile-charter-history.component';
 import { ProfileCharterDetailsComponent } from './pages/profileview/profile-charter-details.component';
-import { ProfileSettingsComponent } from './pages/profileview/profile-settings.component';
 import { ProfileEditDetailsComponent } from './pages/profileview/profile-edit-details.component';
 
 
