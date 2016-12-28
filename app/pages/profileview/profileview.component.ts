@@ -4,6 +4,7 @@ import { UserService } from "../../shared/user/user.service";
 import { CurrentUserService } from "../../shared/current-user/current-user.service";
 import { Router } from "@angular/router";
 import {Subscription} from 'rxjs/Subscription';
+
 @Component({
   selector: "profile-shuttle-history",
   template: `
@@ -31,7 +32,11 @@ providers: [UserService],
 export class ProfileViewComponent implements OnInit {
 currentUser: User;
  
+    loggedIn: boolean;
+
     subscription1:Subscription;
+    subscription2:Subscription;
+
     platform = require("platform");
 screen = this.platform.screen;
     height: number = this.screen.mainScreen.heightDIPs;
@@ -44,17 +49,20 @@ constructor(private router: Router, private userService: UserService, private cu
 ngOnInit() {
         
 
-               this.subscription1 = this.currentUserService.currentUser$.subscribe(currentUser => this.currentUser = currentUser );
+               this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
+               this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.currentUser = currentUser );
+
+               if(!this.loggedIn)
+                this.router.navigate(["/dashboard"]);
         
-          
+          }  
 
-
-
-
-    }  ngOnDestroy() 
-    {
+ngOnDestroy() 
+{
     
     this.subscription1.unsubscribe();
+    this.subscription2.unsubscribe();
+
 
     }
 makeChanges()

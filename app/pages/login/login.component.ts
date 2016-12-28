@@ -56,6 +56,13 @@ export class LoginComponent implements OnInit
       this.router.navigate(["/dashboard"]); 
   }
 
+  ngOnDestroy() 
+  {
+    
+    this.subscription1.unsubscribe();
+
+  }
+
 	login() 
 	{
       this.loading = true;

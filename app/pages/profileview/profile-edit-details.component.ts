@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { User } from '../../shared/user/user'
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 //import { routes } from "./app.routes";
@@ -6,6 +6,9 @@ import { Router } from "@angular/router";
 import { Page } from "ui/page";
 import { UserService } from "../../shared/user/user.service";
 import { CurrentUserService } from "../../shared/current-user/current-user.service"
+
+import {Subscription} from 'rxjs/Subscription';
+
 @Component({
   selector: "edit",
   template: `
@@ -28,20 +31,44 @@ import { CurrentUserService } from "../../shared/current-user/current-user.servi
  styleUrls: ["pages/profileview/profile-edit-details.component.css"],
 providers: [UserService],
 })
-export class ProfileEditDetailsComponent {
-user: User;
+
+export class ProfileEditDetailsComponent implements OnInit
+{
+    user: User;
     platform = require("platform");
-screen = this.platform.screen;
+    screen = this.platform.screen;
     height: number = this.screen.mainScreen.heightDIPs;
     width: number = this.screen.mainScreen.widthDIPs;
     buttonH: number = this.height * .15;
     buttonW: number = this.width * .40;
+
+    loggedIn: boolean;
+
+    subscription1:Subscription;
+    subscription2:Subscription;
  
 
 constructor(private router: Router, private userService: UserService, private currentUserService: CurrentUserService)
 {
        this.user = new User();
 }
+
+ngOnInit() 
+{
+  this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
+  this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.user = currentUser );
+
+  if(!this.loggedIn)
+    this.router.navigate(["/dashboard"]);
+}  
+
+ngOnDestroy() 
+{
+    
+    this.subscription1.unsubscribe();
+    this.subscription2.unsubscribe();
+}
+
 change()
 {
    this.currentUserService.changeUser(this.user);
