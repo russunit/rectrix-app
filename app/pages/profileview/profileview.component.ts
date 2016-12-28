@@ -49,7 +49,10 @@ ngOnInit() {
                this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.currentUser = currentUser );
 
                if(!this.loggedIn)
-                this.router.navigate(["/dashboard"]);
+               {
+                alert("Profile view unavailable. Sign in first.");
+                this.router.navigate(["/login"]);
+               }
         
           }  
 

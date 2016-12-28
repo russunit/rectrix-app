@@ -84,7 +84,10 @@ export class SignupComponent implements OnInit
   	{
     	this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
     	if(this.loggedIn)
+    	{
+    		alert("Already signed in.");
       		this.router.navigate(["/dashboard"]); 
+    	}
   	}
 
   	ngOnDestroy() 
