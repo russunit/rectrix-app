@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { TextField } from "ui/text-field";
 import { CurrentUserService } from "../../shared/current-user/current-user.service";
+import { Subscription } from 'rxjs/Subscription';
+
 
 import { User } from "../../shared/user/user";
 import { UserService } from "../../shared/user/user.service";
@@ -55,10 +57,12 @@ import { UserService } from "../../shared/user/user.service";
 	providers: [UserService],
 })
 
-export class SignupComponent 
+export class SignupComponent implements OnInit
 {
 	user : User;
 	loading: boolean = false;
+	loggedIn: boolean = false;
+	subscription1:Subscription;
 
 	constructor(private router: Router, private userService: UserService , private currentUserService: CurrentUserService) 
 	{
@@ -74,6 +78,19 @@ export class SignupComponent
 		this.user.email= "";
 		this.user.charterHistory= null;
 		this.user.shuttleHistory= null;
+	}
+
+	ngOnInit()
+  	{
+    	this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
+    	if(this.loggedIn)
+      		this.router.navigate(["/dashboard"]); 
+  	}
+
+  	ngOnDestroy() 
+  	{
+    
+    this.subscription1.unsubscribe();
 	}
 
 	signUp() 

@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { User } from "../../shared/user/user";
 import { UserService } from "../../shared/user/user.service";
 import { CurrentUserService } from "../../shared/current-user/current-user.service"
+import { Subscription } from 'rxjs/Subscription';
 
 
 @Component({
@@ -35,15 +36,25 @@ import { CurrentUserService } from "../../shared/current-user/current-user.servi
 	`,
 	providers: [UserService],
 })
-export class LoginComponent
+export class LoginComponent implements OnInit
 {
 	user: User;
   loading: boolean = false;
+  loggedIn: boolean = false;
+
+  subscription1:Subscription;
 
 	constructor(private router: Router, private userService: UserService, private currentUserService: CurrentUserService) 
 	{
 		this.user = new User();
 	}
+
+  ngOnInit()
+  {
+    this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
+    if(this.loggedIn)
+      this.router.navigate(["/dashboard"]); 
+  }
 
 	login() 
 	{
