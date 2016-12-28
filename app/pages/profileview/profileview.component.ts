@@ -8,22 +8,18 @@ import {Subscription} from 'rxjs/Subscription';
 @Component({
   selector: "profile-shuttle-history",
   template: `
-<ScrollView>
-<StackLayout>
-<Label text ="{{currentUser.username}}" class="header" horizontalAlignment="center"></Label> 
-</StackLayout>
-<GridLayout rows="auto,auto" columns="auto,auto">
-
- 
-<Label text ="Name" row="0" col="0" ></Label>
-<Label text = "Address" row="1" col="0"></Label>
-<Label text = "{{currentUser.firstName + ' ' + currentUser.lastName}}" row="0" col="1"></Label>
-<Label text = "{{currentUser.address + ' ' + currentUser.city + ' ' + currentUser.country + ' ' + currentUser.zip }}" row="1" col="1"></Label>
-</GridLayout>
-<StackLayout>
-<Button text="Edit Profile" (tap)="makeChanges()" height="{{buttonH}}" width="{{buttonW}}" horizontalAlignment='center'></Button>
-</StackLayout>
-</ScrollView>
+    <ScrollView>
+      <StackLayout>
+        <Label text ="{{currentUser.username}}" class="header" horizontalAlignment="center"></Label> 
+        <GridLayout rows="auto,auto" columns="auto,auto">
+          <Label text ="Name" row="0" col="0" ></Label>
+          <Label text = "Address" row="1" col="0"></Label>
+          <Label text = "{{currentUser.firstName + ' ' + currentUser.lastName}}" row="0" col="1"></Label>
+          <Label text = "{{currentUser.address + ' ' + currentUser.city + ' ' + currentUser.country + ' ' + currentUser.zip }}" row="1" col="1"></Label>
+        </GridLayout>
+        <Button text="Edit Profile" (tap)="makeChanges()" height="{{buttonH}}" width="{{buttonW}}" horizontalAlignment='center'></Button>
+      </StackLayout>
+    </ScrollView>
 `,
  styleUrls: ["pages/profileview/profileview.component.css"],
 providers: [UserService],
