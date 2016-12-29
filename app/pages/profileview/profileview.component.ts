@@ -46,15 +46,18 @@ screen = this.platform.screen;
 constructor(private router: Router, private userService: UserService, private currentUserService: CurrentUserService){}
 ngOnInit() {
         
-               this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
-               this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.currentUser = currentUser );
-this.addresses = this.currentUser.address + " " + this.currentUser.city + " " + this.currentUser.country + " " + this.currentUser.zip;
-this.fullName = this.currentUser.firstName + " " + this.currentUser.lastName;
-               if(!this.loggedIn)
-               {
-                alert("Profile view unavailable. Sign in first.");
-                this.router.navigate(["/login"]);
-               }
+  this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
+  this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.currentUser = currentUser );
+  
+  if(!this.loggedIn)
+  {
+      alert("Profile view unavailable. Sign in first.");
+      this.router.navigate(["/login"]);
+  }
+
+  this.addresses = this.currentUser.address + " " + this.currentUser.city + " " + this.currentUser.country + " " + this.currentUser.zip;
+  this.fullName = this.currentUser.firstName + " " + this.currentUser.lastName;
+               
         
           }  
 
