@@ -6,7 +6,7 @@ import { Router } from "@angular/router";
 import {Subscription} from 'rxjs/Subscription';
 
 @Component({
-  selector: "profile-shuttle-history",
+  selector: "profileview",
   template: `
     <ScrollView>
       <StackLayout>

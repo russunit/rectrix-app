@@ -1,9 +1,3 @@
-Button {
-align:center;
-}
-TextField {
-align:right;
-}
-Label {
-align:left;
+.header {
+   font-size: 40px;
 }
