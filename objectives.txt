@@ -35,14 +35,14 @@ profile updating: any time a shuttle/charter request is made or profile edited, 
 
 profileview component(shows profile info+options) CHRIS
 
-profile-charter-history component(shows charter history)
+profile-charter-history component(shows charter history) CHRIS
 profile-charter-details component(shows details of charter in history)
 
-profile-shuttle-history component(shows shuttle history)
+profile-shuttle-history component(shows shuttle history) CHRIS
 profile-shuttle-details component(shows details of shuttle from history)
 
-profile-edit-details component(edits profile details) CHRIS 
-profile-settings component(edits profile settings)
+profile-edit-details component(edits profile details) CHRIS FINISHED
+ 
 
 styles for all components (this objective should be fragmented into parts) ANTHONY DASHBOARD,FBO,MRO
 

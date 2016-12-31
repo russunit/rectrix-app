@@ -13,7 +13,8 @@ import {Subscription} from 'rxjs/Subscription';
   selector: "edit",
   template: `
 <ScrollView>
-<label text ='{{user.username}}' class="header"></label> 
+<StackLayout>
+<Label text ='{{user.username}}' horizontalAlignment="center" class="header"></Label> 
 <GridLayout rows="auto,auto,auto,auto,auto,auto" columns="auto,auto">
 <TextField hint="First name" row="0" column="1" keyboardType="email" autocorrect="false" autocapitalizationType="words" [(ngModel)]="user.firstName"></TextField>
 <TextField hint="Last name" row="1" column="1" [(ngModel)]="user.lastName" keyboardType="email" autocorrect="false" autocapitalizationType="words"></TextField>
@@ -21,14 +22,15 @@ import {Subscription} from 'rxjs/Subscription';
 <TextField hint="City" row="3" column="1"  [(ngModel)]="user.city" keyboardType="email" autocorrect="false" autocapitalizationType="words"></TextField>
 <TextField hint="Country" [(ngModel)]="user.country"  row="4" column="1" keyboardType="email" autocorrect="false" autocapitalizationType="words"></TextField>
 <TextField hint="Zip" row="5" column="1"  [(ngModel)]="user.zip" keyboardType="number" autocorrect="false" autocapitalizationType="none"></TextField>
-<Label text='First Name' row="0" column="0" ></Label>
-<Label text='Last Name' row="1" column="0" ></Label>
-<Label text='Street Address' row="2" column="0" ></Label>
-<Label text='City' row="3" column="0" ></Label>
-<Label text='Country' row="4" column="0" ></Label>
-<Label text='Zip' row="5" column="0" ></Label>
+<Label text="First Name" row="0" column="0" ></Label>
+<Label text="Last Name" row="1" column="0" ></Label>
+<Label text="Street Address" row="2" column="0" ></Label>
+<Label text="City" row="3" column="0" ></Label>
+<Label text="Country" row="4" column="0" ></Label>
+<Label text="Zip" row="5" column="0" ></Label>
 </GridLayout>
 <Button text="Save Changes" horizontalAlignment='center'		(tap)="change()" height="{{buttonH}}" width="{{buttonW}}" horizontalAlignment='center'></Button>
+</StackLayout>
 </ScrollView>
 `,
  styleUrls: ["pages/profileview/profile-edit-details.component.css"],
