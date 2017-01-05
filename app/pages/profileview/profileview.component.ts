@@ -17,7 +17,11 @@ import {Subscription} from 'rxjs/Subscription';
           <Label text = {{this.fullName}} row="0" col="1"></Label>
           <Label text = {{this.addresses}} row="1" col="1"></Label>
         </GridLayout>
-        <Button text="Edit Profile" (tap)="makeChanges()" height="{{buttonH}}" width="{{buttonW}}" horizontalAlignment='center'></Button>
+<GridLayout rows="auto" columns="auto,auto,auto">
+        <Button text="Edit Profile" (tap)="makeChanges()" height="{{buttonH}}" width="{{buttonW}}" row="0" col="0"></Button>
+<Button text="See Shuttle History" (tap)="seeShuttle()" height="{{buttonH}}" width="{{buttonW}}" row="0" col="1" ></Button>
+<Button text="See Charter History" (tap)="seeCharter()" height="{{buttonH}}" width="{{buttonW}}" row="0" col="2" ></Button>
+</GridLayout>
       </StackLayout>
     </ScrollView>
 `,
@@ -73,5 +77,13 @@ makeChanges()
 {
 this.router.navigate(["/edit"]);
 
+}
+seeShuttle()
+{
+this.router.navigate(["/shuttlehistory"]);
+}
+seeCharter()
+{
+this.router.navigate(["/charterhistory"]);
 }
 }

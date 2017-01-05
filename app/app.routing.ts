@@ -15,6 +15,8 @@ import { ProfilebarComponent } from './pages/profilebar/profilebar.component';
 import { ProfileViewComponent } from './pages/profileview/profileview.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ProfileEditDetailsComponent } from './pages/profileview/profile-edit-details.component';
+import { ProfileCharterHistoryComponent } from './pages/profileview/profile-charter-history.component';
+import { ProfileShuttleHistoryComponent } from './pages/profileview/profile-shuttle-history.component';
 export const routes = [
   { path: '', 					component: DashboardComponent },
   { path: 'dashboard',  		component: DashboardComponent },
@@ -32,11 +34,16 @@ export const routes = [
   { path: 'profilebar',     	component: ProfilebarComponent },
   { path: 'signup',     		component: SignupComponent },
   { path: 'profileview',		component: ProfileViewComponent },
-{ path: 'edit', component:       ProfileEditDetailsComponent }
+{ path: 'edit', component:       ProfileEditDetailsComponent },
+{ path: 'shuttlehistory', component: ProfileShuttleHistoryComponent },
+{ path: 'charterhistory', component: ProfileCharterHistoryComponent },
+
 ];
 
 export const navigatableComponents = 
 [
+ProfileShuttleHistoryComponent,
+ProfileCharterHistoryComponent,
 ProfileEditDetailsComponent,
   	CharterComponent,
   	ShuttleComponent,
