@@ -61,7 +61,7 @@ block logout or profileview options when logged out. MALCOLM
 
 popup suggestions: when starting up, display most recent charter request as recommendation when signed in.
 
-establish/implement a maximum length for username. CHRIS
+establish/implement a maximum length for username. CHRIS DONE
 
 access rectrix servers in shuttle component
 

@@ -97,7 +97,13 @@ export class SignupComponent implements OnInit
 	}
 
 	signUp() 
-	{
+	{ if(this.user.username.length > 10)
+{
+          alert("Cannot create account. Username is too many characters"); 
+           this.loading = false; 
+}
+else {
+
 		this.loading = true;
 
     	this.userService.register(this.user)
@@ -115,6 +121,6 @@ this.currentUserService.changeUser(this.user);
         	}
       );
 
-
+}
   	}
 }
