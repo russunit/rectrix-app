@@ -109,7 +109,7 @@ else {
     	this.userService.register(this.user)
       	.subscribe(
         	() => {
-          		alert("Your account was successfully created."); 
+          		alert("Your account was successfully created. Signed in as "+this.user.username+"!"); 
 this.currentUserService.changeUser(this.user);
      			this.currentUserService.toggleLoggedIn(true);
 

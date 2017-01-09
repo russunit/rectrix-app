@@ -48,7 +48,7 @@ styles for all components (this objective should be fragmented into parts) ANTHO
 
 signup component CHRIS FINISHED
 signup adds new user to master user list.
-signup logs in as the new user when creating. CHRIS
+signup logs in as the new user when creating. CHRIS DONE
 User Sevice CHRIS, MALCOLM
 
 login component MALCOLM
