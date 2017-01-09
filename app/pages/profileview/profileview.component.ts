@@ -17,10 +17,10 @@ import {Subscription} from 'rxjs/Subscription';
           <Label text = {{this.fullName}} row="0" col="1"></Label>
           <Label text = {{this.addresses}} row="1" col="1"></Label>
         </GridLayout>
-<GridLayout rows="auto" columns="auto,auto,auto">
-        <Button text="Edit Profile" (tap)="makeChanges()" height="{{buttonH}}" width="{{buttonW}}" row="0" col="0"></Button>
-<Button text="See Shuttle History" (tap)="seeShuttle()" height="{{buttonH}}" width="{{buttonW}}" row="0" col="1" ></Button>
-<Button text="See Charter History" (tap)="seeCharter()" height="{{buttonH}}" width="{{buttonW}}" row="0" col="2" ></Button>
+<GridLayout rows="auto,auto,auto" columns="auto,auto,auto">
+        <Button text="Edit Profile" (tap)="makeChanges()" height="{{buttonH}}" width="{{buttonW}}" row="0" col="1"></Button>
+<Button text="See Shuttle History" (tap)="seeShuttle()" height="{{buttonH}}" width="{{buttonW}}" row="1" col="1" ></Button>
+<Button text="See Charter History" (tap)="seeCharter()" height="{{buttonH}}" width="{{buttonW}}" row="2" col="1" ></Button>
 </GridLayout>
       </StackLayout>
     </ScrollView>
