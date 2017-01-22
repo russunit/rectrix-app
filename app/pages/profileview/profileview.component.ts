@@ -18,9 +18,9 @@ import {Subscription} from 'rxjs/Subscription';
           <Label text = {{this.addresses}} row="1" col="1"></Label>
         </GridLayout>
 <GridLayout rows="auto,auto,auto" columns="auto,auto,auto">
-        <Button text="Edit Profile" (tap)="makeChanges()" height="{{buttonH}}" width="{{buttonW}}" row="0" col="1"></Button>
-<Button text="See Shuttle History" (tap)="seeShuttle()" height="{{buttonH}}" width="{{buttonW}}" row="1" col="1" ></Button>
-<Button text="See Charter History" (tap)="seeCharter()" height="{{buttonH}}" width="{{buttonW}}" row="2" col="1" ></Button>
+        <Button text="Edit Profile" (tap)="makeChanges()" height="{{buttonH}}" width="{{buttonW}}" class = "triple" row="0" col="1"></Button>
+<Button text="See Shuttle History" (tap)="seeShuttle()" height="{{buttonH}}" width="{{buttonW}}" class="triple" row="1" col="1" ></Button>
+<Button text="See Charter History" (tap)="seeCharter()" height="{{buttonH}}" width="{{buttonW}}" class="triple" row="2" col="1" ></Button>
 </GridLayout>
       </StackLayout>
     </ScrollView>
