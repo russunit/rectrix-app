@@ -1,16 +1,15 @@
 .layout{
-    background-image: url("~/images/shuttle.jpg");
+    background-image: url("~/images/shuttle.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 }
-
+ 
 .form{
     margin-top: 10;
     margin-left: 15;
     margin-right: 15;
-    background-color: #324264;
-    opacity: .80;
+    background-color: #535f78;
     border-radius: 20;
 }
 
@@ -24,7 +23,6 @@
 TextField{
     margin-left: 15;
     margin-right: 15;
-    color:white;
     background-color: white;
 }
 

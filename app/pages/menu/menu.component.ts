@@ -9,18 +9,21 @@ import {Subscription} from 'rxjs/Subscription';
 @Component({
   selector: "menu",
   template: `
-  	<StackLayout>
-  		<button text="Shuttle" (tap)="goShuttle()"></button>
-  		<button text="Charter" (tap)="goCharter()"></button>
-  		<button text="FBO" (tap)="goFbo()"></button>
-  		<button text="MRO" (tap)="goMro()"></button>
-  		<button text="Passport Jet" (tap)="goPassJet()"></button>
-  		<button text="Sign up" (tap)="signUp()" *ngIf="!loggedIn"></button>
-  		<button text="Sign in" (tap)="logIn()" *ngIf="!loggedIn"></button>
-  		<button text="View Profile" (tap)="viewProfile()" *ngIf="loggedIn"></button>
-  		<button text="Sign out" (tap)="logOut()" *ngIf="loggedIn"></button>
+  <ScrollView>
+  	<StackLayout height={{height-140}} class="layout">
+  		<button text="Shuttle" (tap)="goShuttle()" class="navigation"></button>
+  		<button text="Charter" (tap)="goCharter()" class="navigation"></button>
+  		<button text="FBO" (tap)="goFbo()" class="navigation"></button>
+  		<button text="MRO" (tap)="goMro()" class="navigation"></button>
+  		<button text="Passport Jet" (tap)="goPassJet()" class="navigation"></button>
+  		<button text="Sign up" (tap)="signUp()" *ngIf="!loggedIn" class="navigation"></button>
+  		<button text="Sign in" (tap)="logIn()" *ngIf="!loggedIn" class="navigation"></button>
+  		<button text="View Profile" (tap)="viewProfile()" *ngIf="loggedIn" class="navigation"></button>
+  		<button text="Sign out" (tap)="logOut()" *ngIf="loggedIn" class="navigation"></button>
   	</StackLayout>
-  	`
+   </ScrollView>
+  	`,
+	styleUrls: ["pages/menu/menu.css"],
 
 })
 export class MenuComponent implements OnInit
@@ -31,6 +34,10 @@ export class MenuComponent implements OnInit
 
     subscription1:Subscription;
     subscription2:Subscription;
+	
+	platform = require("platform");
+    screen = this.platform.screen;
+    height: number = this.screen.mainScreen.heightDIPs;
 
 	constructor(private router: Router, private location: Location, private currentUserService: CurrentUserService)
 	{}

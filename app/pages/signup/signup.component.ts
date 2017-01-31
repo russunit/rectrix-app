@@ -41,18 +41,14 @@ import { UserService } from "../../shared/user/user.service";
 <TextField secure = "true" [(ngModel)]="user.password"></TextField>
 <Button text="Submit"(tap)="signUp(this.user)"></Button>
 
- </StackLayout>
- </ScrollView>
- </StackLayout>
+</StackLayout>
+</ScrollView>
+</StackLayout>
 
- <div class="loading-overlay" *ngIf="loading">
-    <label text="Please Wait..."></label>
-    <md-progress-bar mode="indeterminate"></md-progress-bar>
- </div>
-
-
-
-
+<div class="loading-overlay" *ngIf="loading">
+   <label text="Please Wait..."></label>
+   <md-progress-bar mode="indeterminate"></md-progress-bar>
+</div>
 `,
 	providers: [UserService],
 })
@@ -67,8 +63,8 @@ export class SignupComponent implements OnInit
 	constructor(private router: Router, private userService: UserService , private currentUserService: CurrentUserService) 
 	{
     	this.user = new User(); 
-	this.user.charterHistory= null;
-      this.user.shuttleHistory= null;
+	    this.user.charterHistory= null;
+        this.user.shuttleHistory= null;
 	}
 
 	ngOnInit()
@@ -83,35 +79,35 @@ export class SignupComponent implements OnInit
 
   	ngOnDestroy() 
   	{
-    
-    this.subscription1.unsubscribe();
+        this.subscription1.unsubscribe();
 	}
 
 	signUp() 
-	{ if(this.user.username.length > 10)
-{
+    {
+        if (this.user.username.length > 10)
+        {
           alert("Cannot create account. Username is too many characters"); 
            this.loading = false; 
-}
-else {
+        }
+        else
+        {
+		    this.loading = true;
 
-		this.loading = true;
+    	    this.userService.register(this.user)
+      	    .subscribe(
+        	    () => {
+          		    alert("Your account was successfully created. Signed in as "+this.user.username+"!"); 
+                    this.currentUserService.changeUser(this.user);
+     			    this.currentUserService.toggleLoggedIn(true);
 
-    	this.userService.register(this.user)
-      	.subscribe(
-        	() => {
-          		alert("Your account was successfully created. Signed in as "+this.user.username+"!"); 
-this.currentUserService.changeUser(this.user);
-     			this.currentUserService.toggleLoggedIn(true);
+          		    this.router.navigate(["/dashboard"]); 
+        	    },
+        	    () => {
+        		    alert("Unfortunately we were unable to create your account.");
+        		    this.loading = false;
+        	    }
+          );
 
-          		this.router.navigate(["/dashboard"]); 
-        	},
-        	() => {
-        		alert("Unfortunately we were unable to create your account.");
-        		this.loading = false;
-        	}
-      );
-
-}
+        }
   	}
 }

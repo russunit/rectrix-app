@@ -26,7 +26,7 @@ export class CurrentUserService
 
 	  public getCurrentUser(): Observable<User>
 	  {
-	  	return this.currentUserSource.asObservable();
+          return this.currentUser$;
 	  }
 
 	  public getLoggedIn(): Observable<boolean>

@@ -12,7 +12,7 @@ import { FboService } from './fbo-service';
             <template let-item="item">
               <label [text]="item.name" class="lines"></label>
             </template>
-      </ListView>
+		</ListView>
   `,
   styleUrls: ["pages/fbo/fbo-common.css"],
   providers: [FboService]

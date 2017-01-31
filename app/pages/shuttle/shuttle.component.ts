@@ -14,7 +14,7 @@ import {Subscription} from 'rxjs/Subscription';
  <StackLayout>
  <ScrollView>
  <StackLayout class="layout">
-	<label text='Shuttle Request' class="title" strokeColor="white"></label>
+	<label text='Shuttle Request' class="title"></label>
 
     <StackLayout class="form">
         <label text='Personal Information' class="detail-label"></label>
@@ -27,10 +27,10 @@ import {Subscription} from 'rxjs/Subscription';
 
 	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.phoneNumber"></TextField>
         <label text='Phone Number' class='field-label'></label>
-
+	
         <label height="1" class="divider"></label>
         <label text='Trip Details' class="detail-label"></label>
-	
+
 	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.tripType"></TextField>
         <label text='Trip Type' class='field-label'></label>
 	
@@ -60,7 +60,7 @@ import {Subscription} from 'rxjs/Subscription';
 	
 	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.numInfants"></TextField>
         <label text='Number of Infants' class='field-label'></label>
-    </StackLayout>	
+     </StackLayout>
 
 	<Button text="Request" width={{buttonW}} height="50" (tap)="sendRequest(this.shuttleRequest)" horizontalAlignment='center'></Button>
 
@@ -81,7 +81,6 @@ export class ShuttleComponent implements OnInit
     height: number = this.screen.mainScreen.heightDIPs;
     width: number = this.screen.mainScreen.widthDIPs;
     buttonW: number = this.width * .6;
-
 
 	user: User;
     loggedIn: boolean;
