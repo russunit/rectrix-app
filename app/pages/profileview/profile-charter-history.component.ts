@@ -8,24 +8,9 @@ import {Subscription} from 'rxjs/Subscription';
 @Component({
   selector: "charterhistory",
   template: `
-    <ScrollView>
-      <StackLayout>
-        <Label text ={{currentUser.username}} class="header" horizontalAlignment="center"></Label> 
-        <GridLayout rows="auto,auto" columns="auto,auto">
-          <Label text ="Name" row="0" col="0" ></Label>
-          <Label text = "Address" row="1" col="0"></Label>
-          <Label text = {{this.fullName}} row="0" col="1"></Label>
-          <Label text = {{this.addresses}} row="1" col="1"></Label>
-        </GridLayout>
-<GridLayout rows="auto,auto,auto" columns="auto,auto,auto">
-        <Button text="Edit Profile" (tap)="makeChanges()" height="{{buttonH}}" width="{{buttonW}}" class = "triple" row="0" col="1"></Button>
-<Button text="See Shuttle History" (tap)="seeShuttle()" height="{{buttonH}}" width="{{buttonW}}" class="triple" row="1" col="1" ></Button>
-<Button text="See Charter History" (tap)="seeCharter()" height="{{buttonH}}" width="{{buttonW}}" class="triple" row="2" col="1" ></Button>
-</GridLayout>
-      </StackLayout>
-    </ScrollView>
+     
 `,
- styleUrls: ["pages/profileview/profileview.component.css"],
+ styleUrls: ["pages/profileview/profile-charter-history.component.css"],
 providers: [UserService],
 })
 
@@ -52,17 +37,7 @@ ngOnInit() {
         
   this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
   this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.currentUser = currentUser );
-  
-  if(!this.loggedIn)
-  {
-      alert("Profile view unavailable. Sign in first.");
-      this.router.navigate(["/login"]);
-  }
-
-  this.addresses = this.currentUser.address + " " + this.currentUser.city + " " + this.currentUser.country + " " + this.currentUser.zip;
-  this.fullName = this.currentUser.firstName + " " + this.currentUser.lastName;
-               
-        
+   
           }  
 
 ngOnDestroy() 
