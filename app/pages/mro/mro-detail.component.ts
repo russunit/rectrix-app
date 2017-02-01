@@ -17,21 +17,12 @@ import repeaterModule = require("ui/repeater");
                 
                 <label text="Services" class="services"></label>
                 <label textwrap="true" text={{mro.servicesDescription}} class="servicesdesc"></label>
-                
-                <Repeater [items]="services" class="serviceslist">
-                    <template let-item="item">
-                      <label textwrap = "true" [text]="item" class="medium-spacing"></label>
-                    </template>
-                </Repeater>
+                <label textwrap="true" text={{mro.services}} class="serviceslist"></label>
                 <label></label>
 
                 <StackLayout class="contactbox">
                     <label text="Contact" class="contact"></label>
-                    <Repeater [items]="contact" class="contactlist">
-                        <template let-item="item">
-                          <label textwrap = "true" [text]="item"></label>
-                        </template>
-                    </Repeater>
+                    <label textwrap="true" text={{mro.contact}} class="contactlist"></label>
                     <label></label>
                 </StackLayout>
 
@@ -45,8 +36,6 @@ export class MroDetailComponent implements OnInit {
     mro: mro;
     id: number;
     private sub: any;
-    services: string[];
-    contact: string[];
 
     constructor(
         private mroService: MroService,
@@ -59,10 +48,6 @@ export class MroDetailComponent implements OnInit {
         this.sub = this.route.params.subscribe(params => {
             this.id = +params['id'];
             this.mro = this.mroService.getMro(this.id);
-            this.services = this.mro.services;
-            this.contact = this.mroService.getContactInfo(this.id);
         });
-
-
     }
 }

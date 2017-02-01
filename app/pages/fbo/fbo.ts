@@ -3,7 +3,7 @@ export class fbo {
     name: string;
     description: string;
     subdescription: string;
-    amenities: string[];
-    services: string[];
-    contact: string[];
+    amenities: string;
+    services: string;
+    contact: string;
 }

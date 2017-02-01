@@ -3,7 +3,7 @@ export class mro {
     name: string;
     description: string;
     subdescription: string;
-    services: string[];
+    services: string;
     servicesDescription: string;
-    contact: string[];
+    contact: string;
 }
