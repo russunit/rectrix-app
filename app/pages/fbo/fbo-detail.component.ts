@@ -17,27 +17,15 @@ import wrapLayoutModule = require("ui/layouts/wrap-layout");
                 <label textwrap="true" text={{fbo.description}} class="desc"></label>
                 
                 <label text="Amenities" class="amenities"></label>
-                <Repeater [items]="amenities" class="amenitieslist">
-                    <template let-item="item">
-                      <label textwrap="true" [text]="item" class="medium-spacing"></label>
-                    </template>
-                </Repeater>
+                <label textwrap="true" text={{fbo.amenities}} class="amenitieslist"></label>
                 
                 <label text="Services" class="services"></label>
-                <Repeater [items]="services" class="serviceslist">
-                    <template let-item="item">
-                      <label textwrap="true" [text]="item" class="medium-spacing"></label>
-                    </template>
-                </Repeater>
+                <label textwrap="true" text={{fbo.services}} class="serviceslist"></label>
                 <label></label>
 
                 <StackLayout class="contactbox">
                     <label text="Contact" class="contact"></label>
-                    <Repeater [items]="contact" class="contactlist">
-                        <template let-item="item">
-                          <label textwrap="true" [text]="item" class="medium-spacing"></label>
-                        </template>
-                    </Repeater>
+                    <label textwrap="true" text={{fbo.contact}} class="contactlist"></label>
                     <label></label>
                 </StackLayout>
 
@@ -51,9 +39,6 @@ export class FboDetailComponent implements OnInit{
 	fbo: fbo;
     id: number;
     private sub: any;
-    amenities: string[];
-    services: string[];
-    contact: string[];
 
     platform = require("platform");
     screen = this.platform.screen;
@@ -75,9 +60,6 @@ export class FboDetailComponent implements OnInit{
       this.sub = this.route.params.subscribe(params => {
           this.id = +params['id']; 
           this.fbo = this.fboService.getFbo(this.id);
-          this.amenities = this.fboService.getAmenities(this.id);
-          this.services = this.fboService.getServices(this.id);
-          this.contact = this.fboService.getContactInfo(this.id);
       });
 
   }
