@@ -4,7 +4,7 @@ import { UserService } from "../../shared/user/user.service";
 import { CurrentUserService } from "../../shared/current-user/current-user.service";
 import { Router } from "@angular/router";
 import {Subscription} from 'rxjs/Subscription';
-
+import { CharterRequest } from "../../shared/charter-request/charter-request.ts";
 @Component({
   selector: "charterhistory",
   template: `
@@ -16,11 +16,10 @@ providers: [UserService],
 
 export class ProfileCharterHistoryComponent implements OnInit {
 currentUser: User;
- 
+ charterList: CharterRequest[];
    
-    addresses: string;
-    loggedIn: boolean;
-    fullName: string; 
+     
+    loggedIn: boolean; 
     subscription1:Subscription;
     subscription2:Subscription;
 
@@ -37,7 +36,7 @@ ngOnInit() {
         
   this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
   this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.currentUser = currentUser );
-   
+   this.charterList = this.currentUser.charterHistory;
           }  
 
 ngOnDestroy() 
@@ -48,8 +47,8 @@ ngOnDestroy()
 
 
     }
-seeDetails()
+seeDetails(args)
 {
-   this.router.navigate(["/charterdetails"]);
+   this.router.navigate(["/charterdetails"],args.index);
 }
 }

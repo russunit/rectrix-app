@@ -4,7 +4,7 @@ import { UserService } from "../../shared/user/user.service";
 import { CurrentUserService } from "../../shared/current-user/current-user.service";
 import { Router } from "@angular/router";
 import {Subscription} from 'rxjs/Subscription';
-
+import { ShuttleRequest } from "../../shared/shuttle-request/shuttle-request.ts";
 @Component({
   selector: "shuttlehistory",
   template: ` 
@@ -15,11 +15,8 @@ providers: [UserService],
 
 export class ProfileShuttleHistoryComponent implements OnInit {
 currentUser: User;
- 
-    loggedIn: boolean;
-    addresses: string;
-
-    fullName: string; 
+shuttleList: ShuttleRequest[]; 
+    loggedIn: boolean; 
     subscription1:Subscription;
     subscription2:Subscription;
 
@@ -41,10 +38,8 @@ ngOnInit() {
   {
       alert("Profile view unavailable. Sign in first.");
       this.router.navigate(["/login"]);
-  }
-
-  this.addresses = this.currentUser.address + " " + this.currentUser.city + " " + this.currentUser.country + " " + this.currentUser.zip;
-  this.fullName = this.currentUser.firstName + " " + this.currentUser.lastName;
+  } 
+this.shuttleList = this.currentUser.shuttleHistory;
                
         
           }  
@@ -57,9 +52,8 @@ ngOnDestroy()
 
 
     }
-seeDetails()
+seeDetails(args)
 {
-   this.router.navigate(["/shuttledetails"]);
+   this.router.navigate(["/shuttledetails"],args.index);
 }
 }
-{}

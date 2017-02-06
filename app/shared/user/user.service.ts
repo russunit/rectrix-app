@@ -6,6 +6,8 @@ import "rxjs/add/operator/map";
 
 import { User } from './user'
 import { Config } from "../config";
+import { CharterRequest } from "../charter-request/charter-request";
+import { ShuttleRequest } from "../shuttle-request/shuttle-request";
 
 
 @Injectable()
@@ -149,4 +151,11 @@ return this.USERS.find(user => user.username == username).zip;
 getPassword(username: string): string {
 return this.USERS.find(user => user.username == username).password;
 }
+getCharterHistory(username: string): Array<CharterRequest> {
+return this.USERS.find(user => user.username == username).charterHistory;
+}
+getShuttleHistory(username: string): Array<ShuttleRequest> {
+return this.USERS.find(user => user.username == username).shuttleHistory;
+}
+
 }
