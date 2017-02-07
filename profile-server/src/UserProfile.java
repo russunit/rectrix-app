@@ -25,8 +25,8 @@ public class UserProfile
 	private void setPassword(String s){password = s;}
 	private void setEmail(String s){email = s;}
 	
-	private void addCharterRequest(CharterRequest c){charterHistory.add(c);}
-	private void addShuttleRequest(ShuttleRequest s){shuttleHistory.add(s);}
+	public void addCharterRequest(CharterRequest c){charterHistory.add(c);}
+	public void addShuttleRequest(ShuttleRequest s){shuttleHistory.add(s);}
 	
 	public String getFirstName(){return firstName;}
 	public String getLastName(){return lastName;}
