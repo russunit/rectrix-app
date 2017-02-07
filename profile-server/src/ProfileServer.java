@@ -29,7 +29,7 @@ public class ProfileServer
 	
 	public String getIdFromUsernamePassword(String name, String pass)
 	{
-		//returns the ID of the profile with the username name and the password pass.
+		//returns the ID of the profile with the username name and the password pass, or ""
 		UserProfile theProfile = null;
 		Collection<UserProfile> profileCollection = profiles.values();
 		ArrayList<UserProfile> profileList = new ArrayList<UserProfile>(profileCollection);
@@ -41,6 +41,17 @@ public class ProfileServer
 		
 		for (Entry<String, UserProfile> entry : profiles.entrySet()) {
 	        if (Objects.equals(theProfile, entry.getValue())) {
+	            return entry.getKey();
+	        }
+	    }
+		return "";
+	}
+	
+	public String getIdFromProfile(UserProfile u)
+	{
+		//returns the uuid of the matching profile, or ""
+		for (Entry<String, UserProfile> entry : profiles.entrySet()) {
+	        if (Objects.equals(u, entry.getValue())) {
 	            return entry.getKey();
 	        }
 	    }
@@ -77,10 +88,16 @@ public class ProfileServer
 		
 	}
 	
+	private void updateUserProfile(UserProfile u)
+	{
+		//update the user profile with the argument's matching name and password.
+		String id = getIdFromProfile(u);
+		profiles.put(id, u);
+	}
+	
 	private void updateUserProfileFromString(String s)
 	{
-		//TODO, updates the user profile from a string with the profile info
-		
+		//updates the user profile from a string with the profile info
 	}
 	
 	public UserProfile getUserProfileById(String id)
