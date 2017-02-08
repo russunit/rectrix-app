@@ -186,6 +186,9 @@ public class ProfileDB
 	
 	public void saveToFile()
 	{
+		if(profiles.isEmpty())
+			return;
+		
 		//saves the data to file
 		String data = "";
 		
@@ -228,7 +231,7 @@ public class ProfileDB
 			
 			
 			//System.out.println(entireFileText);///////////////////////////////
-			String fileString = entireFileText;//pull string from db.ckbk
+			String fileString = entireFileText;//pull string from profile.db
 			
 			StringTokenizer t = new StringTokenizer(fileString, "#");
 			while(t.hasMoreTokens()){
@@ -237,18 +240,19 @@ public class ProfileDB
 		}
 		catch (FileNotFoundException e){
 			System.out.println("FILE NOT FOUND");
-			e.printStackTrace();
+			//e.printStackTrace();
 			
 		}
 		catch (NoSuchElementException e){
-			System.out.println("EMPTY FILE.");
-			e.printStackTrace();
+			System.out.println("EMPTY FILE");
+			//e.printStackTrace();
 		}
 		
 	}
 	
 	public ProfileDB()
 	{
+		profiles = new HashMap<String, UserProfile>();
 		loadFromFile();
 	}
 	
