@@ -56,19 +56,19 @@ public class ProfileDBTester
 					listprofiles();
 					break;
 				case "addcharter":
-					//addcharter();
+					addcharter();
 					break;
 				case "addshuttle":
-					//addshuttle();
+					addshuttle();
 					break;
 				case "viewprofile":
 					viewprofile();
 					break;
 				case "viewcharter":
-					//viewcharter();
+					viewcharter();
 					break;
 				case "viewshuttle":
-					//viewshuttle();
+					viewshuttle();
 					break;
 
 				case "clearscreen":
@@ -234,6 +234,61 @@ public class ProfileDBTester
 			printStr(profileDB.getProfiles().get(x).getUserName() + "\n");
 	}
 	
+	public void addcharter()
+	{
+		listprofiles();
+		String choice = cleanInput("add charter to which profile?");
+		for (int x = 0; x < profileDB.getProfiles().size(); x++)
+			if(profileDB.getProfiles().get(x).getUserName().equals(choice))
+			{
+				String f; String l; String ph; String t; String dl; String dd; 
+				String dt; String al; String ad; String at; String r; String pr;
+				f = cleanInput("firstname?");
+				l = cleanInput("lastname?");
+				ph = cleanInput("phone?");
+				t = cleanInput("trip type?");
+				dl = cleanInput("depart location?");
+				dd = cleanInput("depart date?");
+				dt = cleanInput("depart time?");
+				al = cleanInput("arrive location?");
+				ad = cleanInput("arrive date?");
+				at = cleanInput("arrive time?");
+				r = cleanInput("requirements?");
+				pr = cleanInput("preferred craft?");
+				profileDB.getProfiles().get(x).addCharterRequest(
+						new CharterRequest(f,l,ph,t,dl,dd,dt,al,ad,at,r,pr));
+				printStr("charter request added.");
+			}
+	}
+	
+	public void addshuttle()
+	{
+		listprofiles();
+		String choice = cleanInput("add shuttle to which profile?");
+		for (int x = 0; x < profileDB.getProfiles().size(); x++)
+			if(profileDB.getProfiles().get(x).getUserName().equals(choice))
+			{
+				String f; String l; String ph; String t; String dl; String dd; 
+				String dt; String al; String ad; String at; int na; int nc; int ni;
+				f = cleanInput("firstname?");
+				l = cleanInput("lastname?");
+				ph = cleanInput("phone?");
+				t = cleanInput("trip type?");
+				dl = cleanInput("depart location?");
+				dd = cleanInput("depart date?");
+				dt = cleanInput("depart time?");
+				al = cleanInput("arrive location?");
+				ad = cleanInput("arrive date?");
+				at = cleanInput("arrive time?");
+				na = (int) cleanInputNum("number adults?");
+				nc = (int) cleanInputNum("number children?");
+				ni = (int) cleanInputNum("number infants?");
+				profileDB.getProfiles().get(x).addShuttleRequest(
+						new ShuttleRequest(f,l,ph,t,dl,dd,dt,al,ad,at,na,nc,ni));
+				printStr("shuttle request added.");
+			}
+	}
+	
 	public void viewprofile()
 	{
 		listprofiles();
@@ -250,5 +305,53 @@ public class ProfileDBTester
 				printStr("\n" + view.getPassword());
 			}
 	}
+	
+	public void viewcharter()
+	{
+		listprofiles();
+		String choice = cleanInput("charter history of which profile?");
+		for (int x = 0; x < profileDB.getProfiles().size(); x++)
+			if(profileDB.getProfiles().get(x).getUserName().equals(choice))
+			{
+				for(int y = 0; y < profileDB.getProfiles().get(x).getCharterHistory().size(); y++)
+				{
+					CharterRequest view = profileDB.getProfiles().get(x).getCharterHistory().get(y);
+					printStr("DEPART:\n");
+					printStr(view.getDepartLocation() + " " + view.getDepartDate() + " ");
+					printStr(view.getDepartTime()+ "\n");
+					printStr("ARRIVE:\n");
+					printStr(view.getArriveLocation() + " " + view.getArriveDate() + " ");
+					printStr(view.getArriveTime()+ "\n");
+					printStr("REQ: " + view.getRequirements() + "\n");
+					printStr("CRAFT: " + view.getPreferredCraft() + "\n\n");
+
+				}
+			}
+	}
+	
+	public void viewshuttle()
+	{
+		listprofiles();
+		String choice = cleanInput("shuttle history of which profile?");
+		for (int x = 0; x < profileDB.getProfiles().size(); x++)
+			if(profileDB.getProfiles().get(x).getUserName().equals(choice))
+			{
+				for(int y = 0; y < profileDB.getProfiles().get(x).getShuttleHistory().size(); y++)
+				{
+					ShuttleRequest view = profileDB.getProfiles().get(x).getShuttleHistory().get(y);
+					printStr("DEPART:\n");
+					printStr(view.getDepartLocation() + " " + view.getDepartDate() + " ");
+					printStr(view.getDepartTime()+ "\n");
+					printStr("ARRIVE:\n");
+					printStr(view.getArriveLocation() + " " + view.getArriveDate() + " ");
+					printStr(view.getArriveTime()+ "\n");
+					printStr("ADULTS: " + view.getNumAdults() + "\n");
+					printStr("CHILDREN: " + view.getNumChildren() + "\n");
+					printStr("INFANTS: " + view.getNumInfants() + "\n\n");
+
+				}
+			}
+	}
+	
 	
 }//end class

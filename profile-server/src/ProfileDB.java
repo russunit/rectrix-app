@@ -48,46 +48,6 @@ public class ProfileDB
 		return true;
 	}
 	
-	/*
-	public String getIdFromUsernamePassword(String name, String pass)
-	{
-		//returns the ID of the profile with the username name and the password pass, or ""
-		
-		for(int x = 0; x < profiles.size(); x++)
-		{
-			if(profiles.get(x).getUserName().equals(name) && profiles.get(x).getPassword().equals(pass))
-				return profiles.get(x).getId();
-		}
-		return "";
-		UserProfile theProfile = null;
-		Collection<UserProfile> profileCollection = profiles.values();
-		ArrayList<UserProfile> profileList = new ArrayList<UserProfile>(profileCollection);
-		for(int x = 0; x < profileList.size(); x ++)
-		{
-			if(profileList.get(x).getUserName() == name && profileList.get(x).getPassword() == pass)
-				theProfile = profileList.get(x);
-		}
-		
-		for (Entry<String, UserProfile> entry : profiles.entrySet()) {
-	        if (Objects.equals(theProfile, entry.getValue())) {
-	            return entry.getKey();
-	        }
-	    }
-		return "";
-	}
-	*/
-	
-	/*
-	public String getIdFromProfile(UserProfile u)
-	{
-		//returns the uuid of the matching profile, from username and password, or ""
-		
-		String un = u.getUserName();
-		String pw = u.getPassword();
-		return getIdFromUsernamePassword(un, pw);
-	}
-	*/
-	
 	public UserProfile userProfileFromString(String s)
 	{
 		//returns a user profile from a String containing all the necessary info
@@ -274,8 +234,6 @@ public class ProfileDB
 		try{
 			String entireFileText = new Scanner(new File("profile.db")).next();
 			
-			
-			//System.out.println(entireFileText);///////////////////////////////
 			String fileString = entireFileText;//pull string from profile.db
 			
 			StringTokenizer t = new StringTokenizer(fileString, "#");
