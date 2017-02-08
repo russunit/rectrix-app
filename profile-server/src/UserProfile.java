@@ -14,16 +14,18 @@ public class UserProfile
 	private String email;
 	private ArrayList<CharterRequest> charterHistory;
 	private ArrayList<ShuttleRequest> shuttleHistory;
+	private String id;
 	
-	private void setFirstName(String s) {firstName = s;}
-	private void setLastName(String s){lastName = s;}
-	private void setAddress(String s){address = s;}
-	private void setCity(String s){city = s;}
-	private void setCountry(String s){country = s;}
-	private void setZip(String s){zip = s;}
-	private void setUserName(String s){zip = s;}
-	private void setPassword(String s){password = s;}
-	private void setEmail(String s){email = s;}
+	public void setFirstName(String s) {firstName = s;}
+	public void setLastName(String s){lastName = s;}
+	public void setAddress(String s){address = s;}
+	public void setCity(String s){city = s;}
+	public void setCountry(String s){country = s;}
+	public void setZip(String s){zip = s;}
+	public void setUserName(String s){userName = s;}
+	public void setPassword(String s){password = s;}
+	public void setEmail(String s){email = s;}
+	public void setId(String s){id = s;}
 	
 	public void addCharterRequest(CharterRequest c){charterHistory.add(c);}
 	public void addShuttleRequest(ShuttleRequest s){shuttleHistory.add(s);}
@@ -37,6 +39,7 @@ public class UserProfile
 	public String getUserName(){return userName;}
 	public String getPassword(){return password;}//careful... make private?
 	public String getEmail(){return email;}
+	public String getId(){return id;}
 	
 	public ArrayList<CharterRequest> getCharterHistory(){return charterHistory;}
 	public ArrayList<ShuttleRequest> getShuttleHistory(){return shuttleHistory;}
