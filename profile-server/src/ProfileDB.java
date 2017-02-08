@@ -1,9 +1,16 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
 import java.util.StringTokenizer;
 import java.util.Map.Entry;
 import java.util.Objects;
@@ -56,9 +63,9 @@ public class ProfileDB
 		return "";
 	}
 	
-	private void addUserProfileFromString(String s)
+	private UserProfile userProfileFromString(String s)
 	{
-		//adds a user profile from a String containing all the necessary info
+		//returns a user profile from a String containing all the necessary info
 		StringTokenizer t = new StringTokenizer(s, "$");
 		/*public UserProfile(String f, String l, String a, String ci, String co, String z, String u, String p, String e)*/
 		UserProfile profile = new UserProfile(t.nextToken(), t.nextToken(), 
@@ -84,6 +91,13 @@ public class ProfileDB
 					Integer.parseInt(t.nextToken())));
 		}
 		
+		return profile;
+	}
+	
+	private void addUserProfileFromString(String s)
+	{
+		//adds a user profile from a String containing all the necessary info
+		addUserProfile(userProfileFromString(s));
 	}
 	
 	private void updateUserProfile(UserProfile u)
@@ -95,7 +109,7 @@ public class ProfileDB
 	
 	private void updateUserProfileFromString(String s)
 	{
-		//updates the user profile from a string with the profile info
+		updateUserProfile(userProfileFromString(s));
 	}
 	
 	public UserProfile getUserProfileById(String id)
@@ -104,14 +118,12 @@ public class ProfileDB
 		return profiles.get(id);
 	}
 	
-	private String profileToStringFromId(String id)
+	private String profileToString(UserProfile userProfile)
 	{
 		//returns a String containing all the profile info
-		
-		UserProfile userProfile = getUserProfileById(id);
 		int charterHistorySize = userProfile.getCharterHistory().size();
 		int shuttleHistorySize = userProfile.getShuttleHistory().size();
-
+		
 		String outString = "";
 		outString += userProfile.getFirstName() + "$";
 		outString += userProfile.getLastName() + "$";
@@ -159,6 +171,85 @@ public class ProfileDB
 		}
 		
 		return outString;
+	}
+	
+	private String profileToStringFromId(String id)
+	{
+		//returns a String containing all the profile info
+		
+		UserProfile userProfile = getUserProfileById(id);
+		int charterHistorySize = userProfile.getCharterHistory().size();
+		int shuttleHistorySize = userProfile.getShuttleHistory().size();
+
+		return profileToString(userProfile);
+	}
+	
+	public void saveToFile()
+	{
+		//saves the data to file
+		String data = "";
+		
+		for (Entry<String, UserProfile> entry : profiles.entrySet())
+		{
+			data += entry.getKey() + "#";
+			data += profileToString(entry.getValue()) + "#";
+		}
+		
+		File logFile =new File("profile.db");
+		
+		try{
+			if(!logFile.exists()){
+				logFile.createNewFile();
+			}
+			
+			PrintWriter writer = new PrintWriter(logFile);
+			writer.print("");
+			writer.close();
+			//clears contents of file
+			//http://stackoverflow.com/questions/6994518/how-to-delete-the-content-of-text-file-without-deleting-itself
+			
+				
+				FileWriter logWriter = new FileWriter(logFile.getName(),true);
+		        BufferedWriter buff = new BufferedWriter(logWriter);
+		        buff.write(data);
+		        buff.close();
+		}
+		catch(IOException e){
+			System.out.println(e.getStackTrace());
+		}
+		
+	}
+	
+	public void loadFromFile()
+	{
+		//loads data from file
+		try{
+			String entireFileText = new Scanner(new File("profile.db")).next();
+			
+			
+			//System.out.println(entireFileText);///////////////////////////////
+			String fileString = entireFileText;//pull string from db.ckbk
+			
+			StringTokenizer t = new StringTokenizer(fileString, "#");
+			while(t.hasMoreTokens()){
+				profiles.put(t.nextToken(), userProfileFromString(t.nextToken()));
+			}
+		}
+		catch (FileNotFoundException e){
+			System.out.println("FILE NOT FOUND");
+			e.printStackTrace();
+			
+		}
+		catch (NoSuchElementException e){
+			System.out.println("EMPTY FILE.");
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public ProfileDB()
+	{
+		loadFromFile();
 	}
 	
 	
