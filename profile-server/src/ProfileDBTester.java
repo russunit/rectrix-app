@@ -202,10 +202,6 @@ public class ProfileDBTester
 				case "zip":
 					newProfile.setZip(cleanInput("?"));
 					break;
-				case "username":
-					newProfile.setUserName(cleanInput("?"));
-					System.out.println("TEST:" + newProfile.getUserName());
-					break;
 				case "password":
 					newProfile.setPassword(cleanInput("?"));
 					break;

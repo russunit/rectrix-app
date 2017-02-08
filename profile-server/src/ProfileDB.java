@@ -22,41 +22,33 @@ public class ProfileDB
 {
 	//private HashMap<String, UserProfile> profiles;
 	private ArrayList<UserProfile> profiles;
-	//each profile is assigned a random uuid string for a unique id.
 	
 	public ArrayList<UserProfile> getProfiles()
 	{
 		return profiles;
 	}
 	
-	public void addUserProfile(UserProfile up)
+	public boolean addUserProfile(UserProfile up)
 	{
-		//generates a random uuid, checks to make sure it is unique, then adds the profile to the map
+		//returns false if username is taken. username cannot be changed
 		boolean repeat = true;
-		String uuid = UUID.randomUUID().toString();
+		String userName = up.getUserName();
 		while(repeat)
 		{
 			repeat = false;
 			for(int x = 0; x < profiles.size(); x++)
 			{
-				if(uuid.equals(profiles.get(x).getId()))
+				if(userName.equals(profiles.get(x).getUserName()))
 				{
-					repeat = true;
-					uuid = UUID.randomUUID().toString();
+					return false;
 				}
 			}
 		}
-		//while(profiles.containsKey(uuid))
-		//	uuid = UUID.randomUUID().toString();
-		up.setId(uuid);
 		profiles.add(up);
+		return true;
 	}
 	
-	public void addUserProfileWithId(UserProfile up)
-	{
-		profiles.add(up);
-	}
-	
+	/*
 	public String getIdFromUsernamePassword(String name, String pass)
 	{
 		//returns the ID of the profile with the username name and the password pass, or ""
@@ -67,7 +59,6 @@ public class ProfileDB
 				return profiles.get(x).getId();
 		}
 		return "";
-		/*
 		UserProfile theProfile = null;
 		Collection<UserProfile> profileCollection = profiles.values();
 		ArrayList<UserProfile> profileList = new ArrayList<UserProfile>(profileCollection);
@@ -83,9 +74,10 @@ public class ProfileDB
 	        }
 	    }
 		return "";
-		*/
 	}
+	*/
 	
+	/*
 	public String getIdFromProfile(UserProfile u)
 	{
 		//returns the uuid of the matching profile, from username and password, or ""
@@ -93,18 +85,8 @@ public class ProfileDB
 		String un = u.getUserName();
 		String pw = u.getPassword();
 		return getIdFromUsernamePassword(un, pw);
-		
-		
-		
-		/*
-		for (Entry<String, UserProfile> entry : profiles.entrySet()) {
-	        if (Objects.equals(u.getId(), entry.getValue().getId())) {
-	            return entry.getKey();
-	        }
-	    }
-		return "";
-		*/
 	}
+	*/
 	
 	public UserProfile userProfileFromString(String s)
 	{
@@ -145,10 +127,10 @@ public class ProfileDB
 	
 	public void updateUserProfile(UserProfile u)
 	{
-		//update the user profile with the argument's matching id
+		//update the user profile with the argument's matching username
 		for(int x = 0; x < profiles.size(); x++)
 		{
-			if(profiles.get(x).getId().equals(u.getId()))
+			if(profiles.get(x).getUserName().equals(u.getUserName()))
 			{
 				profiles.remove(x);
 				profiles.add(u);
@@ -165,7 +147,7 @@ public class ProfileDB
 	{
 		for(int x = 0; x < profiles.size(); x++)
 		{
-			if(profiles.get(x).getId().equals(u.getId()))
+			if(profiles.get(x).getUserName().equals(u.getUserName()))
 			{
 				profiles.remove(x);
 			}
@@ -177,12 +159,12 @@ public class ProfileDB
 		removeUserProfile(userProfileFromString(s));
 	}
 	
-	public UserProfile getUserProfileById(String id)
+	public UserProfile getUserProfileByUserName(String un)
 	{
-		//returns the user profile with the appropriate id
+		//returns the user profile with the appropriate username
 		for(int x = 0; x < profiles.size(); x++)
 		{
-			if(profiles.get(x).getId().equals(id))
+			if(profiles.get(x).getUserName().equals(un))
 				return profiles.get(x);
 		}
 		return null;
@@ -243,10 +225,10 @@ public class ProfileDB
 		return outString;
 	}
 	
-	public String profileToStringFromId(String id)
+	public String profileToStringFromUserName(String un)
 	{
 		//returns a String containing all the profile info
-				UserProfile userProfile = getUserProfileById(id);
+				UserProfile userProfile = getUserProfileByUserName(un);
 		return profileToString(userProfile);
 	}
 	
@@ -259,10 +241,7 @@ public class ProfileDB
 		String data = "";
 		
 		for (int x = 0; x < profiles.size(); x++)
-		{
-			data += profiles.get(x).getId() + "#";
 			data += profileToString(profiles.get(x)) + "#";
-		}
 		
 		File logFile =new File("profile.db");
 		
@@ -301,10 +280,8 @@ public class ProfileDB
 			
 			StringTokenizer t = new StringTokenizer(fileString, "#");
 			while(t.hasMoreTokens()){
-				String id = t.nextToken();
 				UserProfile up = userProfileFromString(t.nextToken());
-				up.setId(id);
-				addUserProfileWithId(up);
+				addUserProfile(up);
 			}
 		}
 		catch (FileNotFoundException e){
