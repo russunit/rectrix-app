@@ -61,6 +61,68 @@ export class UserService {
     return Observable.throw(error);
   }
 
+
+  //converts whole profile to string for our http server
+  userProfileToString(user: User) 
+  {
+    charterHistorySize: number;
+    shuttleHistorySize: number;
+    outString: string;
+
+    charterHistorySize = user.charterHistory().size();
+    shuttleHistorySize = user.shuttleHistory().size();
+    outString = "";
+
+    outString += user.firstName + "$";
+    outString += user.lastName + "$";
+    outString += user.address + "$";
+    outString += user.city + "$";
+    outString += user.country + "$";
+    outString += user.zip + "$";
+    outString += user.username + "$";
+    outString += user.password + "$";
+    outString += user.email + "$";
+    
+    outString += charterHistorySize + "$";
+    for(int x = 0; x < charterHistorySize; x++)
+    {
+      outString += user.charterHistory.get(x).firstName + "$";
+      outString += user.charterHistory.get(x).lastName + "$";
+      outString += user.charterHistory.get(x).phoneNumber + "$";
+      outString += user.charterHistory.get(x).tripType + "$";
+      outString += user.charterHistory.get(x).departLocation + "$";
+      outString += user.charterHistory.get(x).departDate + "$";
+      outString += user.charterHistory.get(x).departTime + "$";
+      outString += user.charterHistory.get(x).arriveLocation + "$";
+      outString += user.charterHistory.get(x).arriveDate + "$";
+      outString += user.charterHistory.get(x).arriveTime + "$";
+      outString += user.charterHistory.get(x).requirements + "$";
+      outString += user.charterHistory.get(x).preferredCraft + "$";
+    }
+
+    outString += shuttleHistorySize + "$";
+    for(int x = 0; x < shuttleHistorySize; x++)
+    {
+      outString += user.shuttleHistory.get(x).firstName + "$";
+      outString += user.shuttleHistory.get(x).lastName + "$";
+      outString += user.shuttleHistory.get(x).phoneNumber + "$";
+      outString += user.shuttleHistory.get(x).tripType + "$";
+      outString += user.shuttleHistory.get(x).departLocation + "$";
+      outString += user.shuttleHistory.get(x).departDate + "$";
+      outString += user.shuttleHistory.get(x).departTime + "$";
+      outString += user.shuttleHistory.get(x).arriveLocation + "$";
+      outString += user.shuttleHistory.get(x).arriveDate + "$";
+      outString += user.shuttleHistory.get(x).arriveTime + "$";
+      outString += user.shuttleHistory.get(x).numAdults + "$";
+      outString += user.shuttleHistory.get(x).numChildren + "$";
+      outString += user.shuttleHistory.get(x).numInfants + "$";
+    }
+    
+    return outString;
+}
+
+
+
 //empty user placeholder
 nullUser: User = {
 	firstName: "",
