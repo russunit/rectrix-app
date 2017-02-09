@@ -8,7 +8,16 @@ import { CharterRequest } from "../../shared/charter-request/charter-request.ts"
 @Component({
   selector: "charterhistory",
   template: `
-     
+     <ScrollView>
+<ListView [items]="shuttleList">
+<template let-item="item">
+<StackLayout>
+<Label text="{{item.departLocation+'-'+item.arriveLocation+ ' ' + item.departDate}}" ></Label>
+<Button text="Submit"(tap)="seeDetails()"></Button>
+</StackLayout>
+</template>
+</ListView>
+</ScrollView>  
 `,
  styleUrls: ["pages/profileview/profile-charter-history.component.css"],
 providers: [UserService],
