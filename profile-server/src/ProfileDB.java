@@ -22,6 +22,7 @@ public class ProfileDB
 {
 	//private HashMap<String, UserProfile> profiles;
 	private ArrayList<UserProfile> profiles;
+	private ArrayList<String> loggedInUserNames;
 	
 	public ArrayList<UserProfile> getProfiles()
 	{
