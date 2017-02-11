@@ -51,7 +51,8 @@ public class ProfileServer
 				String httpResponse = "HTTP/1.1 200 OK\r\n\r\n" + line;
 				while(!line.isEmpty())
 				{
-					clientSocket.getOutputStream().write(line.getBytes("UTF-8"));
+					//clientSocket.getOutputStream().write(line.getBytes("UTF-8"));
+					System.out.println(line);
 					line = reader.readLine();
 					httpResponse = "HTTP/1.1 200 OK\r\n\r\n" + line;
 				}

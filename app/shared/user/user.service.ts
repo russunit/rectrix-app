@@ -11,11 +11,16 @@ import { ShuttleRequest } from "../shuttle-request/shuttle-request";
 
 
 @Injectable()
-export class UserService {
+export class UserService 
+{
 
   charterHistorySize: number;
   shuttleHistorySize: number;
   outString: string;
+  stringArray: Array<string>;
+  newUser: User;
+  newCharter: CharterRequest;
+  newShuttle: ShuttleRequest;
 
 
 	constructor(private http: Http) {}
@@ -60,12 +65,39 @@ export class UserService {
       Config.token = data.Result.access_token;
     })
     .catch(this.handleErrors);
+
   }
 
   handleErrors(error: Response) {
     console.log(JSON.stringify(error.json()));
     return Observable.throw(error);
   }
+
+  //TESTING...
+  TESTlogin(user: User) 
+  {
+    let headers = new Headers();
+    headers.append("Content-type", "application/json");
+
+    return this.http.post("http://192.168.0.16:7777", 
+    JSON.stringify({
+        username: user.username,
+        password: user.password,
+        grant_type: "password"
+      }),
+      { headers: headers }
+    )
+    .map(response => response.json())
+    .do(data => {
+      Config.token = data.Result.access_token;
+    })
+    .catch(this.handleErrors);
+
+
+  }
+
+
+
 
 
   //converts whole profile to string for our http server
@@ -122,6 +154,83 @@ export class UserService {
     
     return this.outString;
 }
+
+//converts the string from the server to a user object
+stringToUserProfile(str: string)
+{
+  ///*public UserProfile(String f, String l, String a, String ci, String co, String z, String u, String p, String e)*/
+  this.stringArray = str.split("$");
+  var strArray = this.stringArray[Symbol.iterator]();
+  this.newUser.firstName = strArray.next().value;
+  this.newUser.lastName = strArray.next().value;
+  this.newUser.address = strArray.next().value;
+  this.newUser.city = strArray.next().value;
+  this.newUser.country = strArray.next().value;
+  this.newUser.zip = strArray.next().value;
+  this.newUser.username = strArray.next().value;
+  this.newUser.password = strArray.next().value;
+  this.newUser.email = strArray.next().value;
+
+  for (var x = 0; x < Number(strArray.next().value); x++)
+  {
+    //String f, String l, String ph, String t, String dl, String dd, String dt, String al, String ad, String at, String r, String pr
+    this.newCharter = new CharterRequest();
+
+    this.newCharter.firstName = strArray.next().value;
+    this.newCharter.lastName = strArray.next().value;
+    this.newCharter.phoneNumber = strArray.next().value;
+    this.newCharter.tripType = strArray.next().value;
+    this.newCharter.departLocation = strArray.next().value;
+    this.newCharter.departDate = strArray.next().value;
+    this.newCharter.departTime = strArray.next().value;
+    this.newCharter.arriveLocation = strArray.next().value;
+    this.newCharter.arriveDate = strArray.next().value;
+    this.newCharter.arriveTime = strArray.next().value;
+    this.newCharter.requirements = strArray.next().value;
+    this.newCharter.preferredCraft = strArray.next().value;
+
+    this.newUser.charterHistory.push(this.newCharter);
+  }
+
+  for(var y = 0; y < Number(strArray.next().value); y++)
+  {
+    //String f, String l, String ph, String t, String dl, String dd, String dt, String al, String ad, String at, int na, int nc, int ni
+    this.newShuttle = new ShuttleRequest();
+
+    this.newShuttle.firstName = strArray.next().value;
+    this.newShuttle.lastName = strArray.next().value;
+    this.newShuttle.phoneNumber = strArray.next().value;
+    this.newShuttle.tripType = strArray.next().value;
+    this.newShuttle.departLocation = strArray.next().value;
+    this.newShuttle.departDate = strArray.next().value;
+    this.newShuttle.departTime = strArray.next().value;
+    this.newShuttle.arriveLocation = strArray.next().value;
+    this.newShuttle.arriveDate = strArray.next().value;
+    this.newShuttle.arriveTime = strArray.next().value;
+    this.newShuttle.numAdults = Number(strArray.next().value);
+    this.newShuttle.numChildren = Number(strArray.next().value);
+    this.newShuttle.numInfants = Number(strArray.next().value);
+
+    this.newUser.shuttleHistory.push(this.newShuttle);
+  }
+
+  return this.newUser;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
