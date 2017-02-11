@@ -53,7 +53,6 @@ public class ProfileDB
 	{
 		//returns a user profile from a String containing all the necessary info
 		StringTokenizer t = new StringTokenizer(s, "$");
-		/*public UserProfile(String f, String l, String a, String ci, String co, String z, String u, String p, String e)*/
 		UserProfile profile = new UserProfile(t.nextToken(), t.nextToken(), 
 				t.nextToken(), t.nextToken(), t.nextToken(), t.nextToken(), 
 				t.nextToken(), t.nextToken(), t.nextToken());

@@ -73,20 +73,16 @@ export class UserService
     return Observable.throw(error);
   }
 
-  //TESTING...
-  TESTlogin(user: User) 
+  //TESTING... talks to my java server but the server can't read the payload
+  TEST_login(user: User) 
   {
     let headers = new Headers();
     headers.append("Content-type", "application/json");
 
+    console.log(this.userProfileToString(user));
+
     return this.http.post("http://192.168.0.16:7777", 
-    JSON.stringify({
-        username: user.username,
-        password: user.password,
-        grant_type: "password"
-      }),
-      { headers: headers }
-    )
+    "" + this.userProfileToString(user) + "")
     .map(response => response.json())
     .do(data => {
       Config.token = data.Result.access_token;
@@ -95,8 +91,6 @@ export class UserService
 
 
   }
-
-
 
 
 
@@ -151,6 +145,8 @@ export class UserService
       this.outString += shuttleRequest.numChildren + "$";
       this.outString += shuttleRequest.numInfants + "$";
     }
+
+
     
     return this.outString;
 }
@@ -158,7 +154,6 @@ export class UserService
 //converts the string from the server to a user object
 stringToUserProfile(str: string)
 {
-  ///*public UserProfile(String f, String l, String a, String ci, String co, String z, String u, String p, String e)*/
   this.stringArray = str.split("$");
   var strArray = this.stringArray[Symbol.iterator]();
   this.newUser.firstName = strArray.next().value;
@@ -173,7 +168,6 @@ stringToUserProfile(str: string)
 
   for (var x = 0; x < Number(strArray.next().value); x++)
   {
-    //String f, String l, String ph, String t, String dl, String dd, String dt, String al, String ad, String at, String r, String pr
     this.newCharter = new CharterRequest();
 
     this.newCharter.firstName = strArray.next().value;
@@ -194,7 +188,6 @@ stringToUserProfile(str: string)
 
   for(var y = 0; y < Number(strArray.next().value); y++)
   {
-    //String f, String l, String ph, String t, String dl, String dd, String dt, String al, String ad, String at, int na, int nc, int ni
     this.newShuttle = new ShuttleRequest();
 
     this.newShuttle.firstName = strArray.next().value;

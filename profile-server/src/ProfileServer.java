@@ -47,6 +47,7 @@ public class ProfileServer
 				System.out.println("connected.");
 				InputStreamReader isr = new InputStreamReader(clientSocket.getInputStream());
 				BufferedReader reader = new BufferedReader(isr);
+				
 				String line = reader.readLine();
 				String httpResponse = "HTTP/1.1 200 OK\r\n\r\n" + line;
 				while(!line.isEmpty())
@@ -56,6 +57,7 @@ public class ProfileServer
 					line = reader.readLine();
 					httpResponse = "HTTP/1.1 200 OK\r\n\r\n" + line;
 				}
+				
 			}
 		}
 	}
