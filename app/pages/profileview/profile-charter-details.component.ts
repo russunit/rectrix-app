@@ -49,4 +49,13 @@ export class ProfileCharterDetailsComponent implements OnInit {
 					this.charter = this.currentUser.charterHistory[this.id];
 				});
 	}
+ngOnDestroy() 
+{
+    
+    this.subscription1.unsubscribe();
+    this.subscription2.unsubscribe();
+
+
+    }
+
 }
