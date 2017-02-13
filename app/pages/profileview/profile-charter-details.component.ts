@@ -13,6 +13,27 @@ import { Location } from '@angular/common';
   template: 
 	`
 
+       <ScrollView>
+       <GridLayout rows = "auto,auto,auto,auto,auto,auto,auto" columns="auto,auto">
+<Label text ="Name" row="0" col="0" ></Label>
+<Label text = {{this.fullName}} row="0" col="1"></Label>
+<Label text ="Phone Number" row="1" col="0"></Label>
+<Label text = {{this.charter.phoneNumber}} row="1" col="1"></Label> 
+<Label text ="Trip Type" row="2" col="0"></Label>
+<Label text = {{this.charter.tripType}} row="2" col="1"></Label> 
+<Label text ="From" row="3" col="0"></Label>
+<Label text = {{this.departure}} row="3" col="1"></Label> 
+<Label text ="To" row="4" col="0"></Label>
+<Label text = {{this.arrival}} row="4" col="1"></Label> 
+<Label text ="Requirements:" row="5" col="0"></Label>
+<Label text = {{this.charter.requirements}} row="5" col="1"></Label>
+<Label text ="Preffered Craft:" row="6" col="0"></Label>
+<Label text = {{this.charter.prefferedCraft}} row="6" col="1">
+</Label>
+
+       </GridLayout>
+       </ScrollView>
+
 	`,
 styleUrls: ['pages/profileview/profile-charter-details.component.css'],
 providers: [UserService]
@@ -23,7 +44,8 @@ export class ProfileCharterDetailsComponent implements OnInit {
 	charter: CharterRequest;
 	id: number;
 	private sub: any;
-
+      arrival: string;
+      departure: string;
 	loggedIn: boolean; 
 	subscription1:Subscription;
 	subscription2:Subscription;
@@ -48,6 +70,10 @@ export class ProfileCharterDetailsComponent implements OnInit {
 					this.id = +params['id']; 
 					this.charter = this.currentUser.charterHistory[this.id];
 				});
+this.arrival = this.charter.departLocation + " " + this.charter.departDate + " " + this.charter.departTime;
+  this.departure = this.charter.arriveLocation + " " + this.charter.arriveDate + " " + this.charter.arriveTime;
+
+
 	}
 ngOnDestroy() 
 {
