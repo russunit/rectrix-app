@@ -29,6 +29,31 @@ public class ProfileDB
 		return profiles;
 	}
 	
+	public int getNumProfiles()
+	{
+		return profiles.size();
+	}
+	
+	public ArrayList<String> getLoggedInUserNames()
+	{
+		return loggedInUserNames;
+	}
+	
+	public int getNumLoggedInUsers()
+	{
+		return loggedInUserNames.size();
+	}
+	
+	public void logInUser(String user)
+	{
+		loggedInUserNames.add(user);
+	}
+	
+	public void logOutUser(int i)
+	{
+		loggedInUserNames.remove(i);
+	}
+	
 	public boolean addUserProfile(UserProfile up)
 	{
 		//returns false if username is taken. username cannot be changed
@@ -79,13 +104,13 @@ public class ProfileDB
 		return profile;
 	}
 	
-	public void addUserProfileFromString(String s)
+	public boolean addUserProfileFromString(String s)
 	{
 		//adds a user profile from a String containing all the necessary info
-		addUserProfile(userProfileFromString(s));
+		return addUserProfile(userProfileFromString(s));
 	}
 	
-	public void updateUserProfile(UserProfile u)
+	public boolean updateUserProfile(UserProfile u)
 	{
 		//update the user profile with the argument's matching username
 		for(int x = 0; x < profiles.size(); x++)
@@ -94,13 +119,15 @@ public class ProfileDB
 			{
 				profiles.remove(x);
 				profiles.add(u);
+				return true;
 			}
 		}
+		return false;
 	}
 	
-	public void updateUserProfileFromString(String s)
+	public boolean updateUserProfileFromString(String s)
 	{
-		updateUserProfile(userProfileFromString(s));
+		return updateUserProfile(userProfileFromString(s));
 	}
 	
 	public void removeUserProfile(UserProfile u)

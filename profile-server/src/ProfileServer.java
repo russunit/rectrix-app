@@ -11,28 +11,50 @@ public class ProfileServer
 	//private Socket socket;
 	private ProfileDB profileDB;
 	
-	public boolean login(String user, String password)
+	public String login(String user, String password)
 	{
-		//returns true if logged in successfully
-		return false;
+		//returns "OK" if logged in successfully
+		for(int x = 0; x < profileDB.getNumProfiles(); x++)
+		{
+			if(profileDB.getProfiles().get(x).getUserName().equals(user))
+				if(profileDB.getProfiles().get(x).getPassword().equals(password))
+				{
+					for(int y = 0; y < profileDB.getNumLoggedInUsers(); y++)
+						if(profileDB.getLoggedInUserNames().get(y).equals(user))
+							return "alreadyloggedin";
+					profileDB.logInUser(user);
+					return "OK";
+				}
+		}
+		return "notfound";
 	}
 	
 	public boolean logout(String user)
 	{
-		//return true if logged out successfully
+		//returns true if logged out successfully
+		for(int y = 0; y < profileDB.getNumLoggedInUsers(); y++)
+		{
+			if(profileDB.getLoggedInUserNames().get(y).equals(user))
+			{
+				profileDB.logOutUser(y);
+				return true;
+			}
+		}
 		return false;
 	}
 	
-	public boolean update(UserProfile user)
+	public boolean update(String userString)
 	{
+		//updates user profile from string containing all userprofile info
 		//return true if updated successfully
-		return false;
+		return profileDB.updateUserProfileFromString(userString);
 	}
 	
-	public boolean signup(UserProfile user)
+	public boolean signup(String userString)
 	{
+		//adds user profile from string containing all userprofile info
 		//return true if signed up successfully
-		return false;
+		return profileDB.addUserProfileFromString(userString);
 	}
 	
 	public static void main(String[] args) throws Exception
