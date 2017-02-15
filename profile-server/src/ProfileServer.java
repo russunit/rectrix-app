@@ -21,7 +21,7 @@ public class ProfileServer
 		//login@username@password, returns profileString, "alreadyloggedin" or "notfound"
 		//logout@username, returns "OK" or "notloggedin"
 		//update@profileString, returns "OK" or "notloggedin"
-		//signup@profileString, returns "OK or "notloggedin"
+		//signup@profileString, returns "OK or "nameunavailable"
 		//
 		
 		switch(st.nextToken())
@@ -42,7 +42,7 @@ public class ProfileServer
 				if(signup(st.nextToken()))
 					return "OK";
 				else
-					return "notloggedin";
+					return "nameunavailable";
 			default:
 				return "COMMAND STRING ERROR.";
 		}
