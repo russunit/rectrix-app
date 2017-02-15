@@ -13,36 +13,42 @@ import { Location } from '@angular/common';
 
 	<Button text="Join Passport Jet" (tap)="goJoin()" class="join"></Button>
 
-  	<label text="Membership" class="title2"></label>
-  	<label text={{membershipPara}} textwrap="true" class="para1"></label>
+  	<label text="MEMBERSHIP" class="title2"></label>
+  	<label text={{membershipPara}} textwrap="true" class="para2"></label>
 
-  	<label text="Benefits" class="title2"></label>
-  	<label text={{benefitsPara}} textwrap="true" class="para1"></label>
+  	<label text="BENEFITS" class="title2"></label>
+  	<label text={{benefitsPara}} textwrap="true" class="para2"></label>
 
-  	<label text="Pricing Matrix" class="title2"></label>
-  	<GridLayout rows="auto, auto, auto, auto, auto" columns="120, 120, 120" horizontalAlignment="center" class="matrixgrid">
-  		<label row="0" col="0" text="Membership Type" class="matrix1" textwrap="true"></label>
+  	<label text="PRICING MATRIX" class="title3"></label>
+	
+	<GridLayout rows="auto" columns="*,*,*" horizontalAlignment="center" class="matrixheader">
+	
+		<label row="0" col="0" text="Membership Type" class="matrix1" textwrap="true"></label>
   		<label row="0" col="1" text="Lear 45 XR Or Similar" class="matrix1" textwrap="true"></label>
 		<label row="0" col="2" text="Challenger C300 Or Similar" class="matrix1" textwrap="true"></label>
+		
+	</GridLayout>
+	
+  	<GridLayout rows="auto, auto, auto, auto" columns="*, *, *" horizontalAlignment="center" class="matrixgrid">
+  		
+		<label row="0" col="0" text="Individual or Corporate" textwrap="true" class="matrix2"></label>
+		<label row="0" col="1" text="Hourly Rate" class="matrix2"></label>
+		<label row="0" col="2" text="Hourly Rate" class="matrix2"></label>
 
-		<label row="1" col="0" text="Individual or Corporate" textwrap="true"></label>
-		<label row="1" col="1" text="Hourly Rate"></label>
-		<label row="1" col="2" text="Hourly Rate"></label>
+		<label row="1" col="0" text="$50K" class="matrix3"></label>
+		<label row="1" col="1" text="$4,500/hr" class="matrix3"></label>
+		<label row="1" col="2" text="$6,700/hr" class="matrix3"></label>
 
-		<label row="2" col="0" text="$50K"></label>
-		<label row="2" col="1" text="$4,500/hr"></label>
-		<label row="2" col="2" text="$6,700/hr"></label>
+		<label row="2" col="0" text="$100K" class="matrix3"></label>
+		<label row="2" col="1" text="$4,400/hr" class="matrix3"></label>
+		<label row="2" col="2" text="$6,600/hr" class="matrix3"></label>
 
-		<label row="3" col="0" text="$100K"></label>
-		<label row="3" col="1" text="$4,400/hr"></label>
-		<label row="3" col="2" text="$6,600/hr"></label>
-
-		<label row="4" col="0" text="$150K"></label>
-		<label row="4" col="1" text="$4,300/hr"></label>
-		<label row="4" col="2" text="$6,500/hr"></label>
+		<label row="3" col="0" text="$150K" class="matrix3"></label>
+		<label row="3" col="1" text="$4,300/hr" class="matrix3"></label>
+		<label row="3" col="2" text="$6,500/hr" class="matrix3"></label>
 
   	</GridLayout>
-  	<label text="Annual dues are $2,500."></label>
+  	<label text="Annual dues are $2,500." style="font-size: 18"></label>
 
   	<Button text="Join Passport Jet" (tap)="goJoin()" class="join"></Button>
 

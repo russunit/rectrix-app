@@ -1,15 +1,16 @@
 *{
     margin-left: 5px;
     margin-right: 5px;
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
 }
 
 .title1{
     margin-top: 10px;
     margin-bottom: 5px;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 700;
+	color: #d33432;
 }
 
 .title2{
@@ -17,17 +18,24 @@
     margin-bottom: 5px;
     font-size: 18px;
     font-weight: 700;
+	color: #324264;
+}
+
+.title3{
+	margin-top: 10px;
+    font-size: 20px;
+    font-weight: 700;
+	color: #d33432;
 }
 
 .para1{
 	font-size: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .para2{
-
-    font-size: 12px;
-    margin-bottom: 10px;
+    font-size: 16px;
+    margin-bottom: 15px;
 }
 
 .join{
@@ -36,12 +44,35 @@
 	margin-top:20px;
 }
 
+.matrixheader{
+	margin-top: 10px;
+	background-color: #324264;
+	color: white;
+}
+
 .matrixgrid{
 	margin-bottom: 20px;
-	margin-top:20px;
+	margin-top:10px;
 }
 
 .matrix1{
+	margin-top: 10px;
 	margin-bottom: 10px;
+	font-size: 16px;
+}
 
+.matrix2{
+	color: #d33432;
+	font-weight: 700;
+}
+
+.matrix3{
+	color: black;
+}
+
+button {
+	border-radius: 15;
+	background-color: #d33432;
+	color: white;
+	font-weight: 700;
 }

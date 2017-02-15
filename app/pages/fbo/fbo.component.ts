@@ -10,7 +10,9 @@ import { FboService } from './fbo-service';
         <Label text="FBO Locations" class="header"></Label>
 	    <ListView [items]="fboList" (itemTap)="onItemTap($event)" class="list">
             <template let-item="item">
-              <label [text]="item.name" class="lines"></label>
+			  <StackLayout>
+				<label [text]="item.name" class="lines"></label>
+			  </StackLayout>
             </template>
 		</ListView>
   `,

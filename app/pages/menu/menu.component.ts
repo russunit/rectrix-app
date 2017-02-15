@@ -10,7 +10,7 @@ import {Subscription} from 'rxjs/Subscription';
   selector: "menu",
   template: `
   <ScrollView>
-  	<StackLayout height={{height-140}} class="layout">
+  	<StackLayout class="layout">
   		<button text="Shuttle" (tap)="goShuttle()" class="navigation"></button>
   		<button text="Charter" (tap)="goCharter()" class="navigation"></button>
   		<button text="FBO" (tap)="goFbo()" class="navigation"></button>

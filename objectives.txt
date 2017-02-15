@@ -44,7 +44,21 @@ profile-shuttle-details component(shows details of shuttle from history)
 profile-edit-details component(edits profile details) CHRIS FINISHED
  
 
-styles for all components (this objective should be fragmented into parts) ANTHONY DASHBOARD,FBO,MRO
+styles for all components
+- dashboard ANTHONY FINISHED
+- charterform ANTHONY FINISHED
+- shuttle form ANTHONY FINISHED
+- fbo ANTHONY FINISHED
+- mro ANTHONY FINISHED
+- passport jet ANTHONY FINISHED
+- menu ANTHONY FINISHED
+- profileview
+- profile edit
+- profile charter history
+- profile shuttle history
+- login ANTHONY
+- loading screen (login) ANTHONY
+
 
 signup component CHRIS FINISHED
 signup adds new user to master user list.
@@ -54,8 +68,6 @@ User Sevice CHRIS, MALCOLM
 login component MALCOLM
 
 add loading screen when logging in MALCOLM FINISHED
-
-style loading screen
 
 block logout or profileview options when logged out. MALCOLM
 
