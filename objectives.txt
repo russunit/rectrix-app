@@ -35,11 +35,11 @@ profile updating: any time a shuttle/charter request is made or profile edited, 
 
 profileview component(shows profile info+options) CHRIS
 
-profile-charter-history component(shows charter history) CHRIS
-profile-charter-details component(shows details of charter in history)
+profile-charter-history component(shows charter history) CHRIS FINISHED
+profile-charter-details component(shows details of charter in history) CHRIS FINISHED
 
-profile-shuttle-history component(shows shuttle history) CHRIS
-profile-shuttle-details component(shows details of shuttle from history)
+profile-shuttle-history component(shows shuttle history) CHRIS FINISHED
+profile-shuttle-details component(shows details of shuttle from history) CHRIS FINISHED
 
 profile-edit-details component(edits profile details) CHRIS FINISHED
  
@@ -61,7 +61,7 @@ styles for all components
 
 
 signup component CHRIS FINISHED
-signup adds new user to master user list.
+signup adds new user to master user list. CHRIS
 signup logs in as the new user when creating. CHRIS DONE
 User Sevice CHRIS, MALCOLM
 
@@ -71,7 +71,7 @@ add loading screen when logging in MALCOLM FINISHED
 
 block logout or profileview options when logged out. MALCOLM
 
-popup suggestions: when starting up, display most recent charter request as recommendation when signed in.
+popup suggestions: when starting up, display most recent charter request as recommendation when signed in. CHRIS
 
 establish/implement a maximum length for username. CHRIS DONE
 

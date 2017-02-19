@@ -19,6 +19,7 @@ import { ProfileCharterHistoryComponent } from './pages/profileview/profile-char
 import { ProfileShuttleHistoryComponent } from './pages/profileview/profile-shuttle-history.component';
 import { ProfileShuttleDetailsComponent } from './pages/profileview/profile-shuttle-details.component';
 import { ProfileCharterDetailsComponent } from './pages/profileview/profile-charter-details.component';
+import { SuggestionComponent } from './pages/suggestion/suggestion.component';
 
 export const routes = [
   { path: '', 					component: DashboardComponent },
@@ -42,6 +43,7 @@ export const routes = [
 { path: 'charterhistory', component: ProfileCharterHistoryComponent },
 { path: 'shuttledetail', component: ProfileShuttleDetailsComponent },
 { path: 'charterdetail', component: ProfileCharterDetailsComponent },
+{ path: 'suggestion', component: SuggestionComponent }
 ];
 
 export const navigatableComponents = 
@@ -65,5 +67,6 @@ ProfileEditDetailsComponent,
   	PassportJetJoinComponent,
   	ProfilebarComponent,
   	SignupComponent,
-  	ProfileViewComponent
+  	ProfileViewComponent,
+SuggestionComponent
 ];
