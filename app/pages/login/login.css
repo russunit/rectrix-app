@@ -1,0 +1,54 @@
+.background{
+	background-image: url("~/images/login.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.layout{
+    margin-left: 30;
+	margin-right: 30;
+	margin-top: 100;
+	padding-bottom: 15;
+	background-color: #324264;
+	border-radius: 20;
+}
+
+.title{
+	font-size: 22;
+	color: white;
+	font-weight: 700;
+	margin-bottom: 15;
+	margin-top: 15;
+}
+
+.field-label{
+    margin-bottom: 10;
+    margin-left: 15;
+    font-size: 16;
+    color: white;
+}
+
+TextField{
+    margin-left: 15;
+    margin-right: 15;
+    background-color: white;
+}
+
+Button{
+	background-color: white;
+}
+
+ActivityIndicator{
+	color: #d33432;
+}
+
+.loading-label{
+	font-size: 20;
+	margin-top: 15;
+	font-weight: 700;
+}
+
+.loading-indicator{
+	margin-top: 100;
+}

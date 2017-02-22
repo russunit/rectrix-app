@@ -12,36 +12,42 @@ import { Subscription } from 'rxjs/Subscription';
   selector: "login",
   template: `
 
-  <StackLayout *ngIf="!loading">
-  <ScrollView>
-  <StackLayout>
-  	<label text='Sign in to Rectrix' horizontalAlignment='center'></label>
+	<StackLayout height={{height-70}} class="background" *ngIf="!loading">
+		<ScrollView>
+			<StackLayout class="layout">
+				<label text='Log in to Rectrix' horizontalAlignment='center' class="title"></label>
 
-	   <label text='user name'></label>
-	   <TextField  autocapitalizationType="none" [(ngModel)]="user.username"></TextField>
+				<TextField  autocapitalizationType="none" [(ngModel)]="user.username"></TextField>
+				<label text='Username' class='field-label'></label>
+				<TextField autocapitalizationType="none" secure="true" [(ngModel)]="user.password"></TextField>
+				<label text='Password' class='field-label'></label>
+				
+				<Button text="Log in" (tap)="login()" horizontalAlignment='center'></Button>
+			</StackLayout>
+		</ScrollView>
+	</StackLayout>
 
-	   <label text='password'></label>
-	   <TextField autocapitalizationType="none" secure="true" [(ngModel)]="user.password"></TextField>
-
-	   <Button text="Sign in" (tap)="login()" horizontalAlignment='center'></Button>
-  </StackLayout>
-  </ScrollView>
-  </StackLayout>
-
-  <div class="loading-overlay" *ngIf="loading">
-    <label text="Please Wait..."></label>
+  <div height={{height-70}} *ngIf="loading">
+	<ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" row="1" class="loading-indicator" horizontalAlignment="center" verticalAlignment="middle" width="150" height="150"></ActivityIndicator>
     <md-progress-bar mode="indeterminate"></md-progress-bar>
-  </div>
+	<label text="Logging in please wait..." horizontalAlignment='center' verticalAlignment='center' class="loading-label"></label>
+  </div> 
 
 	`,
 	providers: [UserService],
+	styleUrls: ['pages/login/login.css']
 })
 export class LoginComponent implements OnInit
 {
 	user: User;
-  loading: boolean = false;
-  loggedIn: boolean = false;
+	loading: boolean = false;
+	loggedIn: boolean = false;
+	isLoading = false;
 
+	platform = require("platform");
+    screen = this.platform.screen;
+    height: number = this.screen.mainScreen.heightDIPs;
+  
   subscription1:Subscription;
 
 	constructor(private router: Router, private userService: UserService, private currentUserService: CurrentUserService) 
@@ -54,9 +60,11 @@ export class LoginComponent implements OnInit
     this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
     if(this.loggedIn)
     {
-      alert("Already signed in.");
+      alert("Already logged in.");
       this.router.navigate(["/dashboard"]); 
     }
+	
+	this.isLoading = true;
   }
 
   ngOnDestroy() 
@@ -66,12 +74,12 @@ export class LoginComponent implements OnInit
 
   }
 
-	login() 
+	login()
 	{
       this.loading = true;
 
       //this.userService.TEST_login(this.user)
-    	this.userService.login(this.user)
+    	this.userService.TEST_login(this.user)
       	.subscribe(
 
         	() => {
@@ -81,7 +89,7 @@ export class LoginComponent implements OnInit
         		this.currentUserService.changeUser(this.user);
     			this.currentUserService.toggleLoggedIn(true);
 
-    			alert("Signed in as "+this.user.username+"!");
+    			alert("Logged in as "+this.user.username+"!");
 
         		this.router.navigate(["/dashboard"]); 
         		}, 
