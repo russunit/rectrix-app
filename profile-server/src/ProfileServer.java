@@ -3,6 +3,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.StringTokenizer;
@@ -96,7 +97,7 @@ public class ProfileServer
 		return profileDB.addUserProfileFromString(profileString);
 	}
 	
-	public static void main(String[] args) throws Exception
+	public ProfileServer() throws UnsupportedEncodingException, IOException
 	{
 		final ServerSocket server = new ServerSocket(7777);
 		System.out.println("Waiting for connection on port 7777 ....");
@@ -111,26 +112,43 @@ public class ProfileServer
 				InputStream stream = clientSocket.getInputStream();
 				String text = "";
 				byte[] bytes = null;
-                                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                                try 
-                                {
-                                    int read = stream.read();
-                                    while(read > 0 && !clientSocket.isInputShutdown() && stream.available() != 0) 
-                                    {
-                                    	byteArrayOutputStream.write(read);
-                                    	read = stream.read();
-                                    	
-                                    	bytes = byteArrayOutputStream.toByteArray();
-                                    }
-
-                                    text = new String(bytes, "UTF-8");
-                                    System.out.println(text);
-
-                                }
-                                catch(Exception e)
-                                {
-                                    e.printStackTrace();
-                                }
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                try 
+                {
+                	int read = stream.read();
+                	while(read > 0 && !clientSocket.isInputShutdown() && stream.available() != 0) 
+                	{
+                		byteArrayOutputStream.write(read);
+                		read = stream.read();
+                		bytes = byteArrayOutputStream.toByteArray();
+                	}
+                	text = new String(bytes, "UTF-8");
+                	
+                	//
+                	System.out.println("payload:\n"+text+"\n");
+                	//
+                }
+                catch(Exception e)
+                {
+                	e.printStackTrace();
+                }
+                StringTokenizer tok = new StringTokenizer(text, "\"");
+                String header = tok.nextToken();
+                String commandString = tok.nextToken();
+                String response = "HTTP/1.1 200 OK\r\n\r\n" + stringCommand(commandString);
+				clientSocket.getOutputStream().write(response.getBytes("UTF-8"));
+				
+				//
+            	System.out.println("commandString:\n"+commandString+"\n");
+            	//
+				
+				//
+				System.out.println("response:\n"+response+"\n");
+                //
+				
+                //String response = "HTTP/1.1 200 OK\r\n\r\n" + stringCommand(commandString);
+				//clientSocket.getOutputStream().write(response.getBytes("UTF-8"));
+                
 
                                 
 				//the following is used for testing and will be replaced by the parsing
@@ -153,5 +171,11 @@ public class ProfileServer
 				}
 				
 			}
-		}
 	}
+	
+	public static void main(String[] args) throws Exception
+	{
+		ProfileServer profileServer = new ProfileServer();
+	}
+	
+}
