@@ -284,6 +284,7 @@ public class ProfileDB
 	public ProfileDB()
 	{
 		profiles = new ArrayList<UserProfile>();
+		loggedInUserNames = new ArrayList<String>();
 		loadFromFile();
 	}
 	
