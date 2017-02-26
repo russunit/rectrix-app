@@ -109,24 +109,29 @@ public class ProfileServer
 				//InputStreamReader isr = new InputStreamReader(clientSocket.getInputStream());
 				//BufferedReader reader = new BufferedReader(isr);
 				InputStream stream = clientSocket.getInputStream();
+				String text = "";
+				byte[] bytes = null;
                                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                                 try 
                                 {
                                     int read = stream.read();
-                                    while(read > 0 && !clientSocket.isInputShutdown()) 
+                                    while(read > 0 && !clientSocket.isInputShutdown() && stream.available() != 0) 
                                     {
                                     	byteArrayOutputStream.write(read);
                                     	read = stream.read();
                                     	
-                                    	byte[] bytes = byteArrayOutputStream.toByteArray();
-                                        String text = new String(bytes, "UTF-8");
-                                        System.out.println(text);
+                                    	bytes = byteArrayOutputStream.toByteArray();
                                     }
+
+                                    text = new String(bytes, "UTF-8");
+                                    System.out.println(text);
+
                                 }
                                 catch(Exception e)
                                 {
                                     e.printStackTrace();
                                 }
+
                                 
 				//the following is used for testing and will be replaced by the parsing
 				//and methods described below.
