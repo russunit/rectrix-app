@@ -80,10 +80,10 @@ export class UserService
     headers.append("Content-type", "application/json");
     let profileString = this.userProfileToString(user);
 
-    console.log(profileString);
+    //console.log(profileString);
 
     return this.http.post("http://192.168.0.16:7777", 
-    JSON.stringify(profileString))
+    JSON.stringify("login@"+user.username+"@"+user.password))
     .map(response => response.json())
     .do(data => {
       Config.token = data.Result.access_token;
