@@ -99,6 +99,8 @@ public class ProfileServer
 	
 	public ProfileServer() throws UnsupportedEncodingException, IOException
 	{
+		profileDB = new ProfileDB();
+		
 		final ServerSocket server = new ServerSocket(7777);
 		System.out.println("Waiting for connection on port 7777 ....");
 		
