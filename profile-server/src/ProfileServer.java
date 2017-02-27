@@ -63,7 +63,7 @@ public class ProfileServer
 						if(profileDB.getLoggedInUserNames().get(y).equals(user))
 							return "alreadyloggedin";
 					profileDB.logInUser(user);
-					return "OK";
+					return profileDB.profileToStringFromUserName(user);
 				}
 		}
 		return "notfound";
