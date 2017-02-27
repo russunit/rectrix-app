@@ -83,7 +83,7 @@ export class UserService
     //console.log(profileString);
 
     return this.http.post("http://192.168.0.16:7777", 
-    JSON.stringify("login@"+user.username+"@"+user.password))
+    JSON.stringify("login#"+user.username+"#"+user.password))
     .map(response => response.json())
     .do(data => {
       Config.token = data.Result.access_token;

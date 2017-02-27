@@ -16,15 +16,15 @@ public class ProfileServer
 	
 	public String stringCommand(String inString)
 	{
-		StringTokenizer st = new StringTokenizer(inString, "@");
+		StringTokenizer st = new StringTokenizer(inString, "#");
 		//this will be the string hopefully received from our app via an HTML request.
 		
 		//string command formats:
 		//
-		//login@username@password, returns profileString, "alreadyloggedin" or "notfound"
-		//logout@username, returns "OK" or "notloggedin"
-		//update@profileString, returns "OK" or "notloggedin"
-		//signup@profileString, returns "OK or "nameunavailable"
+		//login#username#password, returns profileString, "alreadyloggedin" or "notfound"
+		//logout#username, returns "OK" or "notloggedin"
+		//update#profileString, returns "OK" or "notloggedin"
+		//signup#profileString, returns "OK or "nameunavailable"
 		//
 		
 		switch(st.nextToken())
