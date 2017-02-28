@@ -97,8 +97,10 @@ export class SignupComponent implements OnInit
       	    .subscribe(
         	    () => {
           		    alert("Your account was successfully created. Signed in as "+this.user.username+"!"); 
-                    this.currentUserService.changeUser(this.user);
-     			    this.currentUserService.toggleLoggedIn(true);
+                 
+       this.currentUserService.changeUser(this.user);
+      this.userService.TEST_signup(this.user);
+this.currentUserService.toggleLoggedIn(true);
 
           		    this.router.navigate(["/dashboard"]); 
         	    },

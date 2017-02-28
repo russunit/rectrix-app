@@ -82,7 +82,7 @@ export class UserService
 
     //console.log(profileString);
 
-    return this.http.post("http://192.168.0.16:7777", 
+    return this.http.post("http://192.168.2.9:7777", 
     JSON.stringify("login#"+user.username+"#"+user.password))
     .map(response => response.json())
     .do(data => {
@@ -92,7 +92,27 @@ export class UserService
 
 
   }
+//talks to the java server to add a new user to the DB
+TEST_signup(user: User)
+{
+ 
+let headers = new Headers();
+    headers.append("Content-type", "application/json");
+    let profileString = this.userProfileToString(user);
 
+    //console.log(profileString);
+
+    return this.http.post("http://192.168.2.9:7777", 
+    JSON.stringify("signup#"+profileString))
+    .map(response => response.json())
+    .do(data => {
+      Config.token = data.Result.access_token;
+    })
+    .catch(this.handleErrors);
+
+
+
+}
 
 
   //converts whole profile to string for our http server
