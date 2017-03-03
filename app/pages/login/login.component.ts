@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit
       this.loading = true;
 
       //this.userService.TEST_login(this.user)
-    	this.userService.TEST_login(this.user)
+    	this.userService.login(this.user)
       	.subscribe(
 
         	() => {

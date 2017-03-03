@@ -17,6 +17,8 @@ export class UserService
   charterHistorySize: number;
   shuttleHistorySize: number;
   outString: string;
+  inString: string;
+  serverResponse: Observable<Response>;
   stringArray: Array<string>;
   newUser: User;
   newCharter: CharterRequest;
@@ -25,7 +27,7 @@ export class UserService
 
 	constructor(private http: Http) {}
 
-	register(user: User) {
+	OLD_GROCERIES_register(user: User) {
     let headers = new Headers();
     headers.append("Content-Type", "application/json");
 
@@ -47,7 +49,7 @@ export class UserService
     .catch(this.handleErrors);
   }
 
-  login(user: User) {
+  OLD_GROCERIES_login(user: User) {
     let headers = new Headers();
     headers.append("Content-Type", "application/json");
 
@@ -73,25 +75,131 @@ export class UserService
     return Observable.throw(error);
   }
 
-  //TESTING... talks to my java server but the server can't read the payload
-  TEST_login(user: User) 
+  //NEW
+  register(user: User)
   {
     let headers = new Headers();
     headers.append("Content-type", "application/json");
-    let profileString = this.userProfileToString(user);
 
     //console.log(profileString);
 
-    return this.http.post("http://192.168.2.9:7777", 
-    JSON.stringify("login#"+user.username+"#"+user.password))
-    .map(response => response.json())
+    this.serverResponse = (this.http.post("http://192.168.0.16:7777", 
+    JSON.stringify("signup#"+this.userProfileToString(user))));
+
+    this.inString = JSON.stringify(this.serverResponse);
+
+    //Right now, inString is {"_isScalar":false}
+    console.log(this.inString);
+    //
+
+    //this is temporary, should be replaced by some check whether 
+    //the server request was successful based on the response string,
+    //then if successful return true
+    return this.serverResponse.map(response => response.json())
+    .do(data => {
+      Config.token = data.Result.access_token;
+    })
+    .catch(this.handleErrors);
+  }
+
+  //NEW
+  //TESTING... trying to see if it can read the java server's response as a string
+  login(user: User) 
+  {
+    let headers = new Headers();
+    headers.append("Content-type", "application/json");
+
+    //console.log(profileString);
+
+    this.serverResponse = (this.http.post("http://192.168.0.16:7777", 
+    JSON.stringify("login#"+user.username+"#"+user.password)));
+
+    this.inString = JSON.stringify(this.serverResponse);
+
+    //Right now, inString is {"_isScalar":false}
+    console.log(this.inString);
+    //
+
+    //this is temporary, should be replaced by some check whether 
+    //the server request was successful based on the response string,
+    //then if successful return true
+    return this.serverResponse.map(response => response.json())
     .do(data => {
       Config.token = data.Result.access_token;
     })
     .catch(this.handleErrors);
 
 
+
+    //return this.http.post("http://192.168.2.9:7777", 
+    //JSON.stringify("login#"+user.username+"#"+user.password))
+    //.map(response => response.json())
+    //.do(data => {
+    //  Config.token = data.Result.access_token;
+    //})
+    //.catch(this.handleErrors);
   }
+
+  //NEW, not used yet
+  logout(user: User)//pass in currentUser
+  {
+    let headers = new Headers();
+    headers.append("Content-type", "application/json");
+
+    //console.log(profileString);
+
+    this.serverResponse = (this.http.post("http://192.168.0.16:7777", 
+    JSON.stringify("logout#"+user.username)));
+
+    this.inString = JSON.stringify(this.serverResponse);
+
+    //Right now, inString is {"_isScalar":false}
+    console.log(this.inString);
+    //
+
+    //this is temporary, should be replaced by some check whether 
+    //the server request was successful based on the response string,
+    //then if successful return true
+    return this.serverResponse.map(response => response.json())
+    .do(data => {
+      Config.token = data.Result.access_token;
+    })
+    .catch(this.handleErrors);
+  }
+
+  //NEW, not used yet
+  update(user: User)//pass in currentUser
+  {
+    let headers = new Headers();
+    headers.append("Content-type", "application/json");
+
+    //console.log(profileString);
+
+    this.http.post("http://192.168.0.16:7777", 
+    JSON.stringify("update#"+this.userProfileToString(user)))
+    .subscribe(response => this.inString = JSON.stringify(response));
+
+    this.inString = JSON.stringify(this.serverResponse);
+
+    //Right now, inString is {"_isScalar":false}
+    console.log(this.inString);
+    //
+
+    //this is temporary, should be replaced by some check whether 
+    //the server request was successful based on the response string,
+    //then if successful return true
+    return this.serverResponse.map(response => response.json())
+    .do(data => {
+      Config.token = data.Result.access_token;
+    })
+    .catch(this.handleErrors);
+  }
+
+
+
+
+
+
 //talks to the java server to add a new user to the DB
 TEST_signup(user: User)
 {
