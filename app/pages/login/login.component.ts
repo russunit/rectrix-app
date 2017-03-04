@@ -76,28 +76,30 @@ export class LoginComponent implements OnInit
 
 	login()
 	{
-      this.loading = true;
+      //this.loading = true;
 
       //this.userService.TEST_login(this.user)
-    	this.userService.login(this.user)
-      	.subscribe(
+    	//this.userService.login(this.user)
+      //	.subscribe(
 
-        	() => {
+      //  	() => {
         		
 
         		//sets the current user
-        		this.currentUserService.changeUser(this.user);
-    			this.currentUserService.toggleLoggedIn(true);
+      //  		this.currentUserService.changeUser(this.user);
+    	//		this.currentUserService.toggleLoggedIn(true);
 
-    			alert("Logged in as "+this.user.username+"!");
+    	//		alert("Logged in as "+this.user.username+"!");
 
-        		this.router.navigate(["/dashboard"]); 
-        		}, 
-        	(error) => {
-            alert("Unfortunately we could not find your account.");
-            this.loading = false;
-            }
-      	);
+      //  		this.router.navigate(["/dashboard"]); 
+      //  		}, 
+      //  	(error) => {
+      //      alert("Unfortunately we could not find your account.");
+      //      this.loading = false;
+      //      }
+      //	);
+
+    console.log(this.userService.login(this.user));
 
         
   	}

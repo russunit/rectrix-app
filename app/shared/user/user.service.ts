@@ -75,6 +75,8 @@ export class UserService
     return Observable.throw(error);
   }
 
+  /////////////////////////////////////////////////////////////////////
+
   //NEW
   register(user: User)
   {
@@ -111,25 +113,19 @@ export class UserService
 
     //console.log(profileString);
 
-    this.serverResponse = (this.http.post("http://192.168.0.16:7777", 
-    JSON.stringify("login#"+user.username+"#"+user.password)));
+    this.http.post("http://192.168.0.16:7777", 
+    JSON.stringify("login#"+user.username+"#"+user.password))
+    .subscribe(response => this.inString = response.json());
 
-    this.inString = JSON.stringify(this.serverResponse);
-
-    //Right now, inString is {"_isScalar":false}
-    console.log(this.inString);
+    //Right now, inString is printing as undefined
+    //console.log(this.inString);
     //
+
+    return this.inString;
 
     //this is temporary, should be replaced by some check whether 
     //the server request was successful based on the response string,
     //then if successful return true
-    return this.serverResponse.map(response => response.json())
-    .do(data => {
-      Config.token = data.Result.access_token;
-    })
-    .catch(this.handleErrors);
-
-
 
     //return this.http.post("http://192.168.2.9:7777", 
     //JSON.stringify("login#"+user.username+"#"+user.password))
