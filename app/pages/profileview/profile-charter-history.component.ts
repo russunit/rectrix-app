@@ -4,7 +4,7 @@ import { UserService } from "../../shared/user/user.service";
 import { CurrentUserService } from "../../shared/current-user/current-user.service";
 import { Router } from "@angular/router";
 import {Subscription} from 'rxjs/Subscription';
-import { CharterRequest } from "../../shared/charter-request/charter-request.ts";
+import { CharterRequest } from "../../shared/charter-request/charter-request";
 @Component({
   selector: "charterhistory",
   template: `

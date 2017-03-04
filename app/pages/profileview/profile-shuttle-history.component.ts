@@ -4,7 +4,7 @@ import { UserService } from "../../shared/user/user.service";
 import { CurrentUserService } from "../../shared/current-user/current-user.service";
 import { Router } from "@angular/router";
 import {Subscription} from 'rxjs/Subscription';
-import { ShuttleRequest } from "../../shared/shuttle-request/shuttle-request.ts";
+import { ShuttleRequest } from "../../shared/shuttle-request/shuttle-request";
 @Component({
   selector: "shuttlehistory",
   template: ` 
