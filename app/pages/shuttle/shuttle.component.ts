@@ -107,13 +107,36 @@ export class ShuttleComponent implements OnInit
 		if(this.loggedIn)
 		{
 			this.user.shuttleHistory.push(this.shuttleRequest);
-			this.currentUserService.changeUser(this.user);
-			//now that currentUser has been updated to having this shuttleRequest in its history,
-			//we will need to save the state of the user to the server through userService. (TODO)
-		}
-			alert("Shuttle Requested.");
 
+			let responseString = this.userService.update(this.user);
+			if(responseString == "notloggedin")
+			{
+				alert("this profile is not logged into the server...\nPlease log in.");
+				this.currentUserService.changeUser(null);
+      			this.currentUserService.toggleLoggedIn(false);
+      			this.router.navigate(["/dashboard"]);
+			}
+			else if (responseString == "OK")
+			//success
+			{
+				this.currentUserService.changeUser(this.user);
+				alert("Shuttle Requested.");
+				this.router.navigate(["/dashboard"]);
+
+			}
+			else
+			//the parse or server returned garbage
+            {
+              alert("INTERNAL ERROR");
+            }
+
+
+		}
+		else
+		{
+			alert("Please log in or sign up to place a shuttle request.");
 			this.router.navigate(["/dashboard"]);
+		}
 
 	}
 }

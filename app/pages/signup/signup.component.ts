@@ -68,14 +68,14 @@ export class SignupComponent implements OnInit
 	}
 
 	ngOnInit()
-  	{
+  {
     	this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
     	if(this.loggedIn)
     	{
     		alert("Already signed in.");
       		this.router.navigate(["/dashboard"]); 
     	}
-  	}
+  }
 
   	ngOnDestroy() 
   	{
@@ -83,33 +83,52 @@ export class SignupComponent implements OnInit
 	}
 
 	signUp() 
-    {
+  {
         if (this.user.username.length > 10)
         {
           alert("Cannot create account. Username is too many characters"); 
-           this.loading = false; 
+          this.loading = false; 
         }
         else
         {
-		    this.loading = true;
+		      this.loading = true;
 
-    	    this.userService.register(this.user)
-      	    .subscribe(
-        	    () => {
-          		    alert("Your account was successfully created. Signed in as "+this.user.username+"!"); 
-                 
-                  this.currentUserService.changeUser(this.user);
-                  //this.userService.TEST_signup(this.user);
-                  this.currentUserService.toggleLoggedIn(true);
+    	    let responseString = this.userService.register(this.user);
+          if(responseString == "nameunavailable")
+          {
+            alert("User name unavailable.");
+            this.loading = false;
+          }
+          else if (responseString == "OK")
+          //success
+          {
+              alert("Your account was successfully created. Signed in as "+this.user.username+"!"); 
+              this.currentUserService.changeUser(this.user);
+              this.currentUserService.toggleLoggedIn(true);
+              this.router.navigate(["/dashboard"]); 
+          }
+          else
+          //the parse or server returned garbage
+          {
+              alert("INTERNAL ERROR");
+              this.loading = false;
+          }  
 
-          		    this.router.navigate(["/dashboard"]); 
-        	    },
-        	    () => {
-        		    alert("Unfortunately we were unable to create your account.");
-        		    this.loading = false;
-        	    }
-          );
+      	//    .subscribe(
+        //	    () => {
+        //  		    alert("Your account was successfully created. Signed in as "+this.user.username+"!"); 
+        //          this.currentUserService.changeUser(this.user);
+        //          this.userService.TEST_signup(this.user);
+        //          this.currentUserService.toggleLoggedIn(true);
+        //  		    this.router.navigate(["/dashboard"]); 
+        //	    },
+        //	    () => {
+        //		    alert("Unfortunately we were unable to create your account.");
+        //		    this.loading = false;
+        //	    }
+        //  );
+        
+      }//end else
+  }//end signup
 
-        }
-  	}
-}
+}//end class

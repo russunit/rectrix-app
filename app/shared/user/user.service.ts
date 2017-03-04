@@ -75,6 +75,7 @@ export class UserService
     return Observable.throw(error);
   }
 
+  //^OLD^
   /////////////////////////////////////////////////////////////////////
 
   //NEW
@@ -85,23 +86,12 @@ export class UserService
 
     //console.log(profileString);
 
-    this.serverResponse = (this.http.post("http://192.168.0.16:7777", 
-    JSON.stringify("signup#"+this.userProfileToString(user))));
+    this.http.post("http://192.168.0.16:7777", 
+    JSON.stringify("signup#"+this.userProfileToString(user)))
+    .subscribe(response => this.inString = response.json());
 
-    this.inString = JSON.stringify(this.serverResponse);
-
-    //Right now, inString is {"_isScalar":false}
-    console.log(this.inString);
-    //
-
-    //this is temporary, should be replaced by some check whether 
-    //the server request was successful based on the response string,
-    //then if successful return true
-    return this.serverResponse.map(response => response.json())
-    .do(data => {
-      Config.token = data.Result.access_token;
-    })
-    .catch(this.handleErrors);
+    //Right now, inString is printing as undefined
+    return this.parseResponse(this.inString);
   }
 
   //NEW
@@ -118,22 +108,8 @@ export class UserService
     .subscribe(response => this.inString = response.json());
 
     //Right now, inString is printing as undefined
-    //console.log(this.inString);
-    //
+    return this.parseResponse(this.inString);
 
-    return this.inString;
-
-    //this is temporary, should be replaced by some check whether 
-    //the server request was successful based on the response string,
-    //then if successful return true
-
-    //return this.http.post("http://192.168.2.9:7777", 
-    //JSON.stringify("login#"+user.username+"#"+user.password))
-    //.map(response => response.json())
-    //.do(data => {
-    //  Config.token = data.Result.access_token;
-    //})
-    //.catch(this.handleErrors);
   }
 
   //NEW, not used yet
@@ -144,23 +120,14 @@ export class UserService
 
     //console.log(profileString);
 
-    this.serverResponse = (this.http.post("http://192.168.0.16:7777", 
-    JSON.stringify("logout#"+user.username)));
+    this.http.post("http://192.168.0.16:7777", 
+    JSON.stringify("logout#"+user.username))
+    .subscribe(response => this.inString = response.json());
 
-    this.inString = JSON.stringify(this.serverResponse);
+    //Right now, inString is undefined
+    return this.parseResponse(this.inString);
 
-    //Right now, inString is {"_isScalar":false}
-    console.log(this.inString);
-    //
 
-    //this is temporary, should be replaced by some check whether 
-    //the server request was successful based on the response string,
-    //then if successful return true
-    return this.serverResponse.map(response => response.json())
-    .do(data => {
-      Config.token = data.Result.access_token;
-    })
-    .catch(this.handleErrors);
   }
 
   //NEW, not used yet
@@ -173,22 +140,20 @@ export class UserService
 
     this.http.post("http://192.168.0.16:7777", 
     JSON.stringify("update#"+this.userProfileToString(user)))
-    .subscribe(response => this.inString = JSON.stringify(response));
+    .subscribe(response => this.inString = response.json());
 
-    this.inString = JSON.stringify(this.serverResponse);
-
-    //Right now, inString is {"_isScalar":false}
-    console.log(this.inString);
+    //Right now, inString is undefined
+    return this.parseResponse(this.inString);
     //
 
     //this is temporary, should be replaced by some check whether 
     //the server request was successful based on the response string,
     //then if successful return true
-    return this.serverResponse.map(response => response.json())
-    .do(data => {
-      Config.token = data.Result.access_token;
-    })
-    .catch(this.handleErrors);
+    //return this.serverResponse.map(response => response.json())
+    //.do(data => {
+    //  Config.token = data.Result.access_token;
+    //})
+    //.catch(this.handleErrors);
   }
 
 
@@ -336,8 +301,14 @@ stringToUserProfile(str: string)
 
 }
 
+//parses server response string from server response
+//TODO; just a stub now
 
+parseResponse(str: string)
+{
 
+  return str;
+}
 
 
 

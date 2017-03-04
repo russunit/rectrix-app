@@ -111,24 +111,45 @@ export class CharterComponent implements OnInit
 		if(this.loggedIn)
 		{
 			this.user.charterHistory.push(this.charterRequest);
-			this.currentUserService.changeUser(this.user);
-			//now that currentUser has been updated to having this charterRequest in its history,
-			//we will need to save the state of the user to the server through userService. (TODO)
+
+			let responseString = this.userService.update(this.user);
+			if(responseString == "notloggedin")
+			{
+				alert("this profile is not logged into the server...\nPlease log in.");
+				this.currentUserService.changeUser(null);
+      			this.currentUserService.toggleLoggedIn(false);
+      			this.router.navigate(["/dashboard"]);
+			}
+			else if (responseString == "OK")
+			//success
+			{
+				this.currentUserService.changeUser(this.user);
+				alert("Charter Requested:\nName: "+this.charterRequest.firstName+" "+this.charterRequest.lastName +
+					"\nPhone: "+this.charterRequest.phoneNumber +
+					"\nTrip Type: "+this.charterRequest.tripType +
+					"\nFrom: "+this.charterRequest.departLocation +
+					"\n at: "+this.charterRequest.departTime + ", " + this.charterRequest.departDate +
+					"\nTo: "+this.charterRequest.arriveLocation +
+					"\n at: "+this.charterRequest.arriveTime + ", " + this.charterRequest.arriveDate +
+					"\n\nRequirements: " + this.charterRequest.requirements + 
+					"\nCraft Preference: " + this.charterRequest.preferredCraft);
+				this.router.navigate(["/dashboard"]);
+
+			}
+			else
+			//the parse or server returned garbage
+            {
+              alert("INTERNAL ERROR");
+            }
+
+
 		}
-		
+		else
+		{
+			alert("Please log in or sign up to place a charter request.");
+			this.router.navigate(["/dashboard"]);
+		}
 
-		//this alert will be an auto-generated email or other type of message, sent to Rectrix.
-		alert("Charter Requested:\nName: "+this.charterRequest.firstName+" "+this.charterRequest.lastName +
-			"\nPhone: "+this.charterRequest.phoneNumber +
-			"\nTrip Type: "+this.charterRequest.tripType +
-			"\nFrom: "+this.charterRequest.departLocation +
-			"\n at: "+this.charterRequest.departTime + ", " + this.charterRequest.departDate +
-			"\nTo: "+this.charterRequest.arriveLocation +
-			"\n at: "+this.charterRequest.arriveTime + ", " + this.charterRequest.arriveDate +
-			"\n\nRequirements: " + this.charterRequest.requirements + 
-			"\nCraft Preference: " + this.charterRequest.preferredCraft);
-
-		this.router.navigate(["/dashboard"]);
 	}
 
 }

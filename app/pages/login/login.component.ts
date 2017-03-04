@@ -76,21 +76,46 @@ export class LoginComponent implements OnInit
 
 	login()
 	{
-      //this.loading = true;
+      this.loading = true;
 
-      //this.userService.TEST_login(this.user)
-    	//this.userService.login(this.user)
+    	let responseString = this.userService.login(this.user);
+      if(responseString == "notfound")
+      {
+        alert("Account not found.");
+        this.loading = false;
+      }
+      else if(responseString == "alreadyloggedin")
+      {
+        alert("Already logged in.");
+        this.loading = false;
+      }
+      else
+      //no error message
+      {
+        let loggingInUser = this.userService.stringToUserProfile(responseString);
+        this.currentUserService.changeUser(loggingInUser);
+        if(loggingInUser.username == "undefined")
+        //the parse or server returned garbage
+        {
+          alert("INTERNAL ERROR");
+          this.loading = false;
+        }
+        else
+        //successful login
+        {
+          this.currentUserService.toggleLoggedIn(true);
+          alert("Logged in as "+this.user.username+"!");
+          this.router.navigate(["/dashboard"]); 
+        }
+
+      }
+
       //	.subscribe(
-
       //  	() => {
-        		
-
         		//sets the current user
       //  		this.currentUserService.changeUser(this.user);
     	//		this.currentUserService.toggleLoggedIn(true);
-
     	//		alert("Logged in as "+this.user.username+"!");
-
       //  		this.router.navigate(["/dashboard"]); 
       //  		}, 
       //  	(error) => {
