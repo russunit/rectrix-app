@@ -86,10 +86,13 @@ export class UserService
 
     //console.log(profileString);
 
-    this.http.post("http://192.168.0.16:7777", 
+    this.http.post("http://192.168.2.13:7777", 
     JSON.stringify("signup#"+this.userProfileToString(user)))
     .subscribe(response => this.inString = response.json());
+     
 
+   // this.http.get("http://192.168.2.13:7777").subscribe(
+ //response => this.inString = response.json());
     //Right now, inString is printing as undefined
     return this.parseResponse(this.inString);
   }
