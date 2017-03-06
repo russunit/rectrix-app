@@ -104,8 +104,17 @@ export class UserService
     let headers = new Headers();
     headers.append("Content-type", "application/json");
 
-    //console.log(profileString);
+    //this actually works now....... but on the second try. 
+    //the server receives the message on the first try...
+    //but the app doesn't seem to get the response until the second try,
+    //and then it seems to get them one response too late...
+    //like, if I enter fake info, the app says "inernal error",
+    //then i enter good info, the app says "account not found" (but the server says i've logged in),
+    //then i enter the good login data again, and it says "logged in as username" (but the server says i'm already logged in)
+    //so it looks like we're getting the right response one transaction late.
 
+    //good steps in the right direction, let's try to work on this. could be server-side or client-side
+    
     this.http.post("http://192.168.0.16:7777", 
     "~login#"+user.username+"#"+user.password+"\n")
     .subscribe(response => this.inString = response.json().toString());
