@@ -1,4 +1,10 @@
+.background {
+background-image: url("~/images/login.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 
+}
 
 .layout{
     margin-left: 30;
@@ -7,10 +13,7 @@
 	padding-bottom: 15;
 	background-color: #324264;
 	border-radius: 20;
-	background-image: url("~/images/login.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+	
 }
 
 .title{
