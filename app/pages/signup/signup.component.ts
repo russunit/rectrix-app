@@ -44,11 +44,11 @@ import { UserService } from "../../shared/user/user.service";
 </StackLayout>
 </ScrollView>
 </StackLayout>
-
+ <!-- 
 <div class="loading-overlay" *ngIf="loading">
-   <label text="Please Wait..."></label>
-   <md-progress-bar mode="indeterminate"></md-progress-bar>
-</div>
+  <label text="Please Wait..."></label>
+  // <md-progress-bar mode="indeterminate"></md-progress-bar>
+</div> -->
 `,
 	providers: [UserService],
 })
