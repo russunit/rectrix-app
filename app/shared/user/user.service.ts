@@ -88,7 +88,7 @@ export class UserService
 
     this.http.post("http://192.168.2.13:7777", 
     "~signup#"+this.userProfileToString(user)+"\n")
-    .subscribe(response => this.inString = response.json());
+    .subscribe(response => this.inString = response.toString());
      
 
    // this.http.get("http://192.168.2.13:7777").subscribe(
@@ -108,7 +108,7 @@ export class UserService
 
     this.http.post("http://192.168.0.16:7777", 
     "~login#"+user.username+"#"+user.password+"\n")
-    .subscribe(response => this.inString = JSON.stringify(response.toString));
+    .subscribe(response => this.inString = response.json().toString());
 
 
     //.subscribe(response => this.inString = response.json());
@@ -267,10 +267,18 @@ let headers = new Headers();
 //converts the string from the server to a user object
 stringToUserProfile(str: string)
 {
+
+  //
+  //console.log(str);
+  //
+
   if(str == null)
   {
     return this.nullUser;
   }
+
+  this.newUser = new User();
+
   this.stringArray = str.split("$");
   var strArray = this.stringArray[Symbol.iterator]();
   this.newUser.firstName = strArray.next().value;
