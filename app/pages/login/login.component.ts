@@ -79,6 +79,9 @@ export class LoginComponent implements OnInit
       this.loading = true;
 
     	let responseString = this.userService.login(this.user);
+
+      console.log(responseString);
+
       if(responseString == "notfound")
       {
         alert("Account not found.");
@@ -94,7 +97,7 @@ export class LoginComponent implements OnInit
       {
         let loggingInUser = this.userService.stringToUserProfile(responseString);
         this.currentUserService.changeUser(loggingInUser);
-        if(loggingInUser.username == "undefined")
+        if(loggingInUser.username == "undefined" || loggingInUser.username == "")
         //the parse or server returned garbage
         {
           alert("INTERNAL ERROR");
@@ -123,8 +126,6 @@ export class LoginComponent implements OnInit
       //      this.loading = false;
       //      }
       //	);
-
-    console.log(this.userService.login(this.user));
 
         
   	}

@@ -134,7 +134,7 @@ public class ProfileServer
                 {
                 	e.printStackTrace();
                 }
-                StringTokenizer tok = new StringTokenizer(text, "\"");
+                StringTokenizer tok = new StringTokenizer(text, "~");
                 String header = tok.nextToken();
                 String commandString = tok.nextToken();
                 String response = "HTTP/1.1 200 OK\r\n\r\n" + stringCommand(commandString);

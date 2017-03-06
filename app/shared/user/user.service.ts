@@ -87,7 +87,7 @@ export class UserService
     //console.log(profileString);
 
     this.http.post("http://192.168.2.13:7777", 
-    JSON.stringify("signup#"+this.userProfileToString(user)))
+    "~signup#"+this.userProfileToString(user)+"\n")
     .subscribe(response => this.inString = response.json());
      
 
@@ -107,12 +107,8 @@ export class UserService
     //console.log(profileString);
 
     this.http.post("http://192.168.0.16:7777", 
-    "login#"+user.username+"#"+user.password)
-    .map(response => response.json())
-    .do(data => {
-      response => this.inString = response.Result.access_token;
-    })
-    .catch(this.handleErrors);
+    "~login#"+user.username+"#"+user.password+"\n")
+    .subscribe(response => this.inString = JSON.stringify(response.toString));
 
 
     //.subscribe(response => this.inString = response.json());
@@ -148,7 +144,7 @@ export class UserService
     //console.log(profileString);
 
     this.http.post("http://192.168.0.16:7777", 
-    JSON.stringify("logout#"+user.username))
+    "~logout#"+user.username+"\n")
     .subscribe(response => this.inString = response.json());
 
     //Right now, inString is undefined
@@ -165,8 +161,8 @@ export class UserService
 
     //console.log(profileString);
 
-    this.http.post("http://192.168.0.16:7777", 
-    JSON.stringify("update#"+this.userProfileToString(user)))
+    this.http.post("http://192.168.0.16:7777",
+      "~update#"+this.userProfileToString(user)+"\n")
     .subscribe(response => this.inString = response.json());
 
     //Right now, inString is undefined
@@ -199,7 +195,7 @@ let headers = new Headers();
     //console.log(profileString);
 
     return this.http.post("http://192.168.2.9:7777", 
-    JSON.stringify("signup#"+profileString))
+    "~signup#"+profileString+"\n")
     .map(response => response.json())
     .do(data => {
       Config.token = data.Result.access_token;
@@ -271,6 +267,10 @@ let headers = new Headers();
 //converts the string from the server to a user object
 stringToUserProfile(str: string)
 {
+  if(str == null)
+  {
+    return this.nullUser;
+  }
   this.stringArray = str.split("$");
   var strArray = this.stringArray[Symbol.iterator]();
   this.newUser.firstName = strArray.next().value;
@@ -351,18 +351,18 @@ parseResponse(str: string)
 
 
 //empty user placeholder
-nullUser: User = {
-	firstName: "",
-	lastName: "",
-	address: "",
-	city: "",
-	country: "",
-	zip: "",
-	username: "",
-	password: "",
-	email: "",
-	charterHistory: null,
-	shuttleHistory: null,
+  nullUser: User = {
+  firstName: "",
+  lastName: "",
+  address: "",
+  city: "",
+  country: "",
+  zip: "",
+  username: "",
+  password: "",
+  email: "",
+  charterHistory: null,
+  shuttleHistory: null,
 }
 
 
