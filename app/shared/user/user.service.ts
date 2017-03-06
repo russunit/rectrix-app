@@ -107,8 +107,32 @@ export class UserService
     //console.log(profileString);
 
     this.http.post("http://192.168.0.16:7777", 
-    JSON.stringify("login#"+user.username+"#"+user.password))
-    .subscribe(response => this.inString = response.json());
+    "login#"+user.username+"#"+user.password)
+    .map(response => response.json())
+    .do(data => {
+      response => this.inString = response.Result.access_token;
+    })
+    .catch(this.handleErrors);
+
+
+    //.subscribe(response => this.inString = response.json());
+
+    /*
+    return this.http.post(
+      Config.apiUrl + "oauth/token",
+      JSON.stringify({
+        username: user.username,
+        password: user.password,
+        grant_type: "password"
+      }),
+      { headers: headers }
+    )
+    .map(response => response.json())
+    .do(data => {
+      Config.token = data.Result.access_token;
+    })
+    .catch(this.handleErrors);
+    */
 
     //Right now, inString is printing as undefined
     return this.parseResponse(this.inString);

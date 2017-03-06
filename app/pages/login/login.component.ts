@@ -26,12 +26,12 @@ import { Subscription } from 'rxjs/Subscription';
 			</StackLayout>
 		</ScrollView>
 	</StackLayout>
- 
-  <StackLayout height={{height-70}} *ngIf="loading">
+
+  <div height={{height-70}} *ngIf="loading">
 	<ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" row="1" class="loading-indicator" horizontalAlignment="center" verticalAlignment="middle" width="150" height="150"></ActivityIndicator>
-   <md-progress-bar mode="indeterminate"></md-progress-bar>
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
 	<label text="Logging in please wait..." horizontalAlignment='center' verticalAlignment='center' class="loading-label"></label>
-  </StackLayout> 
+  </div> 
 
 	`,
 	providers: [UserService],
