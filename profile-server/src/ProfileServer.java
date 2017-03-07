@@ -21,7 +21,7 @@ public class ProfileServer
 		
 		//string command formats:
 		//
-		//login#username#password, returns profileString, "alreadyloggedin" or "notfound"
+		//login#username#password, returns OK$profileString, "alreadyloggedin" or "notfound"
 		//logout#username, returns "OK" or "notloggedin"
 		//update#profileString, returns "OK" or "notloggedin"
 		//signup#profileString, returns "OK or "nameunavailable"
@@ -63,7 +63,7 @@ public class ProfileServer
 						if(profileDB.getLoggedInUserNames().get(y).equals(user))
 							return "alreadyloggedin";
 					profileDB.logInUser(user);
-					return profileDB.profileToStringFromUserName(user);
+					return "OK$" + profileDB.profileToStringFromUserName(user);
 				}
 		}
 		return "notfound";

@@ -92,25 +92,20 @@ export class LoginComponent implements OnInit
         alert("Already logged in.");
         this.loading = false;
       }
-      else
-      //no error message
+      else if(responseString.startsWith("OK"))
+      //success
       {
         let loggingInUser = this.userService.stringToUserProfile(responseString);
         this.currentUserService.changeUser(loggingInUser);
-        if(loggingInUser.username == "undefined" || loggingInUser.username == "")
-        //the parse or server returned garbage
-        {
-          alert("INTERNAL ERROR");
-          this.loading = false;
-        }
-        else
-        //successful login
-        {
-          this.currentUserService.toggleLoggedIn(true);
-          alert("Logged in as "+this.user.username+"!");
-          this.router.navigate(["/dashboard"]); 
-        }
-
+        this.currentUserService.toggleLoggedIn(true);
+        alert("Logged in as "+this.user.username+"!");
+        this.router.navigate(["/dashboard"]); 
+      }
+      else
+      //the parse or server returned garbage
+      {
+        alert("INTERNAL ERROR");
+        this.loading = false;
       }
 
       //	.subscribe(

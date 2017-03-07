@@ -88,11 +88,11 @@ export class UserService
 
     this.http.post("http://192.168.2.13:7777", 
     "~signup#"+this.userProfileToString(user)+"\n")
-    .subscribe(response => this.inString = response.toString());
+    .subscribe(response => this.inString = response.json().toString());
      
 
-   // this.http.get("http://192.168.2.13:7777").subscribe(
- //response => this.inString = response.json());
+    // this.http.get("http://192.168.2.13:7777").subscribe(
+    //response => this.inString = response.json());
     //Right now, inString is printing as undefined
     return this.parseResponse(this.inString);
   }
@@ -154,7 +154,7 @@ export class UserService
 
     this.http.post("http://192.168.0.16:7777", 
     "~logout#"+user.username+"\n")
-    .subscribe(response => this.inString = response.json());
+    .subscribe(response => this.inString = response.json().toString());
 
     //Right now, inString is undefined
     return this.parseResponse(this.inString);
@@ -172,7 +172,7 @@ export class UserService
 
     this.http.post("http://192.168.0.16:7777",
       "~update#"+this.userProfileToString(user)+"\n")
-    .subscribe(response => this.inString = response.json());
+    .subscribe(response => this.inString = response.json().toString());
 
     //Right now, inString is undefined
     return this.parseResponse(this.inString);
@@ -290,6 +290,7 @@ stringToUserProfile(str: string)
 
   this.stringArray = str.split("$");
   var strArray = this.stringArray[Symbol.iterator]();
+  let okFiller = strArray.next().value;
   this.newUser.firstName = strArray.next().value;
   this.newUser.lastName = strArray.next().value;
   this.newUser.address = strArray.next().value;
@@ -350,7 +351,8 @@ stringToUserProfile(str: string)
 
 parseResponse(str: string)
 {
-
+  if(str == null)
+    return "undefined";
   return str;
 }
 

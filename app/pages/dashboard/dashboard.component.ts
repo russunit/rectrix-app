@@ -7,6 +7,7 @@ import { Location } from '@angular/common';
 import { Page } from "ui/page";
 import { User } from "../../shared/user/user";
 import { CurrentUserService } from "../../shared/current-user/current-user.service";
+import { UserService } from "../../shared/user/user.service";
 import {Subscription} from 'rxjs/Subscription';
 
 
@@ -33,6 +34,7 @@ import {Subscription} from 'rxjs/Subscription';
        
   `,
   styleUrls: ["pages/dashboard/dashboard-common.css"],
+  providers: [UserService],
   
  
 })
@@ -59,7 +61,7 @@ export class DashboardComponent implements OnInit
     subscription1:Subscription;
     subscription2:Subscription;
 
-    constructor(private router: Router, private location: Location, private page: Page, private currentUserService: CurrentUserService) {}
+    constructor(private router: Router, private location: Location, private page: Page, private currentUserService: CurrentUserService, private userService: UserService) {}
 
     ngOnInit() {
         this.page.actionBarHidden = true;
@@ -125,11 +127,29 @@ signUp()
       this.router.navigate(["/signup"]);
     }
     else
+    //logout
     {
-      this.currentUserService.changeUser(null);
-      this.currentUserService.toggleLoggedIn(false);
-      this.signOutFormat();
-      alert("Signed out.");
+      let responseString = this.userService.logout(this.currentUser);
+      if(responseString == "notloggedin")
+      {
+        alert("This profile is not logged into the server.");
+        this.currentUserService.changeUser(null);
+        this.currentUserService.toggleLoggedIn(false);
+      }
+      else if (responseString == "OK")
+      //success
+      {
+        this.currentUserService.changeUser(null);
+        this.currentUserService.toggleLoggedIn(false);
+        this.signOutFormat();
+        alert("Signed out.");
+      }
+      else
+      //the parse or server returned garbage
+      {
+        alert("INTERNAL ERROR");
+      }
+
     }
 
 }
