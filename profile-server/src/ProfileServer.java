@@ -46,8 +46,6 @@ public class ProfileServer
 					return "OK";
 				else
 					return "nameunavailable";
-			case "confirm":
-				return "";//TODO handle this or fix this
 			default:
 				return "COMMAND STRING ERROR.";
 		}
