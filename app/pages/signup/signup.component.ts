@@ -47,7 +47,7 @@ import { UserService } from "../../shared/user/user.service";
 
 <div class="loading-overlay" *ngIf="loading">
    <label text="Please Wait..."></label>
-   <md-progress-bar mode="indeterminate"></md-progress-bar>
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
 </div>
 `,
 	providers: [UserService],
@@ -107,12 +107,13 @@ export class SignupComponent implements OnInit
               this.currentUserService.toggleLoggedIn(true);
               this.router.navigate(["/dashboard"]); 
           }
-          else
+          else if(this.user.username == "undefined" ||  this.user.username == "")
           //the parse or server returned garbage
           {
               alert("INTERNAL ERROR");
               this.loading = false;
           }  
+
 
       	//    .subscribe(
         //	    () => {

@@ -86,7 +86,7 @@ export class UserService
 
     //console.log(profileString);
 
-    this.http.post("http://192.168.2.13:7777", 
+    this.http.post("http://192.168.2.12:7777", 
     "~signup#"+this.userProfileToString(user)+"\n")
     .subscribe(response => this.inString = response.json().toString());
      
@@ -115,7 +115,7 @@ export class UserService
 
     //good steps in the right direction, let's try to work on this. could be server-side or client-side
     
-    this.http.post("http://192.168.0.16:7777", 
+    this.http.post("http://192.168.2.12:7777", 
     "~login#"+user.username+"#"+user.password+"\n")
     .subscribe(response => this.inString = response.json().toString());
 
@@ -152,7 +152,7 @@ export class UserService
 
     //console.log(profileString);
 
-    this.http.post("http://192.168.0.16:7777", 
+    this.http.post("http://192.168.2.12:7777", 
     "~logout#"+user.username+"\n")
     .subscribe(response => this.inString = response.json().toString());
 
@@ -170,7 +170,7 @@ export class UserService
 
     //console.log(profileString);
 
-    this.http.post("http://192.168.0.16:7777",
+    this.http.post("http://192.168.2.12:7777",
       "~update#"+this.userProfileToString(user)+"\n")
     .subscribe(response => this.inString = response.json().toString());
 
