@@ -14,6 +14,10 @@ import { ShuttleRequest } from "../shuttle-request/shuttle-request";
 export class UserService 
 {
 
+  //
+  SERVERADDRESS: string = "http://192.168.0.16:7777";
+  //
+
   charterHistorySize: number;
   shuttleHistorySize: number;
   outString: string;
@@ -86,7 +90,7 @@ export class UserService
 
     //console.log(profileString);
 	console.log("Hello3");
-    this.http.post("http://192.168.2.12:7777", 
+    this.http.post(this.SERVERADDRESS, 
     "~signup#"+this.userProfileToString(user)+"\n")
     .subscribe(response => this.inString = response.json().toString());
      	console.log("Hello4");
@@ -115,7 +119,7 @@ export class UserService
 
     //good steps in the right direction, let's try to work on this. could be server-side or client-side
     
-    this.http.post("http://192.168.2.12:7777", 
+    this.http.post(this.SERVERADDRESS, 
     "~login#"+user.username+"#"+user.password+"\n")
     .subscribe(response => this.inString = response.json().toString());
 
@@ -152,7 +156,7 @@ export class UserService
 
     //console.log(profileString);
 
-    this.http.post("http://192.168.2.12:7777", 
+    this.http.post(this.SERVERADDRESS, 
     "~logout#"+user.username+"\n")
     .subscribe(response => this.inString = response.json().toString());
 
@@ -170,7 +174,7 @@ export class UserService
 
     //console.log(profileString);
 
-    this.http.post("http://192.168.2.12:7777",
+    this.http.post(this.SERVERADDRESS,
       "~update#"+this.userProfileToString(user)+"\n")
     .subscribe(response => this.inString = response.json().toString());
 
@@ -203,7 +207,7 @@ let headers = new Headers();
 
     //console.log(profileString);
 
-    return this.http.post("http://192.168.2.9:7777", 
+    return this.http.post(this.SERVERADDRESS, 
     "~signup#"+profileString+"\n")
     .map(response => response.json())
     .do(data => {
@@ -222,7 +226,7 @@ let headers = new Headers();
 if(user.charterHistory == null || user.shuttleHistory == null )
 {
 
-        this.charterHistorySize = 0;
+    this.charterHistorySize = 0;
     this.shuttleHistorySize = 0;
 
 }

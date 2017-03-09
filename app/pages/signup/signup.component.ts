@@ -7,6 +7,8 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { User } from "../../shared/user/user";
 import { UserService } from "../../shared/user/user.service";
+import { CharterRequest } from "../../shared/charter-request/charter-request";
+import { ShuttleRequest } from "../../shared/shuttle-request/shuttle-request";
 
 @Component({
   selector: "signup",
@@ -93,10 +95,11 @@ export class SignupComponent implements OnInit
         else
         {
 		      this.loading = true;
-               
+          this.user.charterHistory = new Array<CharterRequest>();
+          this.user.shuttleHistory = new Array<ShuttleRequest>();
     	    let responseString = this.userService.register(this.user);
 
-	if(responseString == "nameunavailable")
+	      if(responseString == "nameunavailable")
           {
             alert("User name unavailable.");
             this.loading = false;
@@ -109,7 +112,7 @@ export class SignupComponent implements OnInit
               this.currentUserService.toggleLoggedIn(true);
               this.router.navigate(["/dashboard"]); 
           }
-          else if(this.user.username == "undefined" ||  this.user.username == "")
+          else
           //the parse or server returned garbage
           {
               alert("INTERNAL ERROR");
