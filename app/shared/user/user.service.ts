@@ -85,11 +85,11 @@ export class UserService
     headers.append("Content-type", "application/json");
 
     //console.log(profileString);
-
+	console.log("Hello3");
     this.http.post("http://192.168.2.12:7777", 
     "~signup#"+this.userProfileToString(user)+"\n")
     .subscribe(response => this.inString = response.json().toString());
-     
+     	console.log("Hello4");
 
     // this.http.get("http://192.168.2.13:7777").subscribe(
     //response => this.inString = response.json());
@@ -217,10 +217,20 @@ let headers = new Headers();
 
 
   //converts whole profile to string for our http server
-  userProfileToString(user: User) 
-  {
+  userProfileToString(user: User) {
+
+if(user.charterHistory == null || user.shuttleHistory == null )
+{
+
+        this.charterHistorySize = 0;
+    this.shuttleHistorySize = 0;
+
+}
+else
+{
     this.charterHistorySize = user.charterHistory.length;
     this.shuttleHistorySize = user.shuttleHistory.length;
+}
     this.outString = "";
 
     this.outString += user.firstName + "$";
@@ -234,6 +244,7 @@ let headers = new Headers();
     this.outString += user.email + "$";
     
     this.outString += this.charterHistorySize + "$";
+if(this.charterHistorySize > 0){
     for(let charterRequest of user.charterHistory)
     {
       this.outString += charterRequest.firstName + "$";
@@ -249,8 +260,9 @@ let headers = new Headers();
       this.outString += charterRequest.requirements + "$";
       this.outString += charterRequest.preferredCraft + "$";
     }
-
+}
     this.outString += this.shuttleHistorySize + "$";
+if(this.shuttleHistorySize > 0) {
     for(let shuttleRequest of user.shuttleHistory)
     {
       this.outString += shuttleRequest.firstName + "$";
@@ -267,7 +279,7 @@ let headers = new Headers();
       this.outString += shuttleRequest.numChildren + "$";
       this.outString += shuttleRequest.numInfants + "$";
     }
-
+}
 
     
     return this.outString;

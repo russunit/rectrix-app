@@ -45,10 +45,10 @@ import { UserService } from "../../shared/user/user.service";
 </ScrollView>
 </StackLayout>
 
-<div class="loading-overlay" *ngIf="loading">
+<StackLayout class="loading-overlay" *ngIf="loading">
    <label text="Please Wait..."></label>
     <md-progress-bar mode="indeterminate"></md-progress-bar>
-</div>
+</StackLayout>
 `,
 	providers: [UserService],
 })
@@ -84,6 +84,7 @@ export class SignupComponent implements OnInit
 
 	signUp() 
   {
+	
         if (this.user.username.length > 10)
         {
           alert("Cannot create account. Username is too many characters"); 
@@ -92,9 +93,10 @@ export class SignupComponent implements OnInit
         else
         {
 		      this.loading = true;
-
+               
     	    let responseString = this.userService.register(this.user);
-          if(responseString == "nameunavailable")
+
+	if(responseString == "nameunavailable")
           {
             alert("User name unavailable.");
             this.loading = false;
