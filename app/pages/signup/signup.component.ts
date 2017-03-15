@@ -97,27 +97,32 @@ export class SignupComponent implements OnInit
 		      this.loading = true;
           this.user.charterHistory = new Array<CharterRequest>();
           this.user.shuttleHistory = new Array<ShuttleRequest>();
-    	    let responseString = this.userService.register(this.user);
+    	    this.userService.register(this.user)
+            .subscribe(response => 
+            {
+              var responseString = response.json().toString();
 
-	      if(responseString == "nameunavailable")
-          {
-            alert("User name unavailable.");
-            this.loading = false;
-          }
-          else if (responseString == "OK")
-          //success
-          {
-              alert("Your account was successfully created. Signed in as "+this.user.username+"!"); 
-              this.currentUserService.changeUser(this.user);
-              this.currentUserService.toggleLoggedIn(true);
-              this.router.navigate(["/dashboard"]); 
-          }
-          else
-          //the parse or server returned garbage
-          {
-              alert("INTERNAL ERROR");
-              this.loading = false;
-          }  
+    	      if(responseString == "nameunavailable")
+              {
+                alert("User name unavailable.");
+                this.loading = false;
+              }
+              else if (responseString == "OK")
+              //success
+              {
+                  alert("Your account was successfully created. Signed in as "+this.user.username+"!"); 
+                  this.currentUserService.changeUser(this.user);
+                  this.currentUserService.toggleLoggedIn(true);
+                  this.router.navigate(["/dashboard"]); 
+              }
+              else
+              //the parse or server returned garbage
+              {
+                  alert("INTERNAL ERROR");
+                  this.loading = false;
+              }  
+            }
+            );//end subscribe
 
 
       	//    .subscribe(

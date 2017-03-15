@@ -79,25 +79,30 @@ ngOnDestroy()
 
 change()
 {
-      let responseString = this.userService.update(this.user);
-      if(responseString == "notloggedin")
-      {
-        alert("this profile is not logged into the server...\nPlease log in.");
-        this.currentUserService.changeUser(null);
-            this.currentUserService.toggleLoggedIn(false);
-            this.router.navigate(["/dashboard"]);
-      }
-      else if (responseString == "OK")
-      //success
-      {
-        this.currentUserService.changeUser(this.user);
-        alert("Changes saved.");
-      }
-      else
-      //the parse or server returned garbage
-      {
-          alert("INTERNAL ERROR");
-      }
+      this.userService.update(this.user)
+            .subscribe(response => 
+            {
+                var responseString = response.json().toString();
+                if(responseString == "notloggedin")
+                {
+                  alert("this profile is not logged into the server...\nPlease log in.");
+                  this.currentUserService.changeUser(null);
+                      this.currentUserService.toggleLoggedIn(false);
+                      this.router.navigate(["/dashboard"]);
+                }
+                else if (responseString == "OK")
+                //success
+                {
+                  this.currentUserService.changeUser(this.user);
+                  alert("Changes saved.");
+                }
+                else
+                //the parse or server returned garbage
+                {
+                    alert("INTERNAL ERROR");
+                }
+              }
+              );//end subscribe
 
 }
 }

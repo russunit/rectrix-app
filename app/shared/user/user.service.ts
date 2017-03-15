@@ -90,13 +90,9 @@ export class UserService
 
     //console.log(profileString);
 	  //console.log("Hello3");
-    this.http.post(this.SERVERADDRESS, 
-    "~signup#"+this.userProfileToString(user)+"\n")
-    .subscribe(response => this.inString = response.json().toString());
+    return this.http.post(this.SERVERADDRESS, 
+    "~signup#"+this.userProfileToString(user)+"\n");
     //console.log("Hello4");
-
-    //Right now, inString is printing as undefined
-    return this.parseResponse(this.inString);
   }
 
   //NEW
@@ -106,28 +102,10 @@ export class UserService
     let headers = new Headers();
     headers.append("Content-type", "application/json");
 
-    //this actually works now....... but on the second try. 
-    //the server receives the message on the first try...
-    //but the app doesn't seem to get the response until the second try,
-    //and then it seems to get them one response too late...
-    //like, if I enter fake info, the app says "inernal error",
-    //then i enter good info, the app says "account not found" (but the server says i've logged in),
-    //then i enter the good login data again, and it says "logged in as username" (but the server says i'm already logged in)
-    //so it looks like we're getting the right response one transaction late.
-
-    //good steps in the right direction, let's try to work on this. seems to be client-side
-    /*
-    this.http.post(this.SERVERADDRESS, 
-    "~login#"+user.username+"#"+user.password+"\n")
-    .subscribe(response => this.inString = response.json().toString());
-    */
+    //this actually works now...
 
     return this.http.post(this.SERVERADDRESS, 
     "~login#"+user.username+"#"+user.password+"\n");
-
-
-    //Right now, inString is printing as undefined the first time.
-    //return this.parseResponse(this.inString);
 
   }
 
@@ -137,14 +115,8 @@ export class UserService
     let headers = new Headers();
     headers.append("Content-type", "application/json");
 
-    //console.log(profileString);
-
-    this.http.post(this.SERVERADDRESS, 
-    "~logout#"+user.username+"\n")
-    .subscribe(response => this.inString = response.json().toString());
-
-    //Right now, inString is undefined the first time
-    return this.parseResponse(this.inString);
+    return this.http.post(this.SERVERADDRESS, 
+    "~logout#"+user.username+"\n");
 
 
   }
@@ -155,14 +127,8 @@ export class UserService
     let headers = new Headers();
     headers.append("Content-type", "application/json");
 
-    //console.log(profileString);
-
-    this.http.post(this.SERVERADDRESS,
-      "~update#"+this.userProfileToString(user)+"\n")
-    .subscribe(response => this.inString = response.json().toString());
-
-    //Right now, inString is undefined the first time
-    return this.parseResponse(this.inString);
+    return this.http.post(this.SERVERADDRESS,
+      "~update#"+this.userProfileToString(user)+"\n");
 
 
   }

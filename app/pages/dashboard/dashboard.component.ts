@@ -129,26 +129,32 @@ signUp()
     else
     //logout
     {
-      let responseString = this.userService.logout(this.currentUser);
-      if(responseString == "notloggedin")
-      {
-        alert("This profile is not logged into the server.");
-        this.currentUserService.changeUser(null);
-        this.currentUserService.toggleLoggedIn(false);
-      }
-      else if (responseString == "OK")
-      //success
-      {
-        this.currentUserService.changeUser(null);
-        this.currentUserService.toggleLoggedIn(false);
-        this.signOutFormat();
-        alert("Signed out.");
-      }
-      else
-      //the parse or server returned garbage
-      {
-        alert("INTERNAL ERROR");
-      }
+      this.userService.logout(this.currentUser)
+        .subscribe(response => 
+        {
+          var responseString = response.json().toString();
+
+          if(responseString == "notloggedin")
+          {
+            alert("This profile is not logged into the server.");
+            this.currentUserService.changeUser(null);
+            this.currentUserService.toggleLoggedIn(false);
+          }
+          else if (responseString == "OK")
+          //success
+          {
+            this.currentUserService.changeUser(null);
+            this.currentUserService.toggleLoggedIn(false);
+            this.signOutFormat();
+            alert("Signed out.");
+          }
+          else
+          //the parse or server returned garbage
+          {
+            alert("INTERNAL ERROR");
+          }
+        }
+        );//end subscribe
 
     }
 

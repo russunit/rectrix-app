@@ -112,35 +112,40 @@ export class CharterComponent implements OnInit
 		{
 			this.user.charterHistory.push(this.charterRequest);
 
-			let responseString = this.userService.update(this.user);
-			if(responseString == "notloggedin")
-			{
-				alert("this profile is not logged into the server...\nPlease log in.");
-				this.currentUserService.changeUser(null);
-      			this.currentUserService.toggleLoggedIn(false);
-      			this.router.navigate(["/dashboard"]);
-			}
-			else if (responseString == "OK")
-			//success
-			{
-				this.currentUserService.changeUser(this.user);
-				alert("Charter Requested:\nName: "+this.charterRequest.firstName+" "+this.charterRequest.lastName +
-					"\nPhone: "+this.charterRequest.phoneNumber +
-					"\nTrip Type: "+this.charterRequest.tripType +
-					"\nFrom: "+this.charterRequest.departLocation +
-					"\n at: "+this.charterRequest.departTime + ", " + this.charterRequest.departDate +
-					"\nTo: "+this.charterRequest.arriveLocation +
-					"\n at: "+this.charterRequest.arriveTime + ", " + this.charterRequest.arriveDate +
-					"\n\nRequirements: " + this.charterRequest.requirements + 
-					"\nCraft Preference: " + this.charterRequest.preferredCraft);
-				this.router.navigate(["/dashboard"]);
-
-			}
-			else
-			//the parse or server returned garbage
+			this.userService.update(this.user)
+            .subscribe(response => 
             {
-              alert("INTERNAL ERROR");
-            }
+              	var responseString = response.json().toString();
+				if(responseString == "notloggedin")
+				{
+					alert("this profile is not logged into the server...\nPlease log in.");
+					this.currentUserService.changeUser(null);
+	      			this.currentUserService.toggleLoggedIn(false);
+	      			this.router.navigate(["/dashboard"]);
+				}
+				else if (responseString == "OK")
+				//success
+				{
+					this.currentUserService.changeUser(this.user);
+					alert("Charter Requested:\nName: "+this.charterRequest.firstName+" "+this.charterRequest.lastName +
+						"\nPhone: "+this.charterRequest.phoneNumber +
+						"\nTrip Type: "+this.charterRequest.tripType +
+						"\nFrom: "+this.charterRequest.departLocation +
+						"\n at: "+this.charterRequest.departTime + ", " + this.charterRequest.departDate +
+						"\nTo: "+this.charterRequest.arriveLocation +
+						"\n at: "+this.charterRequest.arriveTime + ", " + this.charterRequest.arriveDate +
+						"\n\nRequirements: " + this.charterRequest.requirements + 
+						"\nCraft Preference: " + this.charterRequest.preferredCraft);
+					this.router.navigate(["/dashboard"]);
+
+				}
+				else
+				//the parse or server returned garbage
+	            {
+	              alert("INTERNAL ERROR");
+	            }
+	        }
+	        );//end subscribe
 
 
 		}
