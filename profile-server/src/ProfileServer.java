@@ -126,27 +126,26 @@ public class ProfileServer
                 	}
                 	text = new String(bytes, "UTF-8");
                 	
+                    StringTokenizer tok = new StringTokenizer(text, "~");
+                    String header = tok.nextToken();
+                    String commandString = tok.nextToken();
+                    String response = "HTTP/1.1 200 OK\r\n\r\n" + stringCommand(commandString);
+    				clientSocket.getOutputStream().write(response.getBytes("UTF-8"));
+    				
                 	//
-                	System.out.println("payload:\n"+text+"\n");
+                	//System.out.println("payload:\n"+text+"\n");
                 	//
+                	System.out.println("commandString:\n"+commandString+"\n");
+                	//
+    				System.out.println("response:\n"+response+"\n");
+                    //
+                	
                 }
                 catch(Exception e)
                 {
                 	e.printStackTrace();
                 }
-                StringTokenizer tok = new StringTokenizer(text, "~");
-                String header = tok.nextToken();
-                String commandString = tok.nextToken();
-                String response = "HTTP/1.1 200 OK\r\n\r\n" + stringCommand(commandString);
-				clientSocket.getOutputStream().write(response.getBytes("UTF-8"));
-				
-				//
-            	System.out.println("commandString:\n"+commandString+"\n");
-            	//
-				
-				//
-				System.out.println("response:\n"+response+"\n");
-                //
+
 				
                 //String response = "HTTP/1.1 200 OK\r\n\r\n" + stringCommand(commandString);
 				//clientSocket.getOutputStream().write(response.getBytes("UTF-8"));

@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit
     height: number = this.screen.mainScreen.heightDIPs;
   
   subscription1:Subscription;
+  //responseString:string;
 
 	constructor(private router: Router, private userService: UserService, private currentUserService: CurrentUserService) 
 	{
@@ -78,35 +79,41 @@ export class LoginComponent implements OnInit
 	{
       this.loading = true;
 
-    	let responseString = this.userService.login(this.user);
+    	this.userService.login(this.user)
+        .subscribe(response => 
+        {
+          var responseString = response.json().toString();
 
-      console.log(responseString);
+          console.log(responseString);
 
-      if(responseString == "notfound")
-      {
-        alert("Account not found.");
-        this.loading = false;
-      }
-      else if(responseString == "alreadyloggedin")
-      {
-        alert("Already logged in.");
-        this.loading = false;
-      }
-      else if(responseString.startsWith("OK"))
-      //success
-      {
-        let loggingInUser = this.userService.stringToUserProfile(responseString);
-        this.currentUserService.changeUser(loggingInUser);
-        this.currentUserService.toggleLoggedIn(true);
-        alert("Logged in as "+this.user.username+"!");
-        this.router.navigate(["/dashboard"]); 
-      }
-      else
-      //the parse or server returned garbage
-      {
-        alert("INTERNAL ERROR");
-        this.loading = false;
-      }
+          if(responseString == "notfound")
+          {
+            alert("Account not found.");
+            this.loading = false;
+          }
+          else if(responseString == "alreadyloggedin")
+          {
+            alert("Already logged in.");
+            this.loading = false;
+          }
+          else if(responseString.startsWith("OK"))
+          //success
+          {
+            let loggingInUser = this.userService.stringToUserProfile(responseString);
+            this.currentUserService.changeUser(loggingInUser);
+            this.currentUserService.toggleLoggedIn(true);
+            alert("Logged in as "+this.user.username+"!");
+            this.router.navigate(["/dashboard"]); 
+          }
+          else
+          //the parse or server returned garbage
+          {
+            alert("INTERNAL ERROR");
+            this.loading = false;
+          }
+
+        }//end subscribe
+        );//end subscribe
 
       //	.subscribe(
       //  	() => {
@@ -121,8 +128,6 @@ export class LoginComponent implements OnInit
       //      this.loading = false;
       //      }
       //	);
-
-        
   	}
 
 

@@ -89,14 +89,12 @@ export class UserService
     headers.append("Content-type", "application/json");
 
     //console.log(profileString);
-	console.log("Hello3");
+	  //console.log("Hello3");
     this.http.post(this.SERVERADDRESS, 
     "~signup#"+this.userProfileToString(user)+"\n")
     .subscribe(response => this.inString = response.json().toString());
-     	console.log("Hello4");
+    //console.log("Hello4");
 
-    // this.http.get("http://192.168.2.13:7777").subscribe(
-    //response => this.inString = response.json());
     //Right now, inString is printing as undefined
     return this.parseResponse(this.inString);
   }
@@ -117,38 +115,23 @@ export class UserService
     //then i enter the good login data again, and it says "logged in as username" (but the server says i'm already logged in)
     //so it looks like we're getting the right response one transaction late.
 
-    //good steps in the right direction, let's try to work on this. could be server-side or client-side
-    
+    //good steps in the right direction, let's try to work on this. seems to be client-side
+    /*
     this.http.post(this.SERVERADDRESS, 
     "~login#"+user.username+"#"+user.password+"\n")
     .subscribe(response => this.inString = response.json().toString());
-
-
-    //.subscribe(response => this.inString = response.json());
-
-    /*
-    return this.http.post(
-      Config.apiUrl + "oauth/token",
-      JSON.stringify({
-        username: user.username,
-        password: user.password,
-        grant_type: "password"
-      }),
-      { headers: headers }
-    )
-    .map(response => response.json())
-    .do(data => {
-      Config.token = data.Result.access_token;
-    })
-    .catch(this.handleErrors);
     */
 
-    //Right now, inString is printing as undefined
-    return this.parseResponse(this.inString);
+    return this.http.post(this.SERVERADDRESS, 
+    "~login#"+user.username+"#"+user.password+"\n");
+
+
+    //Right now, inString is printing as undefined the first time.
+    //return this.parseResponse(this.inString);
 
   }
 
-  //NEW, not used yet
+  //NEW
   logout(user: User)//pass in currentUser
   {
     let headers = new Headers();
@@ -160,13 +143,13 @@ export class UserService
     "~logout#"+user.username+"\n")
     .subscribe(response => this.inString = response.json().toString());
 
-    //Right now, inString is undefined
+    //Right now, inString is undefined the first time
     return this.parseResponse(this.inString);
 
 
   }
 
-  //NEW, not used yet
+  //NEW
   update(user: User)//pass in currentUser
   {
     let headers = new Headers();
@@ -178,18 +161,10 @@ export class UserService
       "~update#"+this.userProfileToString(user)+"\n")
     .subscribe(response => this.inString = response.json().toString());
 
-    //Right now, inString is undefined
+    //Right now, inString is undefined the first time
     return this.parseResponse(this.inString);
-    //
 
-    //this is temporary, should be replaced by some check whether 
-    //the server request was successful based on the response string,
-    //then if successful return true
-    //return this.serverResponse.map(response => response.json())
-    //.do(data => {
-    //  Config.token = data.Result.access_token;
-    //})
-    //.catch(this.handleErrors);
+
   }
 
 
