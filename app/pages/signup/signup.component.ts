@@ -13,46 +13,48 @@ import { ShuttleRequest } from "../../shared/shuttle-request/shuttle-request";
 @Component({
   selector: "signup",
   template: `
-<StackLayout *ngIf="!loading">
-<ScrollView>
-<StackLayout>
-<label text='Signup Component'></label>
+	<ScrollView>
+		<StackLayout class="background" *ngIf="!loading">
+			<StackLayout class="layout">
+				<label text='Sign up with Rectrix' horizontalAlignment='center' class="title"></label>
 
-<label text='First Name'></label>
-<TextField autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.firstName"></TextField>
+				<TextField autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.firstName"></TextField>
+				<label text='First Name' class='field-label'></label>
+				
+				<TextField autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.lastName"></TextField>
+				<label text='Last Name' class='field-label'></label>
+				
+				<TextField autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.address"></TextField>
+				<label text='Address' class='field-label'></label>
+				
+				<TextField autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.city"></TextField>
+				<label text='City' class='field-label'></label>
+				
+				<TextField autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.country"></TextField>
+				<label text='Country' class='field-label'></label>
+				
+				<TextField keyboardType ="number" [(ngModel)]="user.zip"></TextField>
+				<label text='Zip code' class='field-label'></label>
+				
+				<TextField autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.username"></TextField>
+				<label text='Username' class='field-label'></label>
+				
+				<TextField secure = "true" [(ngModel)]="user.password"></TextField>
+				<label text='Password' class='field-label'></label>
+				
+				<Button text="Sign Up"(tap)="signUp(this.user)" horizontalAlignment='center'></Button>
+			</StackLayout>
+		</StackLayout>
+	</ScrollView>
 
-<label text='Last Name'></label>
-<TextField autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.lastName"></TextField>
-
-<label text='Address'></label>
-<TextField autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.address"></TextField>
-
-<label text='City'></label>
-<TextField autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.city"></TextField>
-
-<label text='Country'></label>
-<TextField autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.country"></TextField>
-
-<label text='Zip code'></label>
-<TextField keyboardType ="number" [(ngModel)]="user.zip"></TextField>
-
-<label text='Username'></label>
-<TextField autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.username"></TextField>
-
-<label text='Password'></label>
-<TextField secure = "true" [(ngModel)]="user.password"></TextField>
-<Button text="Submit"(tap)="signUp(this.user)"></Button>
-
-</StackLayout>
-</ScrollView>
-</StackLayout>
-
-<StackLayout class="loading-overlay" *ngIf="loading">
-   <label text="Please Wait..."></label>
-    <md-progress-bar mode="indeterminate"></md-progress-bar>
-</StackLayout>
+	<StackLayout class="loading-overlay" *ngIf="loading">
+		<ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" row="1" class="loading-indicator" horizontalAlignment="center" verticalAlignment="middle" width="150" height="150"></ActivityIndicator>
+		<md-progress-bar mode="indeterminate"></md-progress-bar>
+	    <label text="Signing up please Wait..." horizontalAlignment='center' verticalAlignment='center' class="loading-label"></label>
+	</StackLayout>
 `,
 	providers: [UserService],
+	styleUrls: ['pages/signup/signup.css']
 })
 
 export class SignupComponent implements OnInit

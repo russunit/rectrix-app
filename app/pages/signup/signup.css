@@ -1,17 +1,14 @@
 
 .background {
-	background-image: url("~/images/login.png");
+	background-image: url("~/images/signup.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-
 }
 
 .layout{
-    margin-left: 30;
-	margin-right: 30;
-	margin-top: 100;
-	padding-bottom: 15;
+	margin: 30;
+	padding-bottom: 10;
 	background-color: #324264;
 	border-radius: 20;
 }
@@ -25,7 +22,7 @@
 }
 
 .field-label{
-    margin-bottom: 10;
+    margin-bottom: 20;
     margin-left: 15;
     font-size: 16;
     color: white;

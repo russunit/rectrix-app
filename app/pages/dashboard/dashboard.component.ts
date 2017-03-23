@@ -17,12 +17,12 @@ import {Subscription} from 'rxjs/Subscription';
     <StackLayout class="layout" height={{height-140}}>
         <Image src="~/images/logo.png" height={{buttonH}} width={{buttonW}} class="logo"></Image>
   	    <GridLayout rows="auto, auto, auto, auto" columns="auto, auto" horizontalAlignment="center" verticalAlignment="center">
-   		    <button text="Shuttle" row="0" col="0" 		(tap)="goShuttle()" height="{{buttonH}}" width="{{buttonW}}"></button>
-   		    <button text="Charter" row="0" col="1" 		(tap)="goCharter()" height="{{buttonH}}" width="{{buttonW}}"></button>
-   		    <button text="FBO" row="1" col="0" 		(tap)="goFbo()" height="{{buttonH}}" width="{{buttonW}}"></button>
-   		    <button text="MRO" row="1" col="1" 		(tap)="goMro()" height="{{buttonH}}" width="{{buttonW}}"></button>
-   		    <button text="Passport Jet" row="2" col="0" (tap)="goPassJet()" height="{{buttonH}}" width="{{buttonW}}"></button>
-   		    <button text="Menu" row="2" col="1" 		(tap)="goMenu()" height="{{buttonH}}" width="{{buttonW}}"></button> 
+   		    <button text="Shuttle" row="0" col="0" 		(tap)="goShuttle()" height="{{buttonH}}" width="{{buttonW}}" class="dashbutton"></button>
+   		    <button text="Charter" row="0" col="1" 		(tap)="goCharter()" height="{{buttonH}}" width="{{buttonW}}" class="dashbutton"></button>
+   		    <button text="FBO" row="1" col="0" 			(tap)="goFbo()" height="{{buttonH}}" width="{{buttonW}}" class="dashbutton"></button>
+   		    <button text="MRO" row="1" col="1" 			(tap)="goMro()" height="{{buttonH}}" width="{{buttonW}}" class="dashbutton"></button>
+   		    <button text="Passport Jet" row="2" col="0" (tap)="goPassJet()" height="{{buttonH}}" width="{{buttonW}}" class="dashbutton"></button>
+   		    <button text="Menu" row="2" col="1" 		(tap)="goMenu()" height="{{buttonH}}" width="{{buttonW}}" class="dashbutton"></button> 
 	    </GridLayout>
     </StackLayout>
     <StackLayout height="70">

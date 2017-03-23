@@ -10,7 +10,7 @@
     margin-bottom: 10;
 }
 
-button{
+.dashbutton{
     opacity: .93;
     background-color: #d33432;
     color: white;
@@ -23,6 +23,8 @@ button{
     margin-top: 15;
     margin-left: 10;
     margin-right: 10;
+	border-width: 2;
+	border-color: #780606;
 }
 
 .profilebutton{

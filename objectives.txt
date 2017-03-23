@@ -56,8 +56,9 @@ styles for all components
 - profile edit
 - profile charter history
 - profile shuttle history
-- login ANTHONY
-- loading screen (login) ANTHONY
+- login ANTHONY FINISHED
+- loading screen (login) ANTHONY FINISHED
+- sign up ANTHONY FINISHED
 
 
 signup component CHRIS FINISHED
