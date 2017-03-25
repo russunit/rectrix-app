@@ -21,7 +21,7 @@ public class SchemaGenerator
     			"	<AccountNumber>"+accountNumber+"</AccountNumber>\n" +
     			"	<AccountName>"+accountName+"</AccountName>\n" +
     			"</AccountsAvailabilityRQ>\n";
-"
+
     	return output;
     }
     
@@ -53,7 +53,7 @@ public class SchemaGenerator
 					"		</Routes>\n"+
 					"	</OriginDestination>\n"+
 					"</AirAvailabilityRQ>\n";
-"
+
     	return output;
     }    
     

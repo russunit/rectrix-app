@@ -71,6 +71,9 @@ public class ProfileDB
 			}
 		}
 		profiles.add(up);
+		
+		//automatically logs in new user in app.
+		logInUser(userName);
 		return true;
 	}
 	
