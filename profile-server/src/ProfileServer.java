@@ -88,6 +88,7 @@ public class ProfileServer
 		//updates user profile from string containing all userprofile info (profileString)
 		//return true if updated successfully
 		return profileDB.updateUserProfileFromString(profileString);
+
 	}
 	
 	public boolean signup(String profileString)
@@ -171,6 +172,7 @@ public class ProfileServer
 				//	httpResponse = "HTTP/1.1 200 OK\r\n\r\n" + line;
 				}
 				
+			profileDB.saveToFile();
 			}
 	}
 	
