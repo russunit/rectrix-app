@@ -1,9 +1,63 @@
-.header {
-   font-size: 40px;
+#header {
+	color: #d33432;
+	font-weight: 700;
 }
-.triple{
-	width:50px;
-	margin-bottom: 20px;
-	margin-top:20px;
-        margin-left:90px;
+
+#username {
+	margin-bottom: 20;
+	font-size: 22;
+	color: black;
+}
+
+#edit{
+	margin-top: 30;
+	margin-bottom: 10;
+}
+
+#edit-label{
+	font-size: 18;
+}
+
+.title{
+	margin-left: 30;
+	margin-top: 10;
+	margin-bottom: 10;
+	font-size: 20;
+	font-weight: 700;
+	font-style: underline;
+	text-decoration: underline;
+}
+
+#information{
+	margin-left: 20;
+	margin-right: 20;
+	margin-bottom: 30;
+	background-color: #324264;
+	color: white;
+	border-radius: 20;
+}
+
+#edit{
+	margin-top: 10;
+}
+
+#account{
+	margin-left: 30;
+	margin-right: 30;
+	margin-bottom: 20;
+	font-size: 16;
+}
+
+#personal{
+	margin-left: 30;
+	margin-right: 30;
+	margin-bottom: 30;
+	font-size: 16;
+}
+
+.history{
+	margin-bottom: 10;
+	background-color: #d33432;
+	border-radius: 15;
+	color: white;
 }
