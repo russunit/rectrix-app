@@ -83,21 +83,6 @@ export class ProfileViewComponent implements OnInit
 		this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
 		this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.currentUser = currentUser );
 		
-		this.currentUser = {
-		firstName: "Anthony",
-		lastName: "Kapotsis",
-		address: "234 Kendall Street",
-		city: "Ludlow, MA",
-		country: "United States",
-		zip: "01056",
-		username: "akapotsis",
-		password: "sfd4567t",
-		email: "akapotsis@aol.com", 
-		charterHistory: null,
-		shuttleHistory: null,
-
-		};
-	
 		if(!this.loggedIn)
 		{
 			alert("Profile view unavailable. Sign in first.");
@@ -106,7 +91,7 @@ export class ProfileViewComponent implements OnInit
 
 		this.addresses = this.currentUser.address + " " + this.currentUser.city + " " + this.currentUser.country + " " + this.currentUser.zip;
 		this.fullName = this.currentUser.firstName + " " + this.currentUser.lastName;
-               
+
 		if(this.fullName.length <= 16)
 		{
 			this.size = 40;

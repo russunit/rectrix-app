@@ -3,11 +3,13 @@ import { User } from '../../shared/user/user'
 import { UserService } from "../../shared/user/user.service";
 import { CurrentUserService } from "../../shared/current-user/current-user.service";
 import { Router } from "@angular/router";
-import {Subscription} from 'rxjs/Subscription';
+import { Subscription } from 'rxjs/Subscription';
 import { CharterRequest } from "../../shared/charter-request/charter-request";
+
 @Component({
   selector: "charterhistory",
-  template: `
+  template: 
+	`
 	<Label text="Charter History" horizontalAlignment="center" id="header"></Label>
 	<ListView [items]="charterList">
 		<template let-item="item">
@@ -17,7 +19,7 @@ import { CharterRequest } from "../../shared/charter-request/charter-request";
 			</StackLayout>
 		</template>
 	</ListView>
-`,
+  `,
   styleUrls: ["pages/profileview/profile-charter-history.component.css"],
   providers: [UserService],
 })
@@ -36,19 +38,17 @@ export class ProfileCharterHistoryComponent implements OnInit {
     width: number = this.screen.mainScreen.widthDIPs;
     buttonH: number = this.height * .15;
     buttonW: number = this.width * .40;
- 
 
-	constructor(private router: Router, private userService: UserService, private currentUserService: CurrentUserService){}
+	constructor(private router: Router, private userService: UserService, private currentUserService: CurrentUserService)
+	{}
 
 	ngOnInit() 
 	{		
 		this.charterList = new Array();
-		
 		this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
 		this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.currentUser = currentUser );
 		this.charterList = this.currentUser.charterHistory;
 		//TO DO: Group by date, in order
-
     }  
 
 	ngOnDestroy() 
