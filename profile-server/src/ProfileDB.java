@@ -71,6 +71,7 @@ public class ProfileDB
 			}
 		}
 		profiles.add(up);
+		logInUser(up.getUserName());
 		return true;
 	}
 	
@@ -266,7 +267,7 @@ public class ProfileDB
 			StringTokenizer t = new StringTokenizer(fileString, "#");
 			while(t.hasMoreTokens()){
 				UserProfile up = userProfileFromString(t.nextToken());
-				addUserProfile(up);
+				profiles.add(up);
 			}
 		}
 		catch (FileNotFoundException e){

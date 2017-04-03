@@ -22,43 +22,43 @@ template: `
     <StackLayout class="form">
         <label text='Personal Information' class="detail-label"></label>
 
-	    <TextField  autocapitalizationType="none" [(ngModel)]="charterRequest.firstName"></TextField>
+	    <TextField  autocapitalizationType="none" [(ngModel)]="charterRequest.firstName" hint="John"></TextField>
         <label text='First Name' class='field-label'></label>
 
-	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.lastName"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.lastName" hint="Smith"></TextField>
         <label text='Last Name' class='field-label'></label>
 	    
-	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.phoneNumber"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.phoneNumber" hint="Ex. 123.456.7890"></TextField>
         <label text='Phone Number' class='field-label'></label>
 
         <label height="1" class="divider"></label>
         <label text='Trip Details' class="detail-label"></label>
 
-	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.tripType"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.tripType" hint="One-way/Round trip/Multi-leg"></TextField>
         <label text='Trip Type' class='field-label'></label>
 	    
-	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.departLocation"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.departLocation" hint="New York, NY"></TextField>
         <label text='Depart Location' class='field-label'></label>
 	    
-	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.departDate"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.departDate" hint="MM/DD/YYYY"></TextField>
         <label text='Depart Date' class='field-label'></label>
 	    
-	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.departTime"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.departTime" hint="12:00 PM"></TextField>
         <label text='Depart Time' class='field-label'></label>
 	    
-	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.arriveLocation"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.arriveLocation" hint="Los Angeles, CA"></TextField>
         <label text='Arrive Location' class='field-label'></label>
 	    
-	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.arriveDate"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.arriveDate" hint="MM/DD/YYYY"></TextField>
         <label text='Arrive Date' class='field-label'></label>
 	    
-	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.arriveTime"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.arriveTime" hint="12:00 PM"></TextField>
         <label text='Arrive Time' class='field-label'></label>
 	    
-	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.requirements"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.requirements" hint="(optional) Any special requirements"></TextField>
         <label text='Requirements' class='field-label'></label>
 	    
-	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.preferredCraft"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.preferredCraft" hint="(optional) Challenger 3000/Lear 45"></TextField>
         <label text='Preferred Craft' class='field-label'></label>
     </StackLayout>	
 
@@ -108,7 +108,20 @@ export class CharterComponent implements OnInit
 
 	sendRequest(request: CharterRequest)
 	{
-		if(this.loggedIn)
+		if( this.charterRequest.arriveDate == null
+			||this.charterRequest.arriveLocation == null
+			||this.charterRequest.arriveTime == null
+			||this.charterRequest.departDate == null
+			||this.charterRequest.departLocation == null
+			||this.charterRequest.departTime == null
+			||this.charterRequest.firstName == null
+			||this.charterRequest.lastName == null
+			||this.charterRequest.phoneNumber == null
+			||this.charterRequest.tripType == null)
+		{
+			alert("Please fill out all fields.");
+		}
+		else if(this.loggedIn)
 		{
 			this.user.charterHistory.push(this.charterRequest);
 
