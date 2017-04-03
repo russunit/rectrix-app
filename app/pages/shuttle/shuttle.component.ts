@@ -104,7 +104,24 @@ export class ShuttleComponent implements OnInit
 	
 	sendRequest(request:ShuttleRequest)
 	{
-		if(this.loggedIn)
+
+		if( this.shuttleRequest.arriveDate == null
+			||this.shuttleRequest.arriveLocation == null
+			||this.shuttleRequest.arriveTime == null
+			||this.shuttleRequest.departDate == null
+			||this.shuttleRequest.departLocation == null
+			||this.shuttleRequest.departTime == null
+			||this.shuttleRequest.firstName == null
+			||this.shuttleRequest.lastName == null
+			||this.shuttleRequest.phoneNumber == null
+			||this.shuttleRequest.numAdults == null
+			||this.shuttleRequest.numChildren == null
+			||this.shuttleRequest.numInfants == null
+			||this.shuttleRequest.tripType == null)
+		{
+			alert("Please fill out all fields.");
+		}
+		else if(this.loggedIn)
 		{
 			this.user.shuttleHistory.push(this.shuttleRequest);
 

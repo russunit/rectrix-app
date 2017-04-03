@@ -55,10 +55,10 @@ template: `
 	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.arriveTime" hint="12:00 PM"></TextField>
         <label text='Arrive Time' class='field-label'></label>
 	    
-	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.requirements" hint="Any special requirements"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.requirements" hint="(optional) Any special requirements"></TextField>
         <label text='Requirements' class='field-label'></label>
 	    
-	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.preferredCraft" hint="Challenger 3000/Lear 45"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.preferredCraft" hint="(optional) Challenger 3000/Lear 45"></TextField>
         <label text='Preferred Craft' class='field-label'></label>
     </StackLayout>	
 
@@ -108,7 +108,20 @@ export class CharterComponent implements OnInit
 
 	sendRequest(request: CharterRequest)
 	{
-		if(this.loggedIn)
+		if( this.charterRequest.arriveDate == null
+			||this.charterRequest.arriveLocation == null
+			||this.charterRequest.arriveTime == null
+			||this.charterRequest.departDate == null
+			||this.charterRequest.departLocation == null
+			||this.charterRequest.departTime == null
+			||this.charterRequest.firstName == null
+			||this.charterRequest.lastName == null
+			||this.charterRequest.phoneNumber == null
+			||this.charterRequest.tripType == null)
+		{
+			alert("Please fill out all fields.");
+		}
+		else if(this.loggedIn)
 		{
 			this.user.charterHistory.push(this.charterRequest);
 
