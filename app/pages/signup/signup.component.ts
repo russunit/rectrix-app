@@ -18,22 +18,22 @@ import { ShuttleRequest } from "../../shared/shuttle-request/shuttle-request";
 			<StackLayout class="layout">
 				<label text='Sign up with Rectrix' horizontalAlignment='center' class="title"></label>
 
-				<TextField autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.firstName"></TextField>
+				<TextField autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.firstName" hint="John"></TextField>
 				<label text='First Name' class='field-label'></label>
 				
-				<TextField autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.lastName"></TextField>
+				<TextField autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.lastName" hint="Smith"></TextField>
 				<label text='Last Name' class='field-label'></label>
 				
-				<TextField autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.address"></TextField>
+				<TextField autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.address" hint="123 Main Street"></TextField>
 				<label text='Address' class='field-label'></label>
 				
-				<TextField autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.city"></TextField>
+				<TextField autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.city" hint="New York, NY"></TextField>
 				<label text='City' class='field-label'></label>
 				
-				<TextField autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.country"></TextField>
+				<TextField autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.country" hint="United States"></TextField>
 				<label text='Country' class='field-label'></label>
 				
-				<TextField keyboardType ="number" [(ngModel)]="user.zip"></TextField>
+				<TextField keyboardType ="number" [(ngModel)]="user.zip" hint="01234"></TextField>
 				<label text='Zip code' class='field-label'></label>
 				
 				<TextField autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.username"></TextField>
