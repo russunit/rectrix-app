@@ -80,8 +80,8 @@ export class ProfileViewComponent implements OnInit
 
 	ngOnInit() 
 	{   
-		//this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
-		//this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.currentUser = currentUser );
+		this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
+		this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.currentUser = currentUser );
 		
 		this.currentUser = {
 		firstName: "Anthony",
@@ -98,11 +98,11 @@ export class ProfileViewComponent implements OnInit
 
 		};
 	
-		/*if(!this.loggedIn)
+		if(!this.loggedIn)
 		{
 			alert("Profile view unavailable. Sign in first.");
 			this.router.navigate(["/login"]);
-		}*/
+		}
 
 		this.addresses = this.currentUser.address + " " + this.currentUser.city + " " + this.currentUser.country + " " + this.currentUser.zip;
 		this.fullName = this.currentUser.firstName + " " + this.currentUser.lastName;
@@ -128,8 +128,8 @@ export class ProfileViewComponent implements OnInit
 
 	ngOnDestroy() 
 	{
-		//this.subscription1.unsubscribe();
-		//this.subscription2.unsubscribe();
+		this.subscription1.unsubscribe();
+		this.subscription2.unsubscribe();
     }
 	
 	makeChanges()

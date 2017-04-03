@@ -12,12 +12,12 @@ export class User
 	username: string;
 	password: string;
 	email: string;
-	charterHistory: Array<CharterRequest>;
-	shuttleHistory: Array<ShuttleRequest>;
+	charterHistory: CharterRequest[];
+	shuttleHistory: ShuttleRequest[];
 
 	constructor()
 	{
-		this.charterHistory = new Array<CharterRequest>();
-		this.shuttleHistory = new Array<ShuttleRequest>();
+		this.charterHistory = new Array();
+		this.shuttleHistory = new Array();
 	}
 }

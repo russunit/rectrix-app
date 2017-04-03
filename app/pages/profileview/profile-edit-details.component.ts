@@ -12,29 +12,31 @@ import {Subscription} from 'rxjs/Subscription';
 @Component({
   selector: "edit",
   template: `
-<ScrollView>
-<StackLayout>
-<Label text ='{{user.username}}' horizontalAlignment="center" class="header"></Label> 
-<GridLayout rows="auto,auto,auto,auto,auto,auto" columns="auto,auto">
-<TextField hint="First name" row="0" column="1" keyboardType="email" autocorrect="false" autocapitalizationType="words" [(ngModel)]="user.firstName"></TextField>
-<TextField hint="Last name" row="1" column="1" [(ngModel)]="user.lastName" keyboardType="email" autocorrect="false" autocapitalizationType="words"></TextField>
-<TextField hint="Street Address" row="2" column="1"  [(ngModel)]="user.address" keyboardType="email" autocorrect="false" autocapitalizationType="words"></TextField>
-<TextField hint="City" row="3" column="1"  [(ngModel)]="user.city" keyboardType="email" autocorrect="false" autocapitalizationType="words"></TextField>
-<TextField hint="Country" [(ngModel)]="user.country"  row="4" column="1" keyboardType="email" autocorrect="false" autocapitalizationType="words"></TextField>
-<TextField hint="Zip" row="5" column="1"  [(ngModel)]="user.zip" keyboardType="number" autocorrect="false" autocapitalizationType="none"></TextField>
-<Label text="First Name" row="0" column="0" ></Label>
-<Label text="Last Name" row="1" column="0" ></Label>
-<Label text="Street Address" row="2" column="0" ></Label>
-<Label text="City" row="3" column="0" ></Label>
-<Label text="Country" row="4" column="0" ></Label>
-<Label text="Zip" row="5" column="0" ></Label>
-</GridLayout>
-<Button text="Save Changes" horizontalAlignment='center'		(tap)="change()" height="{{buttonH}}" width="{{buttonW}}" horizontalAlignment='center'></Button>
-</StackLayout>
-</ScrollView>
-`,
- styleUrls: ["pages/profileview/profile-edit-details.component.css"],
-providers: [UserService],
+	<ScrollView>
+		<StackLayout>
+			<Label text ='{{user.username}}' horizontalAlignment="center" class="header"></Label>
+			
+			<GridLayout rows="auto,auto,auto,auto,auto,auto" columns="3*,4*" id="info">
+				<Button text="First Name" 			row="0" col="0" isEnabled = "false"></Button>
+				<TextField hint="First name" 		row="0" col="1" [(ngModel)]="user.firstName" keyboardType="email" autocorrect="false" autocapitalizationType="words"></TextField>
+				<Button text="Last Name" 			row="1" col="0" isEnabled = "false"></Button>
+				<TextField hint="Last name" 		row="1" col="1" [(ngModel)]="user.lastName" keyboardType="email" autocorrect="false" autocapitalizationType="words"></TextField>
+				<Button text="Address" 				row="2" col="0" isEnabled = "false"></Button>
+				<TextField hint="Street Address" 	row="2" col="1" [(ngModel)]="user.address" keyboardType="email" autocorrect="false" autocapitalizationType="words"></TextField>
+				<Button text="City" 				row="3" col="0" isEnabled = "false"></Button>
+				<TextField hint="City" 				row="3" col="1" [(ngModel)]="user.city" keyboardType="email" autocorrect="false" autocapitalizationType="words"></TextField>
+				<Button text="Country" 				row="4" col="0" isEnabled = "false"></Button>
+				<TextField hint="Country" 			row="4" col="1" [(ngModel)]="user.country"  keyboardType="email" autocorrect="false" autocapitalizationType="words"></TextField>
+				<Button text="Zip" 					row="5" col="0" isEnabled = "false"></Button>
+				<TextField hint="Zip" 				row="5" col="1" [(ngModel)]="user.zip" keyboardType="number" autocorrect="false" autocapitalizationType="none"></TextField>
+			</GridLayout>
+				
+			<Button text="Save Changes" horizontalAlignment='center' (tap)="change()" width="{{buttonW}}" horizontalAlignment='center' id="change"></Button>
+		</StackLayout>
+	</ScrollView>
+  `,
+  styleUrls: ["pages/profileview/profile-edit-details.component.css"],
+  providers: [UserService],
 })
 
 export class ProfileEditDetailsComponent implements OnInit
@@ -53,56 +55,53 @@ export class ProfileEditDetailsComponent implements OnInit
     subscription2:Subscription;
  
 
-constructor(private router: Router, private userService: UserService, private currentUserService: CurrentUserService)
-{
+	constructor(private router: Router, private userService: UserService, private currentUserService: CurrentUserService)
+	{
        this.user = new User();
-}
+	}
 
-ngOnInit() 
-{
-  this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
-  this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.user = currentUser );
+	ngOnInit() 
+	{
+	  this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
+	  this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.user = currentUser );
 
-  if(!this.loggedIn)
-  {
-    alert("Profile view unavailable. Sign in first.");
-    this.router.navigate(["/login"]);
-  }
-}  
+	  if(!this.loggedIn)
+	  {
+		alert("Profile view unavailable. Sign in first.");
+		this.router.navigate(["/login"]);
+	  }
+	}  
 
-ngOnDestroy() 
-{
-    
-    this.subscription1.unsubscribe();
-    this.subscription2.unsubscribe();
-}
+	ngOnDestroy() 
+	{
+		this.subscription1.unsubscribe();
+		this.subscription2.unsubscribe();
+	}
 
-change()
-{
-      this.userService.update(this.user)
-            .subscribe(response => 
-            {
-                var responseString = response.json().toString();
-                if(responseString == "notloggedin")
-                {
-                  alert("this profile is not logged into the server...\nPlease log in.");
-                  this.currentUserService.changeUser(null);
-                      this.currentUserService.toggleLoggedIn(false);
-                      this.router.navigate(["/dashboard"]);
-                }
-                else if (responseString == "OK")
-                //success
-                {
-                  this.currentUserService.changeUser(this.user);
-                  alert("Changes saved.");
-                }
-                else
-                //the parse or server returned garbage
-                {
-                    alert("INTERNAL ERROR");
-                }
-              }
-              );//end subscribe
-
-}
+	change()
+	{
+		  this.userService.update(this.user)
+				.subscribe(response => 
+				{
+					var responseString = response.json().toString();
+					if(responseString == "notloggedin")
+					{
+					  alert("this profile is not logged into the server...\nPlease log in.");
+					  this.currentUserService.changeUser(null);
+						  this.currentUserService.toggleLoggedIn(false);
+						  this.router.navigate(["/dashboard"]);
+					}
+					else if (responseString == "OK")
+					//success
+					{
+					  this.currentUserService.changeUser(this.user);
+					  alert("Changes saved.");
+					}
+					else
+					//the parse or server returned garbage
+					{
+						alert("INTERNAL ERROR");
+					}
+				  });//end subscribe
+	}
 }
