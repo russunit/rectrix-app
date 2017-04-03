@@ -19,46 +19,46 @@ import {Subscription} from 'rxjs/Subscription';
     <StackLayout class="form">
         <label text='Personal Information' class="detail-label"></label>
 
-	    <TextField  autocapitalizationType="none" [(ngModel)]="shuttleRequest.firstName"></TextField>
+	    <TextField  autocapitalizationType="none" [(ngModel)]="shuttleRequest.firstName" hint="John"></TextField>
         <label text='First Name' class='field-label'></label>
 
-	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.lastName"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.lastName" hint="Smith"></TextField>
         <label text='Last Name' class='field-label'></label>
 
-	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.phoneNumber"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.phoneNumber" hint="123.456.7890"></TextField>
         <label text='Phone Number' class='field-label'></label>
 	
         <label height="1" class="divider"></label>
         <label text='Trip Details' class="detail-label"></label>
 
-	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.tripType"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.tripType" hint="One-way/Round trip/Multi-leg"></TextField>
         <label text='Trip Type' class='field-label'></label>
 	
-	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.departLocation"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.departLocation" hint="New York, NY"></TextField>
         <label text='Depart Location' class='field-label'></label>
 	
-	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.departDate"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.departDate" hint="MM/DD/YYYY"></TextField>
         <label text='Depart Date' class='field-label'></label>
 	
-	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.departTime"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.departTime" hint="12:00 PM"></TextField>
         <label text='Depart Time' class='field-label'></label>
 	
-	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.arriveLocation"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.arriveLocation" hint="Los Angeles, CA"></TextField>
         <label text='Arrive Location' class='field-label'></label>
 	
-	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.arriveDate"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.arriveDate" hint="MM/DD/YYYY"></TextField>
         <label text='Arrive Date' class='field-label'></label>
 	
-	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.arriveTime"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.arriveTime" hint="12:00 PM"></TextField>
         <label text='Arrive Time' class='field-label'></label>
 	
-	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.numAdults"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.numAdults" hint="#"></TextField>
         <label text='Number of Adults' class='field-label'></label>
 	
-	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.numChildren"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.numChildren" hint="#"></TextField>
         <label text='Number of Children' class='field-label'></label>
 	
-	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.numInfants"></TextField>
+	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.numInfants" hint="#"></TextField>
         <label text='Number of Infants' class='field-label'></label>
      </StackLayout>
 
