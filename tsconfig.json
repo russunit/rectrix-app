@@ -8,7 +8,6 @@
         "noEmitHelpers": true,
         "noEmitOnError": true
     },
-	
     "exclude": [
         "node_modules",
         "platforms"

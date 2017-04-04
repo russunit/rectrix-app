@@ -17,7 +17,6 @@ import { ShuttleRequest } from "../../shared/shuttle-request/shuttle-request";
 		<StackLayout class="background" *ngIf="!loading">
 			<StackLayout class="layout">
 				<label text='Sign up with Rectrix' horizontalAlignment='center' class="title"></label>
-
 				<TextField autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.firstName" hint="John"></TextField>
 				<label text='First Name' class='field-label'></label>
 				
@@ -46,7 +45,6 @@ import { ShuttleRequest } from "../../shared/shuttle-request/shuttle-request";
 			</StackLayout>
 		</StackLayout>
 	</ScrollView>
-
 	<StackLayout class="loading-overlay" *ngIf="loading">
 		<ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" row="1" class="loading-indicator" horizontalAlignment="center" verticalAlignment="middle" width="150" height="150"></ActivityIndicator>
 		<md-progress-bar mode="indeterminate"></md-progress-bar>

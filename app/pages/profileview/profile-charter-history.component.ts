@@ -11,11 +11,10 @@ import { CharterRequest } from "../../shared/charter-request/charter-request";
   template: 
 	`
 	<Label text="Charter History" horizontalAlignment="center" id="header"></Label>
-	<ListView [items]="charterList">
+	<ListView [items]="charterList" (itemTap)="seeDetails($event)">
 		<template let-item="item">
 			<StackLayout>
-				<Label text="{{item.departDate}}" id="date"></Label>
-				<Button text="{{item.departLocation + ' - ' + item.arriveLocation}}" (tap)="seeDetails()" id="detail"></Button>
+				<Label text="{{item.departDate + ' ' + item.departLocation + ' - ' + item.arriveLocation}}"></Label>
 			</StackLayout>
 		</template>
 	</ListView>
@@ -57,7 +56,7 @@ export class ProfileCharterHistoryComponent implements OnInit {
 		this.subscription2.unsubscribe();
 	}
 	
-	seeDetails(args)
+	public seeDetails(args)
 	{
 		this.router.navigate(["/charterdetails", args.index]);
 	}
