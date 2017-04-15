@@ -15,7 +15,7 @@ export class UserService
 {
 
   //
-  SERVERADDRESS: string = "http://192.168.0.13:7777";
+  SERVERADDRESS: string = "http://192.168.2.8:7777";
   //
 
   charterHistorySize: number;
@@ -93,8 +93,23 @@ export class UserService
     return this.http.post(this.SERVERADDRESS, 
     "~signup#"+this.userProfileToString(user)+"\n");
     //console.log("Hello4");
-  }
+  } 
 
+  //NEW 
+    // when a user goes to make a request makes sure information is up to date
+   reload(user:User)
+{
+let headers = new Headers();
+    headers.append("Content-type", "application/json");
+
+     
+
+    return this.http.post(this.SERVERADDRESS, 
+    "~reload#"+user.username+"#"+user.password+"\n");
+
+
+
+}
   //NEW
   //TESTING... trying to see if it can read the java server's response as a string
   login(user: User) 
@@ -258,11 +273,7 @@ stringToUserProfile(str: string)
   this.newUser.password = strArray.next().value;
   this.newUser.email = strArray.next().value;
 
-  //testing for bug
-  var numCharters = strArray.next().value;
-  console.log("numCharters = "+numCharters)
-
-  for (var x = 0; x < Number(numCharters); x++)
+  for (var x = 0; x < Number(strArray.next().value); x++)
   {
     this.newCharter = new CharterRequest();
 
@@ -282,11 +293,7 @@ stringToUserProfile(str: string)
     this.newUser.charterHistory.push(this.newCharter);
   }
 
-  //testing for bug
-  var numShuttles = strArray.next().value;
-  //console.log("numCharters = "+numShuttles)
-
-  for(var y = 0; y < Number(numShuttles); y++)
+  for(var y = 0; y < Number(strArray.next().value); y++)
   {
     this.newShuttle = new ShuttleRequest();
 
@@ -306,8 +313,6 @@ stringToUserProfile(str: string)
 
     this.newUser.shuttleHistory.push(this.newShuttle);
   }
-
-  this.printUser(this.newUser);
 
   return this.newUser;
 
@@ -329,21 +334,7 @@ parseResponse(str: string)
 
 
 
-printUser(user: User)
-{
-  console.log(user.firstName);
-  console.log(user.lastName);
-  console.log(user.address);
-  console.log(user.city);
-  console.log(user.country);
-  console.log(user.zip);
-  console.log(user.username);
-  console.log(user.password);
-  console.log(user.email);
-  console.log("charters:" + user.charterHistory.length);
-  console.log("shuttles:" + user.shuttleHistory.length);
 
-}
 
 
 

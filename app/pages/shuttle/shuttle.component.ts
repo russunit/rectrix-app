@@ -124,7 +124,7 @@ export class ShuttleComponent implements OnInit
 		}
 		else */if(this.loggedIn)
 		{
-			this.user.shuttleHistory.push(this.shuttleRequest);
+		this.userService.reload(this.user);	this.user.shuttleHistory.push(this.shuttleRequest);
 
 			this.userService.update(this.user)
             .subscribe(response => 

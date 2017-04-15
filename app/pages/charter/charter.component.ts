@@ -108,23 +108,9 @@ export class CharterComponent implements OnInit
 
 	sendRequest(request: CharterRequest)
 	{
-		/*
-		if( this.charterRequest.arriveDate == null
-			||this.charterRequest.arriveLocation == null
-			||this.charterRequest.arriveTime == null
-			||this.charterRequest.departDate == null
-			||this.charterRequest.departLocation == null
-			||this.charterRequest.departTime == null
-			||this.charterRequest.firstName == null
-			||this.charterRequest.lastName == null
-			||this.charterRequest.phoneNumber == null
-			||this.charterRequest.tripType == null)
+		if(this.loggedIn)
 		{
-			alert("Please fill out all fields.");
-		}
-		else */if(this.loggedIn)
-		{
-			this.user.charterHistory.push(this.charterRequest);
+		this.userService.reload(this.user);	this.user.charterHistory.push(this.charterRequest);
 
 			this.userService.update(this.user)
             .subscribe(response => 
