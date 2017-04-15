@@ -299,6 +299,8 @@ stringToUserProfile(str: string)
     this.newUser.shuttleHistory.push(this.newShuttle);
   }
 
+  this.printUser(this.newUser);
+
   return this.newUser;
 
 }
@@ -319,7 +321,21 @@ parseResponse(str: string)
 
 
 
+printUser(user: User)
+{
+  console.log(user.firstName);
+  console.log(user.lastName);
+  console.log(user.address);
+  console.log(user.city);
+  console.log(user.country);
+  console.log(user.zip);
+  console.log(user.username);
+  console.log(user.password);
+  console.log(user.email);
+  console.log("charters:" + user.charterHistory.length);
+  console.log("shuttles:" + user.shuttleHistory.length);
 
+}
 
 
 
