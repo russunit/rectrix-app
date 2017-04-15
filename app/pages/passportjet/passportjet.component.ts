@@ -73,5 +73,7 @@ export class PassportJetComponent {
 	{}
 
 	goJoin()
-	{ this.router.navigate(["/passportjet-join"]); }
+	{ //this.router.navigate(["/passportjet-join"]);
+		alert("To join, call 1-800-RECTRIX");
+	}
 }
