@@ -59,9 +59,9 @@ public class ProfileServer
 			if(profileDB.getProfiles().get(x).getUserName().equals(user))
 				if(profileDB.getProfiles().get(x).getPassword().equals(password))
 				{
-					for(int y = 0; y < profileDB.getNumLoggedInUsers(); y++)
-						if(profileDB.getLoggedInUserNames().get(y).equals(user))
-							return "alreadyloggedin";
+					//for(int y = 0; y < profileDB.getNumLoggedInUsers(); y++)
+					//	if(profileDB.getLoggedInUserNames().get(y).equals(user))
+					//		return "alreadyloggedin";
 					profileDB.logInUser(user);
 					return "OK$" + profileDB.profileToStringFromUserName(user);
 				}

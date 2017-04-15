@@ -258,7 +258,11 @@ stringToUserProfile(str: string)
   this.newUser.password = strArray.next().value;
   this.newUser.email = strArray.next().value;
 
-  for (var x = 0; x < Number(strArray.next().value); x++)
+  //testing for bug
+  var numCharters = strArray.next().value;
+  console.log("numCharters = "+numCharters)
+
+  for (var x = 0; x < Number(numCharters); x++)
   {
     this.newCharter = new CharterRequest();
 
@@ -278,7 +282,11 @@ stringToUserProfile(str: string)
     this.newUser.charterHistory.push(this.newCharter);
   }
 
-  for(var y = 0; y < Number(strArray.next().value); y++)
+  //testing for bug
+  var numShuttles = strArray.next().value;
+  //console.log("numCharters = "+numShuttles)
+
+  for(var y = 0; y < Number(numShuttles); y++)
   {
     this.newShuttle = new ShuttleRequest();
 

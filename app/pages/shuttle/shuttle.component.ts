@@ -52,13 +52,13 @@ import {Subscription} from 'rxjs/Subscription';
 	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.arriveTime" hint="12:00 PM"></TextField>
         <label text='Arrive Time' class='field-label'></label>
 	
-	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.numAdults" hint="#"></TextField>
+	    <TextField keyboardType ="number" autocapitalizationType="none" [(ngModel)]="shuttleRequest.numAdults" hint="#"></TextField>
         <label text='Number of Adults' class='field-label'></label>
 	
-	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.numChildren" hint="#"></TextField>
+	    <TextField keyboardType ="number" autocapitalizationType="none" [(ngModel)]="shuttleRequest.numChildren" hint="#"></TextField>
         <label text='Number of Children' class='field-label'></label>
 	
-	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.numInfants" hint="#"></TextField>
+	    <TextField keyboardType ="number" autocapitalizationType="none" [(ngModel)]="shuttleRequest.numInfants" hint="#"></TextField>
         <label text='Number of Infants' class='field-label'></label>
      </StackLayout>
 
