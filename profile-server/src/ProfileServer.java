@@ -46,6 +46,9 @@ public class ProfileServer
 					return "OK";
 				else
 					return "nameunavailable";
+			case "reload":
+				return(reload(st.nextToken()));
+				
 			default:
 				return "COMMAND STRING ERROR.";
 		}
@@ -89,6 +92,19 @@ public class ProfileServer
 		//return true if updated successfully
 		return profileDB.updateUserProfileFromString(profileString);
 
+	}
+	
+	public String reload(String user)
+	{
+		//return a profileString from the username
+		for(int x = 0; x < profileDB.getNumProfiles(); x++)
+		{
+			if(profileDB.getProfiles().get(x).getUserName().equals(user))
+					profileDB.logInUser(user);
+					return "OK$" + profileDB.profileToStringFromUserName(user);
+				
+		}
+		return "notfound";
 	}
 	
 	public boolean signup(String profileString)
