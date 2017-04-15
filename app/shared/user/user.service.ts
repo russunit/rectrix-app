@@ -95,21 +95,21 @@ export class UserService
     //console.log("Hello4");
   } 
 
-  //NEW 
+    //NEW 
     // when a user goes to make a request makes sure information is up to date
-   reload(user:User)
-{
-let headers = new Headers();
+  reload(user:User)
+  {
+    let headers = new Headers();
     headers.append("Content-type", "application/json");
 
      
 
     return this.http.post(this.SERVERADDRESS, 
-    "~reload#"+user.username+"#"+user.password+"\n");
+    "~reload#"+user.username+"\n");
 
 
 
-}
+  }
   //NEW
   //TESTING... trying to see if it can read the java server's response as a string
   login(user: User) 
