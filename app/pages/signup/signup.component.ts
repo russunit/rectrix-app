@@ -86,7 +86,7 @@ export class SignupComponent implements OnInit
 
 	signUp() 
   {
-	
+	      /*
         if (this.user.username == null
           ||this.user.password == null
           ||this.user.address == null
@@ -99,7 +99,8 @@ export class SignupComponent implements OnInit
           alert("Please fill out all fields.");
           this.loading = false;
         }
-        else if (this.user.username.length > 10)
+
+        else */if (this.user.username.length > 10)
         {
           alert("Cannot create account. Username is too many characters."); 
           this.loading = false; 

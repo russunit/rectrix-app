@@ -105,6 +105,7 @@ export class ShuttleComponent implements OnInit
 	sendRequest(request:ShuttleRequest)
 	{
 
+		/*
 		if( this.shuttleRequest.arriveDate == null
 			||this.shuttleRequest.arriveLocation == null
 			||this.shuttleRequest.arriveTime == null
@@ -121,7 +122,7 @@ export class ShuttleComponent implements OnInit
 		{
 			alert("Please fill out all fields.");
 		}
-		else if(this.loggedIn)
+		else */if(this.loggedIn)
 		{
 			this.user.shuttleHistory.push(this.shuttleRequest);
 

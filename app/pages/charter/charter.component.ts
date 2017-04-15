@@ -108,6 +108,7 @@ export class CharterComponent implements OnInit
 
 	sendRequest(request: CharterRequest)
 	{
+		/*
 		if( this.charterRequest.arriveDate == null
 			||this.charterRequest.arriveLocation == null
 			||this.charterRequest.arriveTime == null
@@ -121,7 +122,7 @@ export class CharterComponent implements OnInit
 		{
 			alert("Please fill out all fields.");
 		}
-		else if(this.loggedIn)
+		else */if(this.loggedIn)
 		{
 			this.user.charterHistory.push(this.charterRequest);
 

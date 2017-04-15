@@ -15,7 +15,7 @@ export class UserService
 {
 
   //
-  SERVERADDRESS: string = "http://192.168.2.9:7777";
+  SERVERADDRESS: string = "http://192.168.0.13:7777";
   //
 
   charterHistorySize: number;
