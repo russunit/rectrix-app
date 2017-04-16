@@ -100,6 +100,12 @@ export class ShuttleComponent implements OnInit
 		//gets the current user from service
         this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
         this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.user = currentUser );
+
+        if(this.loggedIn)
+        {
+        	this.shuttleRequest.firstName = this.user.firstName;
+        	this.shuttleRequest.lastName = this.user.lastName;
+        }
 	}
 	
 	sendRequest(request:ShuttleRequest)

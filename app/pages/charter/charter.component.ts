@@ -103,6 +103,12 @@ export class CharterComponent implements OnInit
 		//gets the current user from service
         this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
         this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.user = currentUser );
+
+        if(this.loggedIn)
+        {
+        	this.charterRequest.firstName = this.user.firstName;
+        	this.charterRequest.lastName = this.user.lastName;
+        }
 	}
 
 
