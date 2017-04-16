@@ -138,7 +138,20 @@ export class CharterComponent implements OnInit
 
 	sendRequest(request: CharterRequest)
 	{
-		if(this.loggedIn)
+		if( this.charterRequest.arriveDate == null
+			||this.charterRequest.arriveLocation == null
+			||this.charterRequest.arriveTime == null
+			||this.charterRequest.departDate == null
+			||this.charterRequest.departLocation == null
+			||this.charterRequest.departTime == null
+			||this.charterRequest.firstName == null
+			||this.charterRequest.lastName == null
+			||this.charterRequest.phoneNumber == null
+			||this.charterRequest.tripType == null)
+		{
+			alert("Please fill out all fields.");
+		}
+		else if(this.loggedIn)
 		{
 		this.profileReload();
 
@@ -178,9 +191,6 @@ export class CharterComponent implements OnInit
 	            }
 	        }
 	        );//end subscribe
-
-            
-		this.profileReload();
 
 		}
 		else
