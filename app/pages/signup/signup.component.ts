@@ -96,9 +96,14 @@ export class SignupComponent implements OnInit
           this.loading = false;
         }
 
-        else if (this.user.username.length > 10)
+        else if (this.user.username.length > 10 || this.user.username.length < 5)
         {
-          alert("Cannot create account. Username is too many characters."); 
+          alert("Cannot create account.\nUsername must be between 5 and 10 characters."); 
+          this.loading = false; 
+        }
+        else if (this.user.password.length < 5)
+        {
+          alert("Password must be at least 5 characters."); 
           this.loading = false; 
         }
         else
