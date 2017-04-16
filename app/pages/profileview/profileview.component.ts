@@ -4,7 +4,7 @@ import { UserService } from "../../shared/user/user.service";
 import { CurrentUserService } from "../../shared/current-user/current-user.service";
 import { Router } from "@angular/router";
 import {Subscription} from 'rxjs/Subscription';
-import { CharterRequest } from "../../shared/charter-request/charter-request.ts";
+import { CharterRequest } from "../../shared/charter-request/charter-request";
 
 @Component({
   selector: "profileview",
@@ -83,6 +83,8 @@ export class ProfileViewComponent implements OnInit
 		this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
 		this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.currentUser = currentUser );
 		
+		this.profileReload();
+		
 		if(!this.loggedIn)
 		{
 			alert("Profile view unavailable. Sign in first.");
@@ -130,5 +132,29 @@ export class ProfileViewComponent implements OnInit
 	seeCharter()
 	{
 		this.router.navigate(["/charterhistory"]);
+	}
+
+	profileReload()
+	{
+		this.userService.reload(this.currentUser)
+		.subscribe(response => 
+        {
+          var responseString = response.json().toString();
+
+          console.log(responseString);
+		
+		  if(responseString.startsWith("OK"))
+          //success
+          {
+            let loggingInUser = this.userService.stringToUserProfile(responseString);
+            this.currentUserService.changeUser(loggingInUser);
+            this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.currentUser = currentUser );
+          }
+          else
+          //the parse or server returned garbage
+          {alert("INTERNAL ERROR");}
+
+        }//end subscribe
+        );//end subscribe
 	}
 }

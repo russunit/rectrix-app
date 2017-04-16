@@ -107,6 +107,30 @@ export class ShuttleComponent implements OnInit
         	this.shuttleRequest.lastName = this.user.lastName;
         }
 	}
+
+	profileReload()
+	{
+		this.userService.reload(this.user)
+		.subscribe(response => 
+        {
+          var responseString = response.json().toString();
+
+          console.log(responseString);
+		
+		  if(responseString.startsWith("OK"))
+          //success
+          {
+            let loggingInUser = this.userService.stringToUserProfile(responseString);
+            this.currentUserService.changeUser(loggingInUser);
+            this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.user = currentUser );
+          }
+          else
+          //the parse or server returned garbage
+          {alert("INTERNAL ERROR");}
+
+        }//end subscribe
+        );//end subscribe
+	}
 	
 	sendRequest(request:ShuttleRequest)
 	{
@@ -130,7 +154,8 @@ export class ShuttleComponent implements OnInit
 		}
 		else */if(this.loggedIn)
 		{
-		this.userService.reload(this.user);	this.user.shuttleHistory.push(this.shuttleRequest);
+		this.profileReload();
+		this.user.shuttleHistory.push(this.shuttleRequest);
 
 			this.userService.update(this.user)
             .subscribe(response => 

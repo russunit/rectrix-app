@@ -111,12 +111,38 @@ export class CharterComponent implements OnInit
         }
 	}
 
+	profileReload()
+	{
+		this.userService.reload(this.user)
+		.subscribe(response => 
+        {
+          var responseString = response.json().toString();
+
+          console.log(responseString);
+		
+		  if(responseString.startsWith("OK"))
+          //success
+          {
+            let loggingInUser = this.userService.stringToUserProfile(responseString);
+            this.currentUserService.changeUser(loggingInUser);
+            this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.user = currentUser );
+          }
+          else
+          //the parse or server returned garbage
+          {alert("INTERNAL ERROR");}
+
+        }//end subscribe
+        );//end subscribe
+	}
+
 
 	sendRequest(request: CharterRequest)
 	{
 		if(this.loggedIn)
 		{
-		this.userService.reload(this.user);	this.user.charterHistory.push(this.charterRequest);
+		this.profileReload();
+
+		this.user.charterHistory.push(this.charterRequest);
 
 			this.userService.update(this.user)
             .subscribe(response => 
@@ -153,6 +179,8 @@ export class CharterComponent implements OnInit
 	        }
 	        );//end subscribe
 
+            
+		this.profileReload();
 
 		}
 		else
