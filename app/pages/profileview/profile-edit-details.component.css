@@ -1,3 +1,21 @@
 .header {
-   font-size: 40px;
+	margin-bottom: 20;
+    font-size: 40px;
+    color: black;
+}
+
+#info {
+	margin-left: 10;
+	margin-right: 10;
+	margin-bottom: 20;
+}
+
+Button {
+	background-color: #324264;
+	color: white;
+}
+
+#change {
+	background-color: #d33432;
+	border-radius: 20;
 }

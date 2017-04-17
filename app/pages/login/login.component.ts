@@ -6,6 +6,8 @@ import { User } from "../../shared/user/user";
 import { UserService } from "../../shared/user/user.service";
 import { CurrentUserService } from "../../shared/current-user/current-user.service"
 import { Subscription } from 'rxjs/Subscription';
+import { CharterRequest } from "../../shared/charter-request/charter-request";
+import { ShuttleRequest } from "../../shared/shuttle-request/shuttle-request";
 
 
 @Component({
@@ -48,12 +50,68 @@ export class LoginComponent implements OnInit
     screen = this.platform.screen;
     height: number = this.screen.mainScreen.heightDIPs;
   
-  subscription1:Subscription;
-  //responseString:string;
+    subscription1:Subscription;
+    //responseString:string;
+	
+	myUser: User;
+	myShuttle: ShuttleRequest;
+	shuttleList =  new Array();
+	myCharter: CharterRequest;
+	charterList = new Array();
 
 	constructor(private router: Router, private userService: UserService, private currentUserService: CurrentUserService) 
 	{
 		this.user = new User();
+		/*this.myShuttle = {
+			firstName: "Anthony",
+			lastName: "Kapotsis",
+			phoneNumber: "428-528-9026",
+			tripType: "Round-Trip",
+			departLocation: "Hyannis",
+			departDate: "04/17/2017",
+			departTime: "9:00 AM",
+			arriveLocation: "Nantucket",
+			arriveDate: "04/17/2017",
+			arriveTime: "3:00 PM",
+
+			numAdults: 1,
+			numChildren: 0,
+			numInfants: 0,
+		}
+		
+		this.shuttleList.push(this.myShuttle);
+		
+		this.myCharter = {
+			firstName: "Anthony",
+			lastName: "Kapotsis",
+			phoneNumber: "428-528-9026",
+			tripType: "Round-Trip",
+			departLocation: "Nantucket",
+			departDate: "01/15/2017",
+			departTime: "2:00 AM",
+			arriveLocation: "Hyannis",
+			arriveDate: "01/15/2017",
+			arriveTime: "5:00 PM",
+
+			requirements: "None",
+			preferredCraft: "None",
+		}
+		
+		this.charterList.push(this.myCharter);
+		
+		this.myUser = {
+			firstName: "Anthony",
+			lastName: "Kapotsis",
+			address: "345 Levy Lane",
+			city: "Cardiff",
+			country: "Wales",
+			zip: "05947",
+			username: "akapotsis",
+			password: "gdfgerges",
+			email: "akapotsis999@gmail.com", 
+			charterHistory: this.charterList,
+			shuttleHistory: this.shuttleList,
+		}*/
 	}
 
   ngOnInit()
@@ -77,6 +135,11 @@ export class LoginComponent implements OnInit
 
 	login()
 	{
+		/*this.router.navigate(["/profileview"]);
+		let loggingInUser = this.myUser;
+        this.currentUserService.changeUser(loggingInUser);
+        this.currentUserService.toggleLoggedIn(true);*/
+	
       this.loading = true;
 
     	this.userService.login(this.user)

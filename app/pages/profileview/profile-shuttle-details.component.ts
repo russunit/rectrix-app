@@ -14,17 +14,17 @@ import { Location } from '@angular/common';
 	`
     <ScrollView>
 		<GridLayout rows = "auto,auto,auto,auto,auto,auto" columns="auto,auto">
-			<Label text ="Name" row="0" col="0" ></Label>
-			<Label text = {{this.fullName}} row="0" col="1"></Label>
-			<Label text ="Phone Number" row="1" col="0"></Label>
-			<Label text = {{this.shuttle.phoneNumber}} row="1" col="1"></Label> 
-			<Label text ="Trip Type" row="2" col="0"></Label>
-			<Label text = {{this.shuttle.tripType}} row="2" col="1"></Label> 
-			<Label text ="From" row="3" col="0"></Label>
-			<Label text = {{this.departure}} row="3" col="1"></Label> 
-			<Label text ="To" row="4" col="0"></Label>
-			<Label text = {{this.arrival}} row="4" col="1"></Label> 
-			<Label text = {{this.passengers}} row="5" col="0"></Label>
+			<Label text ="Name" 						row="0" col="0" ></Label>
+			<Label text = {{this.fullName}} 			row="0" col="1"></Label>
+			<Label text ="Phone Number" 				row="1" col="0"></Label>
+			<Label text = {{this.shuttle.phoneNumber}} 	row="1" col="1"></Label> 
+			<Label text ="Trip Type" 					row="2" col="0"></Label>
+			<Label text = {{this.shuttle.tripType}} 	row="2" col="1"></Label> 
+			<Label text ="From" 						row="3" col="0"></Label>
+			<Label text = {{this.departure}} 			row="3" col="1"></Label> 
+			<Label text ="To" 							row="4" col="0"></Label>
+			<Label text = {{this.arrival}} 				row="4" col="1"></Label> 
+			<Label text = {{this.passengers}} 			row="5" col="0"></Label>
         </GridLayout>
     </ScrollView>
   `,

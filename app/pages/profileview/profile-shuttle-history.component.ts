@@ -10,14 +10,14 @@ import { ShuttleRequest } from "../../shared/shuttle-request/shuttle-request";
   selector: "shuttlehistory",
   template: `
 	<Label text="Shuttle History" horizontalAlignment="center" id="header"></Label>
-	<ListView [items]="shuttleList" (itemTap)="seeDetails($event)">
+	<ListView [items]="shuttleList">
 		<template let-item="item">
 			<StackLayout>
-				<Label text="{{item.departDate + ' ' + item.departLocation + ' - ' + item.arriveLocation}}"></Label>
+				<Label text="{{item.departDate}}" id="date"></Label>
+				<Button text="{{item.departLocation + ' - ' + item.arriveLocation}}" (tap)="seeDetails()" id="detail"></Button>
 			</StackLayout>
 		</template>
 	</ListView>
-
   `,
   styleUrls: ["pages/profileview/profile-shuttle-history.component.css"],
   providers: [UserService],
@@ -49,6 +49,7 @@ export class ProfileShuttleHistoryComponent implements OnInit {
 		this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.currentUser = currentUser );
 		this.shuttleList = this.currentUser.shuttleHistory;
 		//TO DO: Group by date, in order
+		//TO DO: Make this a scrollable list
     }  
 
 	ngOnDestroy() 

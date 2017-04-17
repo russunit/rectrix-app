@@ -4,7 +4,7 @@ import { UserService } from "../../shared/user/user.service";
 import { CurrentUserService } from "../../shared/current-user/current-user.service";
 import { Router } from "@angular/router";
 import {Subscription} from 'rxjs/Subscription';
-import { CharterRequest } from "../../shared/charter-request/charter-request";
+import { CharterRequest } from "../../shared/charter-request/charter-request.ts";
 
 @Component({
   selector: "profileview",
@@ -82,8 +82,6 @@ export class ProfileViewComponent implements OnInit
 	{   
 		this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
 		this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.currentUser = currentUser );
-		
-		this.profileReload();
 		
 		if(!this.loggedIn)
 		{
