@@ -8,12 +8,18 @@
 #date {
 	margin-left: 20;
 	color: black;
+	font-weight: 700;
+	font-size: 15;
 }
 
 #detail {
 	margin-left: 15;
 	margin-right: 15;
 	margin-bottom: 10;
+	padding-top: 5;
+	padding-bottom: 5;
 	background-color: #d33432;
 	color: white;
+	font-size: 18;
+	text-align: center;
 }

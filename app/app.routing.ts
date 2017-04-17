@@ -38,12 +38,12 @@ export const routes = [
   { path: 'profilebar',     	component: ProfilebarComponent },
   { path: 'signup',     		component: SignupComponent },
   { path: 'profileview',		component: ProfileViewComponent },
-{ path: 'edit', component:       ProfileEditDetailsComponent },
-{ path: 'shuttlehistory', component: ProfileShuttleHistoryComponent },
-{ path: 'charterhistory', component: ProfileCharterHistoryComponent },
-{ path: 'shuttledetail', component: ProfileShuttleDetailsComponent },
-{ path: 'charterdetail', component: ProfileCharterDetailsComponent },
-{ path: 'suggestion', component: SuggestionComponent }
+  { path: 'edit', 				component: ProfileEditDetailsComponent },
+  { path: 'shuttlehistory', 	component: ProfileShuttleHistoryComponent },
+  { path: 'charterhistory', 	component: ProfileCharterHistoryComponent },
+  { path: 'shuttledetail/:id', 	component: ProfileShuttleDetailsComponent },
+  { path: 'charterdetail/:id', 	component: ProfileCharterDetailsComponent },
+  { path: 'suggestion', 		component: SuggestionComponent }
 ];
 
 export const navigatableComponents = 

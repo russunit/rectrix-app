@@ -8,13 +8,14 @@ import { ShuttleRequest } from "../../shared/shuttle-request/shuttle-request";
 
 @Component({
   selector: "shuttlehistory",
-  template: `
+  template: 
+	`
 	<Label text="Shuttle History" horizontalAlignment="center" id="header"></Label>
-	<ListView [items]="shuttleList">
+	<ListView [items]="shuttleList" (itemTap)="seeDetails($event)">
 		<template let-item="item">
 			<StackLayout>
 				<Label text="{{item.departDate}}" id="date"></Label>
-				<Button text="{{item.departLocation + ' - ' + item.arriveLocation}}" (tap)="seeDetails()" id="detail"></Button>
+				<Label text="{{item.departLocation.toUpperCase() + ' - ' + item.arriveLocation.toUpperCase()}}" id="detail"></Label>
 			</StackLayout>
 		</template>
 	</ListView>
@@ -60,6 +61,6 @@ export class ProfileShuttleHistoryComponent implements OnInit {
 	
 	seeDetails(args)
 	{
-		this.router.navigate(["/charterdetails", args.index]);
+		this.router.navigate(["/shuttledetail", args.index]);
 	}
 }
