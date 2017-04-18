@@ -34,7 +34,8 @@ import { ProfileCharterDetailsComponent } from './pages/profileview/profile-char
 import { ProfileEditDetailsComponent } from './pages/profileview/profile-edit-details.component';
 import { SuggestionComponent } from './pages/suggestion/suggestion.component';
 
-
+import { registerElement } from "nativescript-angular/element-registry";
+registerElement("DropDown", () => require("nativescript-drop-down/drop-down").DropDown);
 
 @NgModule({
   imports: [
