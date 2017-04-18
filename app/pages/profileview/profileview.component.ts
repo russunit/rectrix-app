@@ -83,6 +83,8 @@ export class ProfileViewComponent implements OnInit
 		this.subscription1 = this.currentUserService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn );
 		this.subscription2 = this.currentUserService.currentUser$.subscribe(currentUser => this.currentUser = currentUser );
 		
+		this.profileReload();
+		
 		if(!this.loggedIn)
 		{
 			alert("Profile view unavailable. Sign in first.");

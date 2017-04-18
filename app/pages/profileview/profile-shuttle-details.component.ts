@@ -13,19 +13,21 @@ import { Location } from '@angular/common';
   template: 
 	`
     <ScrollView>
-		<GridLayout rows = "auto,auto,auto,auto,auto,auto" columns="auto,auto">
-			<Label text ="Name" 						row="0" col="0" ></Label>
-			<Label text = {{this.fullName}} 			row="0" col="1"></Label>
-			<Label text ="Phone Number" 				row="1" col="0"></Label>
-			<Label text = {{this.shuttle.phoneNumber}} 	row="1" col="1"></Label> 
-			<Label text ="Trip Type" 					row="2" col="0"></Label>
-			<Label text = {{this.shuttle.tripType}} 	row="2" col="1"></Label> 
-			<Label text ="From" 						row="3" col="0"></Label>
-			<Label text = {{this.departure}} 			row="3" col="1"></Label> 
-			<Label text ="To" 							row="4" col="0"></Label>
-			<Label text = {{this.arrival}} 				row="4" col="1"></Label> 
-			<Label text = {{this.passengers}} 			row="5" col="0"></Label>
-        </GridLayout>
+		<StackLayout>
+			<GridLayout rows = "auto,auto,auto,auto,auto" columns="auto,auto">
+				<Label text ="Name" 						row="0" col="0" ></Label>
+				<Label text = {{this.fullName}} 			row="0" col="1"></Label>
+				<Label text ="Phone Number" 				row="1" col="0"></Label>
+				<Label text = {{this.shuttle.phoneNumber}} 	row="1" col="1"></Label> 
+				<Label text ="Trip Type" 					row="2" col="0"></Label>
+				<Label text = {{this.shuttle.tripType}} 	row="2" col="1"></Label> 
+				<Label text ="From" 						row="3" col="0"></Label>
+				<Label text = {{this.departure}} 			row="3" col="1"></Label> 
+				<Label text ="To" 							row="4" col="0"></Label>
+				<Label text = {{this.arrival}} 				row="4" col="1"></Label> 
+			</GridLayout>
+			<Label text = {{this.passengers}}></Label>
+		</StackLayout>
     </ScrollView>
   `,
   styleUrls: ['pages/profileview/profile-shuttle-details.component.css'],
@@ -70,6 +72,7 @@ export class ProfileShuttleDetailsComponent implements OnInit {
 		this.arrival = this.shuttle.departLocation + " " + this.shuttle.departDate + " " + this.shuttle.departTime;
 		this.departure = this.shuttle.arriveLocation + " " + this.shuttle.arriveDate + " " + this.shuttle.arriveTime;
 		this.passengers ="There are" + this.shuttle.numAdults +this.shuttle.numAdults +"adults, " + this.shuttle.numChildren +" children and " + this.shuttle.numInfants + " infants"; 
+		this.fullName = this.shuttle.firstName + " " + this.shuttle.lastName;
 	}
 	
 	ngOnDestroy() 

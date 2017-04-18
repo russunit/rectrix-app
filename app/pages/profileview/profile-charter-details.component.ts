@@ -26,8 +26,8 @@ import { Location } from '@angular/common';
 			<Label text={{this.arrival}} 					row="4" col="1"></Label> 
 			<Label text="Requirements:" 					row="5" col="0"></Label>
 			<Label text={{this.charter.requirements}} 		row="5" col="1"></Label>
-			<Label text="Preffered Craft:" 					row="6" col="0"></Label>
-			<Label text={{this.charter.prefferedCraft}} 	row="6" col="1"></Label>
+			<Label text="Preferred Craft:" 					row="6" col="0"></Label>
+			<Label text={{this.charter.preferredCraft}} 	row="6" col="1"></Label>
 		</GridLayout>
 	</StackLayout>
 	`,
