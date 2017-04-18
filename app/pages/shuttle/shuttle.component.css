@@ -59,3 +59,14 @@ button{
     border-width: 2;
     border-color: white; 
 }
+
+#tripType {
+	padding-top: 6;
+	padding-bottom: 6;
+	padding-left: 3;
+	margin-left: 15;
+    margin-right: 15;
+	background-color: white;
+	font-size: 18;
+	color: black;
+}

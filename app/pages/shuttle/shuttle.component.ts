@@ -31,8 +31,9 @@ import {Subscription} from 'rxjs/Subscription';
         <label height="1" class="divider"></label>
         <label text='Trip Details' class="detail-label"></label>
 
-	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.tripType" hint="One-way/Round trip/Multi-leg"></TextField>
-        <label text='Trip Type' class='field-label'></label>
+	    <DropDown #dd backroundColor="red" [items]="tripTypes" [selectedIndex]="selectedIndex" 
+			(selectedIndexChanged)="onchange($event)" row="0" colSpan="2" id="tripType"></DropDown>
+		<label text='Trip Type' class='field-label'></label>
 	
 	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.departLocation" hint="New York, NY"></TextField>
         <label text='Depart Location' class='field-label'></label>
@@ -89,11 +90,29 @@ export class ShuttleComponent implements OnInit
     subscription2:Subscription;
 
 	shuttleRequest: ShuttleRequest;
+	
+	public selectedIndex = 0;
+    public tripTypes: Array<string>;
 
 	constructor(private router: Router, private userService: UserService, private currentUserService: CurrentUserService)
 	{
 		this.shuttleRequest = new ShuttleRequest();
+		
+		this.tripTypes = ["Round-Trip", "One-Way"];
+		this.shuttleRequest.tripType = "Round-Trip";
 	}
+	
+	public onchange(args) 
+	{
+		if(args.newIndex == 0)
+		{
+			this.shuttleRequest.tripType = "Round-Trip";
+		}
+		else if(args.newIndex == 1)
+		{
+			this.shuttleRequest.tripType = "One-Way";
+		}
+    }
 
 	ngOnInit()
 	{

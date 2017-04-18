@@ -75,7 +75,6 @@ export class ProfileCharterDetailsComponent implements OnInit {
 		this.sub = this.route.params.subscribe(params => {
 			this.id = +params['id']; 
 			this.charter = this.currentUser.charterHistory[this.id];
-			console.log(this.id);
 		});
 		
 		this.arrival = this.charter.departLocation + " " + this.charter.departDate + " " + this.charter.departTime;
