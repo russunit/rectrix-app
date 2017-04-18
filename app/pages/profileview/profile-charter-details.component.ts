@@ -13,21 +13,28 @@ import { Location } from '@angular/common';
   template: 
 	`
 	<StackLayout>
-		<GridLayout rows = "auto,auto,auto,auto,auto,auto,auto" columns="auto,auto">
-			<Label text="Name" 								row="0" col="0" ></Label>
-			<Label text={{this.fullName}} 					row="0" col="1"></Label>
-			<Label text="Phone Number" 						row="1" col="0"></Label>
-			<Label text={{this.charter.phoneNumber}} 		row="1" col="1"></Label> 
-			<Label text="Trip Type" 						row="2" col="0"></Label>
-			<Label text={{this.charter.tripType}} 			row="2" col="1"></Label> 
-			<Label text="From" 								row="3" col="0"></Label>
-			<Label text={{this.departure}} 					row="3" col="1"></Label> 
-			<Label text="To" 								row="4" col="0"></Label>
-			<Label text={{this.arrival}} 					row="4" col="1"></Label> 
-			<Label text="Requirements:" 					row="5" col="0"></Label>
-			<Label text={{this.charter.requirements}} 		row="5" col="1"></Label>
-			<Label text="Preferred Craft:" 					row="6" col="0"></Label>
-			<Label text={{this.charter.preferredCraft}} 	row="6" col="1"></Label>
+		<StackLayout id="header">
+			<Image src="~/images/full-logo.png" height="60" width="322" id="logo"></Image>
+		</StackLayout>
+		
+		<Label text="{{this.charter.departLocation.toUpperCase() + '\t to \t' + this.charter.arriveLocation.toUpperCase()}}" horizontalAlignment="center" id="locations"></Label>
+		<Label text="{{this.charter.departDate + '\t\t - \t\t' + this.charter.arriveDate}}" horizontalAlignment="center" id="dates"></Label>
+		
+		<GridLayout rows = "auto,auto,auto,auto,auto,auto,auto" columns="4*,5*" id="info">
+			<Label text="Name:" style="font-weight: 700;"				row="0" col="0" ></Label>
+			<Label text={{this.fullName}} 								row="0" col="1"></Label>
+			<Label text="Phone Number:" style="font-weight: 700;"		row="1" col="0"></Label>
+			<Label text={{this.charter.phoneNumber}} 					row="1" col="1"></Label> 
+			<Label text="Trip Type:" style="font-weight: 700;"			row="2" col="0"></Label>
+			<Label text={{this.charter.tripType}} 						row="2" col="1"></Label> 
+			<Label text="Departure Time:" style="font-weight: 700;"		row="3" col="0"></Label>
+			<Label text={{this.charter.departTime}}						row="3" col="1"></Label>
+			<Label text="Arrival Time:"	style="font-weight: 700;"		row="4" col="0"></Label>
+			<Label text={{this.charter.arriveTime}}						row="4" col="1"></Label>
+			<Label text="Requirements:" style="font-weight: 700;" 		row="5" col="0"></Label>
+			<Label text={{this.charter.requirements}} 					row="5" col="1"></Label>
+			<Label text="Preferred Craft:" style="font-weight: 700;"	row="6" col="0"></Label>
+			<Label text={{this.charter.preferredCraft}} 				row="6" col="1"></Label>
 		</GridLayout>
 	</StackLayout>
 	`,

@@ -1,0 +1,44 @@
+#header {
+	background-color: #d33432;
+	margin-bottom: 10;
+}
+
+#logo {
+	margin-left: 10;
+	margin-right: 10;
+	margin-top: 5;
+	margin-bottom: 5;
+}
+
+#locations {
+	margin-top: 10;
+	margin-bottom: 5;
+	font-size: 22;
+	font-weight: 700;
+	color: black;
+}
+
+#dates {
+	margin-bottom: 15;
+	font-size: 18;
+	color: black;
+}
+
+#info {
+	margin-left: 20;
+	margin-right: 20;
+	padding-left: 5;
+	padding-top: 10;
+	padding-bottom: 10;
+	background-color: #324264;
+	color: white;
+	font-size: 16;
+	border-radius: 10;
+}
+
+#info Label {
+	margin-left: 10;
+	margin-right: 10;
+	margin-top: 3;
+	margin-bottom: 3;
+}
