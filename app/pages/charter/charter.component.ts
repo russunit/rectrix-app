@@ -34,7 +34,9 @@ template: `
         <label height="1" class="divider"></label>
         <label text='Trip Details' class="detail-label"></label>
 
-	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.tripType" hint="One-way/Round trip/Multi-leg"></TextField>
+	    	    <DropDown #dd backgroundColor="red" [items]="tripTypes" [selectedIndex]="selectedIndex" 
+			(selectedIndexChanged)="onchange($event)" row="0" colSpan="2" "></DropDown>
+
         <label text='Trip Type' class='field-label'></label>
 	    
 	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.departLocation" hint="New York, NY"></TextField>
@@ -84,10 +86,10 @@ export class CharterComponent implements OnInit
     height: number = this.screen.mainScreen.heightDIPs;
     width: number = this.screen.mainScreen.widthDIPs;
     buttonW: number = this.width * .6;
-
+     public selectedIndex = 0;
 	user: User;
     loggedIn: boolean;
-
+	public tripTypes: Array<string>;
     subscription1:Subscription;
     subscription2:Subscription;
 
@@ -96,6 +98,8 @@ export class CharterComponent implements OnInit
 	constructor(private router: Router, private userService: UserService, private currentUserService: CurrentUserService)
 	{
 		this.charterRequest = new CharterRequest();
+		this.tripTypes = ["Round-Trip", "One-Way"];
+		this.charterRequest.tripType = "Round-Trip";
 	}
 
 	ngOnInit()
@@ -110,7 +114,18 @@ export class CharterComponent implements OnInit
         	this.charterRequest.lastName = this.user.lastName;
         }
 	}
+	public onchange(args)
+	{
+          if(args.newIndex == 0)
+		{
+			this.charterRequest.tripType = "Round-Trip";
+		}
+		else if(args.newIndex == 1)
+		{
+			this.charterRequest.tripType = "One-Way";
+		}
 
+     }
 	profileReload()
 	{
 		this.userService.reload(this.user)

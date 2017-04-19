@@ -31,11 +31,13 @@ import {Subscription} from 'rxjs/Subscription';
         <label height="1" class="divider"></label>
         <label text='Trip Details' class="detail-label"></label>
 
-	    <DropDown #dd backroundColor="red" [items]="tripTypes" [selectedIndex]="selectedIndex" 
+	    <DropDown #dd backgroundColor="red" [items]="tripTypes" [selectedIndex]="selectedIndex" 
 			(selectedIndexChanged)="onchange($event)" row="0" colSpan="2" id="tripType"></DropDown>
 		<label text='Trip Type' class='field-label'></label>
 	
-	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.departLocation" hint="New York, NY"></TextField>
+	    <DropDown #dd backgroundColor="red" [items]="destinations" [selectedIndex]="selectedIndex1" 
+			(selectedIndexChanged)="onchange1($event)" row="1" colSpan="2" id="tripType"></DropDown>
+
         <label text='Depart Location' class='field-label'></label>
 	
 	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.departDate" hint="MM/DD/YYYY"></TextField>
@@ -44,7 +46,9 @@ import {Subscription} from 'rxjs/Subscription';
 	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.departTime" hint="12:00 PM"></TextField>
         <label text='Depart Time' class='field-label'></label>
 	
-	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.arriveLocation" hint="Los Angeles, CA"></TextField>
+<DropDown #dd backgroundColor="red" [items]="destinations" [selectedIndex]="selectedIndex2" 
+			(selectedIndexChanged)="onchange2($event)" row="2" colSpan="2" id="tripType"></DropDown>
+
         <label text='Arrive Location' class='field-label'></label>
 	
 	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.arriveDate" hint="MM/DD/YYYY"></TextField>
@@ -92,16 +96,43 @@ export class ShuttleComponent implements OnInit
 	shuttleRequest: ShuttleRequest;
 	
 	public selectedIndex = 0;
-    public tripTypes: Array<string>;
+	public selectedIndex1 = 0;
+	public selectedIndex2 = 0;
 
+    public tripTypes: Array<string>;
+	public destinations: Array<string>;
 	constructor(private router: Router, private userService: UserService, private currentUserService: CurrentUserService)
 	{
 		this.shuttleRequest = new ShuttleRequest();
 		
 		this.tripTypes = ["Round-Trip", "One-Way"];
+		this.destinations = ["Hyannis", "Nantucket"];
 		this.shuttleRequest.tripType = "Round-Trip";
+		this.shuttleRequest.departLocation = "Hyannis";
+		this.shuttleRequest.arriveLocation = "Nantucket";
 	}
-	
+	public onchange1(args)
+{
+          if(args.nextIndex == 0)
+          {
+              this.shuttleRequest.departLocation = "Hyannis";
+          }
+          if(args.Index == 1)
+          {
+              this.shuttleRequest.departLocation = "Nantucket";
+          }
+}
+	public onchange2(args)
+{
+          if(args.nextIndex == 0)
+          {
+              this.shuttleRequest.arriveLocation = "Hyannis";
+          }
+          if(args.Index == 1)
+          {
+              this.shuttleRequest.arriveLocation = "Nantucket";
+          }
+}
 	public onchange(args) 
 	{
 		if(args.newIndex == 0)
@@ -171,7 +202,7 @@ export class ShuttleComponent implements OnInit
 		{
 			alert("Please fill out all fields.");
 		}
-		else if(this.loggedIn)
+		else if((this.loggedIn) &&(this.shuttleRequest.departLocation != this.shuttleRequest.arriveLocation))
 		{
 		this.profileReload();
 		this.user.shuttleHistory.push(this.shuttleRequest);
