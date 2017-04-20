@@ -2,12 +2,13 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { TextField } from "ui/text-field";
+import { DatePicker } from "ui/date-picker";
 
 import { CharterRequest } from '../../shared/charter-request/charter-request';
 import { User } from "../../shared/user/user";
 import { UserService } from "../../shared/user/user.service";
 import { CurrentUserService } from "../../shared/current-user/current-user.service";
-import {Subscription} from 'rxjs/Subscription';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component
 ({
@@ -34,15 +35,14 @@ template: `
         <label height="1" class="divider"></label>
         <label text='Trip Details' class="detail-label"></label>
 
-	    	    <DropDown #dd backgroundColor="red" [items]="tripTypes" [selectedIndex]="selectedIndex" 
-			(selectedIndexChanged)="onchange($event)" row="0" colSpan="2" "></DropDown>
-
+	    <DropDown #dd [items]="tripTypes" [selectedIndex]="selectedIndex" 
+		(selectedIndexChanged)="onchange($event)" row="0" colSpan="2" class="dropdown"></DropDown>
         <label text='Trip Type' class='field-label'></label>
 	    
 	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.departLocation" hint="New York, NY"></TextField>
-        <label text='Depart Location' class='field-label'></label>
+		<label text='Depart Location' class='field-label'></label>
 	    
-	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.departDate" hint="MM/DD/YYYY"></TextField>
+	    <DatePicker #datePicker height="100" (loaded)="configure(datePicker, 1)" class="date"></DatePicker>
         <label text='Depart Date' class='field-label'></label>
 	    
 	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.departTime" hint="12:00 PM"></TextField>
@@ -51,8 +51,8 @@ template: `
 	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.arriveLocation" hint="Los Angeles, CA"></TextField>
         <label text='Arrive Location' class='field-label'></label>
 	    
-	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.arriveDate" hint="MM/DD/YYYY"></TextField>
-        <label text='Arrive Date' class='field-label'></label>
+	    <DatePicker #datePicker2 height="100" (loaded)="configure(datePicker2, 2)" class="date"></DatePicker>
+		<label text='Arrive Date' class='field-label'></label>
 	    
 	    <TextField autocapitalizationType="none" [(ngModel)]="charterRequest.arriveTime" hint="12:00 PM"></TextField>
         <label text='Arrive Time' class='field-label'></label>
@@ -86,7 +86,7 @@ export class CharterComponent implements OnInit
     height: number = this.screen.mainScreen.heightDIPs;
     width: number = this.screen.mainScreen.widthDIPs;
     buttonW: number = this.width * .6;
-     public selectedIndex = 0;
+    public selectedIndex = 0;
 	user: User;
     loggedIn: boolean;
 	public tripTypes: Array<string>;
@@ -94,12 +94,19 @@ export class CharterComponent implements OnInit
     subscription2:Subscription;
 
 	charterRequest: CharterRequest;
+	
+	private date;
+	private departDate;
+	private arriveDate;
 
 	constructor(private router: Router, private userService: UserService, private currentUserService: CurrentUserService)
 	{
 		this.charterRequest = new CharterRequest();
 		this.tripTypes = ["Round-Trip", "One-Way"];
 		this.charterRequest.tripType = "Round-Trip";
+		this.date =  new Date();
+		this.departDate = new Date();
+		this.arriveDate = new Date();
 	}
 
 	ngOnInit()
@@ -149,6 +156,25 @@ export class CharterComponent implements OnInit
         }//end subscribe
         );//end subscribe
 	}
+	
+	configure(datePicker: DatePicker, picker: number) 
+	{
+        datePicker.year = this.date.getFullYear();
+        datePicker.month = this.date.getMonth()+1;
+        datePicker.day = this.date.getDate();
+        datePicker.minDate = new Date(this.date.getFullYear(), this.date.getMonth(), this.date.getDate());
+        datePicker.maxDate = new Date(2045, 4, 12);
+		
+		if(picker == 1)
+		{
+			this.departDate = this.date;
+			this.charterRequest.departDate = this.departDate;
+		}
+		else if(picker == 2)
+		{
+			this.arriveDate = this.date;
+		}
+    }
 
 
 	sendRequest(request: CharterRequest)
@@ -171,6 +197,7 @@ export class CharterComponent implements OnInit
 		this.profileReload();
 
 		this.user.charterHistory.push(this.charterRequest);
+		//this.departDate = this.datePicker.day;
 
 			this.userService.update(this.user)
             .subscribe(response => 
@@ -191,9 +218,9 @@ export class CharterComponent implements OnInit
 						"\nPhone: "+this.charterRequest.phoneNumber +
 						"\nTrip Type: "+this.charterRequest.tripType +
 						"\nFrom: "+this.charterRequest.departLocation +
-						"\n at: "+this.charterRequest.departTime + ", " + this.charterRequest.departDate +
+						"\n at: "+this.charterRequest.departTime + ", " + this.departDate +
 						"\nTo: "+this.charterRequest.arriveLocation +
-						"\n at: "+this.charterRequest.arriveTime + ", " + this.charterRequest.arriveDate +
+						"\n at: "+this.charterRequest.arriveTime + ", " + this.arriveDate +
 						"\n\nRequirements: " + this.charterRequest.requirements + 
 						"\nCraft Preference: " + this.charterRequest.preferredCraft);
 					this.router.navigate(["/dashboard"]);

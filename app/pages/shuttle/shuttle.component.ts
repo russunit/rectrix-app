@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { TextField } from "ui/text-field";
+import { DatePicker } from "ui/date-picker";
 
 import { ShuttleRequest } from '../../shared/shuttle-request/shuttle-request';
 import { User } from "../../shared/user/user";
@@ -31,27 +32,25 @@ import {Subscription} from 'rxjs/Subscription';
         <label height="1" class="divider"></label>
         <label text='Trip Details' class="detail-label"></label>
 
-	    <DropDown #dd backgroundColor="red" [items]="tripTypes" [selectedIndex]="selectedIndex" 
-			(selectedIndexChanged)="onchange($event)" row="0" colSpan="2" id="tripType"></DropDown>
+	    <DropDown #dd [items]="tripTypes" [selectedIndex]="selectedIndex" 
+			(selectedIndexChanged)="onchange($event)" row="0" colSpan="2" class="dropdown"></DropDown>
 		<label text='Trip Type' class='field-label'></label>
 	
-	    <DropDown #dd backgroundColor="red" [items]="destinations" [selectedIndex]="selectedIndex1" 
-			(selectedIndexChanged)="onchange1($event)" row="1" colSpan="2" id="tripType"></DropDown>
-
+	    <DropDown #dd [items]="destinations" [selectedIndex]="selectedIndex1" 
+			(selectedIndexChanged)="onchange1($event)" row="0" colSpan="2" class="dropdown"></DropDown>
         <label text='Depart Location' class='field-label'></label>
 	
-	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.departDate" hint="MM/DD/YYYY"></TextField>
+	    <DatePicker #datePicker height="100" (loaded)="configure(datePicker, 1)" class="date"></DatePicker>
         <label text='Depart Date' class='field-label'></label>
 	
 	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.departTime" hint="12:00 PM"></TextField>
         <label text='Depart Time' class='field-label'></label>
 	
-<DropDown #dd backgroundColor="red" [items]="destinations" [selectedIndex]="selectedIndex2" 
-			(selectedIndexChanged)="onchange2($event)" row="2" colSpan="2" id="tripType"></DropDown>
-
+		<DropDown #dd [items]="destinations" [selectedIndex]="selectedIndex2" 
+			(selectedIndexChanged)="onchange2($event)" row="0" colSpan="2" class="dropdown"></DropDown>
         <label text='Arrive Location' class='field-label'></label>
 	
-	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.arriveDate" hint="MM/DD/YYYY"></TextField>
+	    <DatePicker #datePicker2 height="100" (loaded)="configure(datePicker2, 2)" class="date"></DatePicker>
         <label text='Arrive Date' class='field-label'></label>
 	
 	    <TextField autocapitalizationType="none" [(ngModel)]="shuttleRequest.arriveTime" hint="12:00 PM"></TextField>
@@ -101,6 +100,11 @@ export class ShuttleComponent implements OnInit
 
     public tripTypes: Array<string>;
 	public destinations: Array<string>;
+	
+	private date;
+	private departDate;
+	private arriveDate;
+	
 	constructor(private router: Router, private userService: UserService, private currentUserService: CurrentUserService)
 	{
 		this.shuttleRequest = new ShuttleRequest();
@@ -110,6 +114,9 @@ export class ShuttleComponent implements OnInit
 		this.shuttleRequest.tripType = "Round-Trip";
 		this.shuttleRequest.departLocation = "Hyannis";
 		this.shuttleRequest.arriveLocation = "Nantucket";
+		this.date =  new Date();
+		this.departDate = new Date();
+		this.arriveDate = new Date();
 	}
 	public onchange1(args)
 {
@@ -142,6 +149,26 @@ export class ShuttleComponent implements OnInit
 		else if(args.newIndex == 1)
 		{
 			this.shuttleRequest.tripType = "One-Way";
+		}
+    }
+	
+	configure(datePicker: DatePicker, picker: number) 
+	{
+        datePicker.year = this.date.getFullYear();
+        datePicker.month = this.date.getMonth()+1;
+        datePicker.day = this.date.getDate();
+        datePicker.minDate = new Date(this.date.getFullYear(), this.date.getMonth(), this.date.getDate());
+        datePicker.maxDate = new Date(2045, 4, 12);
+		
+		if(picker == 1)
+		{
+			this.departDate = this.date;
+			this.shuttleRequest.departDate = this.departDate;
+		}
+		else if(picker == 2)
+		{
+			this.arriveDate = this.date;
+			this.shuttleRequest.departDate = this.departDate;
 		}
     }
 
