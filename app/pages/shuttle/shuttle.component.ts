@@ -229,7 +229,7 @@ export class ShuttleComponent implements OnInit
 		{
 			alert("Please fill out all fields.");
 		}
-		else if((this.loggedIn) &&(this.shuttleRequest.departLocation != this.shuttleRequest.arriveLocation))
+		else if((this.loggedIn) &&(this.shuttleRequest.departLocation != this.shuttleRequest.arriveLocation)&&(+this.shuttleRequest.departDate <= +this.shuttleRequest.arriveDate  ))
 		{
 		this.profileReload();
 		this.user.shuttleHistory.push(this.shuttleRequest);

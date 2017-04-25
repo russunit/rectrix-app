@@ -192,7 +192,7 @@ export class CharterComponent implements OnInit
 		{
 			alert("Please fill out all fields.");
 		}
-		else if(this.loggedIn)
+		else if ((this.loggedIn) &&(this.charterRequest.departLocation != this.charterRequest.arriveLocation)&&(+this.charterRequest.departDate <= +this.charterRequest.arriveDate  ))
 		{
 		this.profileReload();
 
