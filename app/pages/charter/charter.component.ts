@@ -179,20 +179,34 @@ export class CharterComponent implements OnInit
 
 	sendRequest(request: CharterRequest)
 	{
-		if( this.charterRequest.arriveDate == null
-			||this.charterRequest.arriveLocation == null
+		if (!this.loggedIn)
+		{
+			alert("Please log in or sign up to place a charter request.");
+			this.router.navigate(["/dashboard"]);
+		}
+		else if (this.charterRequest.departLocation == this.charterRequest.arriveLocation)
+		{
+			alert("Please specify separate depart/arrive locations.");
+		}
+		else if (+this.charterRequest.departDate > +this.charterRequest.arriveDate)
+		{
+			alert("Please specify an arrive date on or after the depart date.");
+		}
+		else if( this.charterRequest.arriveLocation == null
 			||this.charterRequest.arriveTime == null
-			||this.charterRequest.departDate == null
+			//||this.charterRequest.arriveDate == null
+			//||this.charterRequest.departDate == null
 			||this.charterRequest.departLocation == null
 			||this.charterRequest.departTime == null
 			||this.charterRequest.firstName == null
 			||this.charterRequest.lastName == null
 			||this.charterRequest.phoneNumber == null
-			||this.charterRequest.tripType == null)
+			//||this.charterRequest.tripType == null
+			)
 		{
 			alert("Please fill out all fields.");
 		}
-		else if ((this.loggedIn) &&(this.charterRequest.departLocation != this.charterRequest.arriveLocation)&&(+this.charterRequest.departDate <= +this.charterRequest.arriveDate  ))
+		else
 		{
 		this.profileReload();
 
@@ -214,15 +228,7 @@ export class CharterComponent implements OnInit
 				//success
 				{
 					this.currentUserService.changeUser(this.user);
-					alert("Charter Requested:\nName: "+this.charterRequest.firstName+" "+this.charterRequest.lastName +
-						"\nPhone: "+this.charterRequest.phoneNumber +
-						"\nTrip Type: "+this.charterRequest.tripType +
-						"\nFrom: "+this.charterRequest.departLocation +
-						"\n at: "+this.charterRequest.departTime + ", " + this.departDate +
-						"\nTo: "+this.charterRequest.arriveLocation +
-						"\n at: "+this.charterRequest.arriveTime + ", " + this.arriveDate +
-						"\n\nRequirements: " + this.charterRequest.requirements + 
-						"\nCraft Preference: " + this.charterRequest.preferredCraft);
+					alert("Charter Requested.");
 					this.router.navigate(["/dashboard"]);
 
 				}
@@ -234,11 +240,6 @@ export class CharterComponent implements OnInit
 	        }
 	        );//end subscribe
 
-		}
-		else
-		{
-			alert("Please log in or sign up to place a charter request.");
-			this.router.navigate(["/dashboard"]);
 		}
 
 	}

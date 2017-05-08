@@ -212,12 +212,24 @@ export class ShuttleComponent implements OnInit
 	sendRequest(request:ShuttleRequest)
 	{
 
-		
-		if( this.shuttleRequest.arriveDate == null
-			||this.shuttleRequest.arriveLocation == null
-			||this.shuttleRequest.arriveTime == null
-			||this.shuttleRequest.departDate == null
-			||this.shuttleRequest.departLocation == null
+		if (!this.loggedIn)
+		{
+			alert("Please log in or sign up to place a shuttle request.");
+			this.router.navigate(["/dashboard"]);
+		}
+		else if (this.shuttleRequest.departLocation == this.shuttleRequest.arriveLocation)
+		{
+			alert("Please specify separate depart/arrive locations.");
+		}
+		else if (+this.shuttleRequest.departDate > +this.shuttleRequest.arriveDate)
+		{
+			alert("Please specify an arrive date on or after the depart date.");
+		}
+		else if( this.shuttleRequest.arriveTime == null
+			//||this.shuttleRequest.arriveLocation == null
+			//||this.shuttleRequest.arriveDate == null
+			//||this.shuttleRequest.departDate == null
+			//||this.shuttleRequest.departLocation == null
 			||this.shuttleRequest.departTime == null
 			||this.shuttleRequest.firstName == null
 			||this.shuttleRequest.lastName == null
@@ -225,11 +237,12 @@ export class ShuttleComponent implements OnInit
 			||this.shuttleRequest.numAdults == null
 			||this.shuttleRequest.numChildren == null
 			||this.shuttleRequest.numInfants == null
-			||this.shuttleRequest.tripType == null)
+			//||this.shuttleRequest.tripType == null
+			)
 		{
 			alert("Please fill out all fields.");
 		}
-		else if((this.loggedIn) &&(this.shuttleRequest.departLocation != this.shuttleRequest.arriveLocation)&&(+this.shuttleRequest.departDate <= +this.shuttleRequest.arriveDate  ))
+		else
 		{
 		this.profileReload();
 		this.user.shuttleHistory.push(this.shuttleRequest);
@@ -262,11 +275,6 @@ export class ShuttleComponent implements OnInit
 	        );//end subscribe
 
 
-		}
-		else
-		{
-			alert("Please log in or sign up to place a shuttle request.");
-			this.router.navigate(["/dashboard"]);
 		}
 
 	}
