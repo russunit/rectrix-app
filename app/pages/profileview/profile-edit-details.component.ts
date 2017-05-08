@@ -16,7 +16,7 @@ import {Subscription} from 'rxjs/Subscription';
 		<StackLayout>
 			<Label text ='{{user.username}}' horizontalAlignment="center" class="header"></Label>
 			
-			<GridLayout rows="auto,auto,auto,auto,auto,auto" columns="3*,4*" id="info">
+			<GridLayout rows="auto,auto,auto,auto,auto,auto,auto" columns="3*,4*" id="info">
 				<Button text="First Name" 			row="0" col="0" isEnabled = "false"></Button>
 				<TextField hint="First name" 		row="0" col="1" [(ngModel)]="user.firstName" 	keyboardType="email" autocorrect="false" autocapitalizationType="words"></TextField>
 				<Button text="Last Name" 			row="1" col="0" isEnabled = "false"></Button>
@@ -29,6 +29,8 @@ import {Subscription} from 'rxjs/Subscription';
 				<TextField hint="Country" 			row="4" col="1" [(ngModel)]="user.country"  	keyboardType="email" autocorrect="false" autocapitalizationType="words"></TextField>
 				<Button text="Zip" 					row="5" col="0" isEnabled = "false"></Button>
 				<TextField hint="Zip" 				row="5" col="1" [(ngModel)]="user.zip" 			keyboardType="number" autocorrect="false" autocapitalizationType="none"></TextField>
+				<Button text="Email" 				row="6" col="0" isEnabled = "false"></Button>
+				<TextField hint="Email" 			row="6" col="1" [(ngModel)]="user.email" 		keyboardType="email" autocorrect="false" autocapitalizationType="none"></TextField>
 			</GridLayout>
 				
 			<Button text="Save Changes" horizontalAlignment='center' (tap)="change()" width="{{buttonW}}" horizontalAlignment='center' id="change"></Button>
@@ -96,6 +98,7 @@ export class ProfileEditDetailsComponent implements OnInit
 				{
 					this.currentUserService.changeUser(this.user);
 					alert("Changes saved.");
+					this.router.navigate(["/profileview"]);
 				}
 				else
 				//the parse or server returned garbage

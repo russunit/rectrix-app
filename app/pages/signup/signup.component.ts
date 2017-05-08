@@ -40,6 +40,9 @@ import { ShuttleRequest } from "../../shared/shuttle-request/shuttle-request";
 				
 				<TextField secure = "true" [(ngModel)]="user.password"></TextField>
 				<label text='Password' class='field-label'></label>
+
+        <TextField autocorrect= "false" [(ngModel)]="user.email" hint= "email@site.com"></TextField>
+        <label text='Email' class='field-label'></label>
 				
 				<Button text="Sign Up"(tap)="signUp(this.user)" horizontalAlignment='center'></Button>
 			</StackLayout>
@@ -90,7 +93,8 @@ export class SignupComponent implements OnInit
         if (this.user.username == null
           ||this.user.password == null
           ||this.user.firstName == null
-          ||this.user.lastName == null)
+          ||this.user.lastName == null
+          ||this.user.email == null)
         {
           alert("Please fill out all fields.");
           this.loading = false;
